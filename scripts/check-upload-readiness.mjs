@@ -262,7 +262,8 @@ async function findForbiddenText(ref) {
       FORBIDDEN_REMOTE_TEXT_PATTERN,
       ref,
       '--',
-      ':!scripts/check-release-readiness.mjs'
+      ':!scripts/check-release-readiness.mjs',
+      ':!scripts/check-upload-readiness.mjs'
     ]);
     return stdout
       .split('\n')
