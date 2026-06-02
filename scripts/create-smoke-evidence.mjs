@@ -32,8 +32,8 @@ if (!options.force && (await exists(evidenceFile))) {
 
 const template = await readFile(TEMPLATE_FILE, 'utf8');
 const evidence = template
-  .replace('Date: YYYY-MM-DD', `Date: ${date}`)
-  .replace('Build commit: <git SHA>', `Build commit: ${commit}`);
+  .replaceAll('YYYY-MM-DD', date)
+  .replaceAll('<git SHA>', commit);
 
 await writeFile(evidenceFile, evidence);
 

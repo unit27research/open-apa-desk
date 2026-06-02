@@ -35,8 +35,8 @@ The Google console execution path is
 | Area | Current evidence | Status |
 | --- | --- | --- |
 | Functional add-on | V0.1 build passes local verification and has live smoke coverage in a bound Doc. | Partial |
-| Editor add-on menu | `onOpen()` and `onInstall()` populate an `Open APA Desk` menu. Sprint 2 confirmed the menu appears in the template Doc. | Passing for alpha |
-| Apps Script version | Apps Script version `2` exists in the operator environment after the final smoke-ready alpha build was pushed. | Passing for alpha |
+| Editor add-on menu | `onOpen()` and `onInstall()` populate an `Open APA Desk` menu. The refreshed copied-template Doc shows the version with `Check DOI Setup`. | Passing for alpha |
+| Apps Script version | Apps Script version `2` exists in the smoke-test operator environment, and the refreshed alpha template has a final-smoke-ready template version. | Passing for alpha |
 | Standard Google Cloud project | No standard Cloud project is linked yet. Required setup is documented in the SDK and OAuth drafts. | Missing |
 | Cloud billing | Google lists billing as an OAuth/publishing prerequisite for the Cloud project. Billing has not been confirmed. | Missing |
 | Marketplace SDK config | Draft field map exists in `docs/MARKETPLACE_SDK_CONFIG_DRAFT.md`. | Draft |
@@ -52,7 +52,7 @@ The Google console execution path is
 | Trader status | Non-trader is selected for the initial draft because Open APA Desk is free, open-source, and not monetized. If Google treats the Unit27 Research identity as business/professional activity, revisit this choice. | Draft field filled |
 | Branding assets | Project-owned PNG assets exist under `assets/branding/` and `site/assets/branding/`. Source manifest uses the public Pages icon URL, and the public icon URL resolves. | Passing public URL gate |
 | Screenshots | Alpha screenshot assets exist under `assets/screenshots/` and are copied into `site/assets/screenshots/`. Final human-assisted Marketplace screenshots still needed after sidebar/export checks. | Partial |
-| Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The live smoke-test script has the project email configured, and `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for Crossref. The actual sidebar DOI lookup call still needs the human-assisted form-entry smoke pass. | Configured for smoke; lookup pending |
+| Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The live smoke-test and refreshed alpha-template scripts have the project email configured, and `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for Crossref. The actual sidebar DOI lookup call still needs the human-assisted form-entry smoke pass. | Configured for smoke; lookup pending |
 | Public repo | Public GitHub repo exists, `origin` is configured, GitHub auth is valid, remote branch/pull-request refs pass the public-boundary scan, and `Verify`/`Pages` are green on `main`. | Passing upload gate |
 
 ## High-Risk Marketplace Items
@@ -81,11 +81,12 @@ Reusable cross-document reference library sync was deferred from Marketplace V0.
 The active build stores references only in the current document state and no
 longer requests Google Sheets scope.
 
-No-Sheets copied-template smoke testing should confirm that the copy retains
-the `Open APA Desk` menu, loads the sidebar after authorization and side-sheet
-reopen, rebuilds a visible `References` section, and runs `Prepare Current
-Copy` without a visible browser error. Full sidebar entry and export inspection
-remain human-assisted checks.
+No-Sheets copied-template smoke testing has confirmed that the copy retains the
+`Open APA Desk` menu, exposes `Check DOI Setup`, and loads the sidebar after
+authorization and side-sheet reopen. Rebuilding a visible `References` section,
+running `Prepare Current Copy`, and export inspection remain human-assisted
+checks because Chrome automation cannot type or paste into Google's sandboxed
+add-on iframe.
 
 ## Recommended Next Sprint
 

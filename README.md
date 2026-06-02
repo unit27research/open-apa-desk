@@ -66,10 +66,11 @@ markers before submission.
 See [docs/MARKETPLACE_READINESS.md](docs/MARKETPLACE_READINESS.md) for the
 scope-reduction record.
 
-The no-Sheets copied-template smoke pass confirmed the reduced-scope template
-copy path, menu, sidebar load, References rebuild, and `Prepare Current Copy`.
-Full sidebar form entry and PDF/DOCX export checks still need a human-assisted
-pass before final Marketplace screenshots.
+The no-Sheets copied-template smoke path has confirmed the reduced-scope
+template copy path, refreshed menu, sidebar load, and DOI setup check. Full
+sidebar form entry, References output, `Prepare Current Copy`, and PDF/DOCX
+export checks still need a human-assisted pass before final Marketplace
+screenshots.
 
 ## Development
 

@@ -28,8 +28,8 @@ describe('smoke evidence setup script', () => {
       expect(stdout).toContain(join(outputDir, 'exports'));
       expect(evidence).toContain('Date: 2026-06-02');
       expect(evidence).toContain('Build commit: abc1234');
-      expect(evidence).not.toContain('Date: YYYY-MM-DD');
-      expect(evidence).not.toContain('Build commit: <git SHA>');
+      expect(evidence).not.toContain('YYYY-MM-DD');
+      expect(evidence).not.toContain('<git SHA>');
     } finally {
       await rm(outputDir, { force: true, recursive: true });
     }

@@ -38,9 +38,12 @@ remove hidden Open APA Desk markers before submission.
   manual.
 - The current early install path is still a bound/template Google Doc, not a
   published Google Workspace Marketplace add-on.
-- The current smoke-test script has a confirmed project `CROSSREF_MAILTO`
-  script property. Future template or Marketplace deployments must confirm the
-  same setting before DOI lookup is used by public testers.
+- The current smoke-test and refreshed alpha-template scripts have confirmed
+  project `CROSSREF_MAILTO` script properties. Future Marketplace deployments
+  must confirm the same setting before DOI lookup is used by public testers.
+- Chrome automation can open the sidebar and focus fields, but cannot type or
+  paste into Google's sandboxed add-on iframe. Full sidebar form-entry smoke
+  checks still need human input.
 - PDF/DOCX export after `Prepare Current Copy` still needs a human/manual check
   in the current no-Drive-scope path.
 - Reusable cross-document reference library sync is deferred from Marketplace
