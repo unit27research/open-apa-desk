@@ -4,6 +4,30 @@ import { promisify } from 'node:util';
 const execFile = promisify(execFileCallback);
 const REPO_FULL_NAME = 'unit27research/open-apa-desk';
 const REMOTE_REF_SCAN_NAMESPACE = 'refs/tmp/open-apa-upload-scan';
+const REQUIRED_MAIN_WORKFLOWS = ['Verify', 'Pages'];
+
+const PUBLIC_URLS = [
+  {
+    label: 'Project home',
+    url: 'https://unit27research.github.io/open-apa-desk/',
+    contentType: 'text/html'
+  },
+  {
+    label: 'Privacy policy',
+    url: 'https://unit27research.github.io/open-apa-desk/PRIVACY.html',
+    contentType: 'text/html'
+  },
+  {
+    label: 'Terms of service',
+    url: 'https://unit27research.github.io/open-apa-desk/TERMS.html',
+    contentType: 'text/html'
+  },
+  {
+    label: 'Project icon',
+    url: 'https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png',
+    contentType: 'image/png'
+  }
+];
 
 const FORBIDDEN_REMOTE_PATH_PREFIXES = [
   '.agents',
@@ -101,6 +125,20 @@ const checks = [
     requires: ['origin-remote'],
     failureHint:
       'Delete/recreate the brand-new GitHub repo from the sanitized local tree if stale GitHub refs contain internal files.'
+  },
+  {
+    id: 'github-actions-main',
+    name: 'Latest main GitHub Actions are green for this commit',
+    run: checkLatestMainActions,
+    requires: ['github-auth', 'origin-remote'],
+    failureHint: 'Wait for main Verify/Pages workflows or inspect failing run logs.'
+  },
+  {
+    id: 'public-pages-urls',
+    name: 'Public Pages URLs resolve',
+    run: checkPublicUrls,
+    requires: ['github-repo'],
+    failureHint: 'Enable Pages and wait for deployment; verify public URL wiring.'
   }
 ];
 
@@ -186,6 +224,89 @@ function parseJson(value) {
   } catch {
     return null;
   }
+}
+
+async function checkLatestMainActions(check) {
+  try {
+    const { stdout: headStdout } = await execFile('git', ['rev-parse', 'HEAD']);
+    const headSha = headStdout.trim();
+    const { stdout } = await execFile('gh', [
+      'run',
+      'list',
+      '--branch',
+      'main',
+      '--limit',
+      '20',
+      '--json',
+      'workflowName,headSha,status,conclusion,url'
+    ]);
+    const runs = parseJson(stdout) ?? [];
+    const findings = [];
+
+    for (const workflowName of REQUIRED_MAIN_WORKFLOWS) {
+      const run = runs.find(
+        (candidate) =>
+          candidate.workflowName === workflowName && candidate.headSha === headSha
+      );
+      if (!run) {
+        findings.push(`${workflowName}: no main run found for ${headSha.slice(0, 7)}`);
+        continue;
+      }
+      if (run.status !== 'completed' || run.conclusion !== 'success') {
+        findings.push(
+          `${workflowName}: ${run.status}/${run.conclusion ?? 'pending'} ${run.url ?? ''}`
+        );
+      }
+    }
+
+    return {
+      ...check,
+      output:
+        findings.length > 0
+          ? findings.join('\n')
+          : `Verify and Pages are green for ${headSha.slice(0, 7)}.`,
+      passed: findings.length === 0
+    };
+  } catch (error) {
+    return {
+      ...check,
+      output: `${error.stdout ?? ''}${error.stderr ?? ''}${error.message ?? ''}`,
+      passed: false
+    };
+  }
+}
+
+async function checkPublicUrls(check) {
+  const findings = [];
+
+  for (const publicUrl of PUBLIC_URLS) {
+    try {
+      const response = await fetch(publicUrl.url, { redirect: 'follow' });
+      const contentType = response.headers.get('content-type') ?? '';
+      if (response.status !== 200) {
+        findings.push(`${publicUrl.label}: HTTP ${response.status} ${publicUrl.url}`);
+        continue;
+      }
+      if (!contentType.includes(publicUrl.contentType)) {
+        findings.push(
+          `${publicUrl.label}: expected ${publicUrl.contentType}, got ${
+            contentType || 'missing content-type'
+          }`
+        );
+      }
+    } catch (error) {
+      findings.push(`${publicUrl.label}: ${error.message ?? error}`);
+    }
+  }
+
+  return {
+    ...check,
+    output:
+      findings.length > 0
+        ? findings.join('\n')
+        : `Resolved ${PUBLIC_URLS.length} public URL(s).`,
+    passed: findings.length === 0
+  };
 }
 
 async function checkRemotePublicBoundary(check) {

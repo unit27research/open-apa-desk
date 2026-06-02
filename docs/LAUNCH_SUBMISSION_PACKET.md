@@ -71,7 +71,9 @@ npm run upload:preflight
 ```
 
 `npm run upload:preflight` should be run after each gate closes and must pass
-before Marketplace submission.
+before Marketplace submission. It verifies local release gates, public repo
+hygiene, remote branch/pull-request refs, latest `Verify` and `Pages` runs for
+the current commit, and the required public Pages URLs.
 
 Post-push proof required:
 
