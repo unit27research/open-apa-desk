@@ -71,7 +71,7 @@ CROSSREF_MAILTO configured: yes
 upload:preflight: pass
 build: pass
 build:check: pass
-clasp push: pass
+npm run clasp:push: pass
 \`\`\`
 
 ## Manual Smoke Checklist

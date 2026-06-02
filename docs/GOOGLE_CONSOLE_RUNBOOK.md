@@ -109,8 +109,7 @@ From the repository root:
 
 ```bash
 npm run verify
-npm run build
-./node_modules/.bin/clasp push --force
+npm run clasp:push
 ```
 
 In Apps Script project settings, add or confirm:

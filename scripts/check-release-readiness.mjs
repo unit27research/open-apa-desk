@@ -293,6 +293,9 @@ function checkPackageMetadata(pkg) {
   if (pkg.scripts?.['build:check'] !== 'node scripts/check-apps-script-bundle.mjs') {
     failures.push('package.json must expose npm run build:check.');
   }
+  if (pkg.scripts?.['clasp:push'] !== 'npm run build && npm run build:check && clasp push --force') {
+    failures.push('package.json clasp:push must run build, build:check, and clasp push --force.');
+  }
 }
 
 async function checkRequiredFiles() {

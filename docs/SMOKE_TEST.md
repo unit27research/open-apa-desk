@@ -48,9 +48,7 @@ a few minutes if Google has not propagated the setting yet.
 Then run:
 
 ```bash
-npm run build
-npm run build:check
-./node_modules/.bin/clasp push --force
+npm run clasp:push
 ```
 
 In Apps Script project settings, add script property:

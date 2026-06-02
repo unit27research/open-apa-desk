@@ -149,11 +149,13 @@ evidence, and final Marketplace screenshots.
 This repo is structured for `clasp`, but it does not include a `.clasp.json`
 because that file contains a user-specific script id.
 
-1. Run `npm run build`.
-2. Copy `.clasp.example.json` to `.clasp.json`.
-3. Replace `PASTE_YOUR_SCRIPT_ID_HERE` with your Apps Script project id.
-4. Run `npm run clasp:login`.
-5. Run `npm run clasp:push`.
+1. Copy `.clasp.example.json` to `.clasp.json`.
+2. Replace `PASTE_YOUR_SCRIPT_ID_HERE` with your Apps Script project id.
+3. Run `npm run clasp:login`.
+4. Run `npm run clasp:push`.
+
+`npm run clasp:push` runs `npm run build`, `npm run build:check`, and
+`clasp push --force` in sequence.
 
 Early non-developer use should be tested through a template Google Doc with the
 script attached. Marketplace packaging is a later release milestone. The bound

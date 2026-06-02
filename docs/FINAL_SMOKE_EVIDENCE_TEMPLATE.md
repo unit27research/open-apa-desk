@@ -45,7 +45,7 @@ Record result:
 upload:preflight: pass/fail
 build: pass/fail
 build:check: pass/fail
-clasp push: pass/fail
+npm run clasp:push: pass/fail
 ```
 
 ## Manual Smoke Checklist
