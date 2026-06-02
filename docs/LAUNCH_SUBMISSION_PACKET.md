@@ -35,6 +35,7 @@ Checked on 2026-06-02:
 - Marketplace draft preflight: `npm run marketplace:drafts:check`
 - Public repo archive: `npm run publish:archive`
 - Upload preflight: `npm run upload:preflight`
+- Optional Crossref network smoke: `CROSSREF_MAILTO=project-contact@example.com npm run crossref:smoke`
 
 Current manifest scopes:
 
@@ -229,6 +230,9 @@ Functional evidence:
 - Live smoke-test script has `CROSSREF_MAILTO` configured and
   `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for
   Crossref.
+- Optional local Crossref network smoke can confirm Crossref endpoint
+  connectivity with a public fixture DOI, but it does not replace the live
+  Google Docs sidebar DOI lookup smoke check.
 
 Human/manual evidence still needed:
 

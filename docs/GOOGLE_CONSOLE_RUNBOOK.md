@@ -117,6 +117,15 @@ After reloading the Google Doc, use `Open APA Desk > Check DOI Setup` or the
 sidebar `Check DOI Setup` button to verify that DOI lookup is configured. The
 check does not display the configured email address.
 
+Optionally run the local Crossref network smoke check from the repository root:
+
+```bash
+CROSSREF_MAILTO=josh@unit27research.com npm run crossref:smoke
+```
+
+This verifies Crossref connectivity and metadata shape for a public fixture
+DOI. It does not replace the final live sidebar DOI lookup check in Google Docs.
+
 Create a new Apps Script version after the public icon URL, manifest scopes,
 and script property are confirmed. Record the version number in local operator
 notes and update public docs only if the version number is safe to publish.

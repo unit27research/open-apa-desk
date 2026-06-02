@@ -26,6 +26,7 @@
     "marketplace:drafts:check": "node scripts/check-marketplace-drafts.mjs",
     "publish:archive": "node scripts/create-publish-archive.mjs",
     "upload:preflight": "node scripts/check-upload-readiness.mjs",
+    "crossref:smoke": "node scripts/smoke-crossref.mjs",
     "build": "node scripts/build.mjs",
     "clasp:login": "clasp login",
     "clasp:push": "clasp push",

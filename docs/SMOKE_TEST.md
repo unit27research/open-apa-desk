@@ -55,6 +55,16 @@ CROSSREF_MAILTO=maintainer@example.com
 Replace the placeholder with the actual project contact email before public
 testing.
 
+Optional local Crossref network check:
+
+```bash
+CROSSREF_MAILTO=project-contact@example.com npm run crossref:smoke
+```
+
+This sends one public fixture DOI to Crossref and confirms that Crossref returns
+usable metadata. It does not replace the live Google Docs sidebar DOI lookup
+check because it does not exercise Apps Script `UrlFetchApp` or the add-on UI.
+
 ## Manual Acceptance Checklist
 
 Open the test Google Doc and reload it after pushing.

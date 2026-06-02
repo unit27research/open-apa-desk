@@ -173,6 +173,15 @@ If `CROSSREF_MAILTO` is missing, malformed, or still set to an example email,
 DOI lookup stops before sending a Crossref request. Manual reference entry still
 works.
 
+Optional operator smoke check:
+
+```bash
+CROSSREF_MAILTO=project-contact@example.com npm run crossref:smoke
+```
+
+This checks Crossref connectivity with a public fixture DOI. It does not
+replace the live Google Docs sidebar smoke test.
+
 ## Privacy
 
 Open APA Desk V0 has no backend server, account system, AI calls, or hosted
