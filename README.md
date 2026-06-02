@@ -122,6 +122,12 @@ npm run smoke:evidence
 After completing the private evidence file, validate it with
 `npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`.
 
+After exports and evidence are complete, run the final composed submission gate:
+
+```bash
+npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
+```
+
 ## Release Readiness
 
 Open APA Desk is not ready for Google Workspace Marketplace submission yet.

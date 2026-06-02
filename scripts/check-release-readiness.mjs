@@ -82,6 +82,7 @@ const REQUIRED_REPO_FILES = [
   'scripts/check-apps-script-bundle.mjs',
   'scripts/check-marketplace-drafts.mjs',
   'scripts/check-upload-readiness.mjs',
+  'scripts/check-submission-readiness.mjs',
   'scripts/check-smoke-exports.mjs',
   '.github/workflows/verify.yml',
   '.github/workflows/pages.yml',
@@ -291,6 +292,9 @@ function checkPackageMetadata(pkg) {
   if (pkg.scripts?.['smoke:exports'] !== 'node scripts/check-smoke-exports.mjs') {
     failures.push('package.json must expose npm run smoke:exports.');
   }
+  if (pkg.scripts?.['submission:preflight'] !== 'node scripts/check-submission-readiness.mjs') {
+    failures.push('package.json must expose npm run submission:preflight.');
+  }
   if (pkg.scripts?.['build:check'] !== 'node scripts/check-apps-script-bundle.mjs') {
     failures.push('package.json must expose npm run build:check.');
   }
@@ -486,6 +490,7 @@ async function checkLaunchPacket() {
     EXPECTED_LOGO_URL,
     'Do Not Submit Until',
     'CROSSREF_MAILTO',
+    'npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md',
     'Standard Google Cloud project',
     'post-Pages Apps Script version',
     'Human-assisted sidebar/export smoke pass'

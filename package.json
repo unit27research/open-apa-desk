@@ -30,6 +30,7 @@
     "smoke:evidence": "node scripts/create-smoke-evidence.mjs",
     "smoke:evidence:check": "node scripts/check-smoke-evidence.mjs",
     "smoke:exports": "node scripts/check-smoke-exports.mjs",
+    "submission:preflight": "node scripts/check-submission-readiness.mjs",
     "build": "node scripts/build.mjs",
     "build:check": "node scripts/check-apps-script-bundle.mjs",
     "clasp:login": "clasp login",

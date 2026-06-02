@@ -96,6 +96,12 @@ After filling the private final smoke evidence file, validate it:
 npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
 ```
 
+After the evidence check passes, run the composed final submission gate:
+
+```bash
+npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
+```
+
 ## Manual Acceptance Checklist
 
 Open the test Google Doc and reload it after pushing.

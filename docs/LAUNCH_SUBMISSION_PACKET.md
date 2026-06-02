@@ -39,6 +39,7 @@ Checked on 2026-06-02:
 - Upload preflight: `npm run upload:preflight`
 - Private smoke evidence setup: `npm run smoke:evidence`
 - Private smoke evidence check: `npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`
+- Final submission preflight: `npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`
 - Final smoke fixtures: `docs/SMOKE_TEST_FIXTURES.md`
 - Optional Crossref network smoke: `CROSSREF_MAILTO=project-contact@example.com npm run crossref:smoke`
 - Optional export marker scan after PDF/DOCX export: `npm run smoke:exports`
@@ -258,6 +259,8 @@ Human/manual evidence still needed:
 - `npm run smoke:exports` after exports are saved under `private/`
 - `npm run smoke:evidence:check` after the private final smoke evidence file
   is filled
+- `npm run submission:preflight` after exports and private evidence are
+  complete
 - no visible `[[OPEN_APA_DESK` marker text in exports
 - final Marketplace screenshots
 

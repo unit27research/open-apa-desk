@@ -57,6 +57,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] `npm run smoke:exports` passes against the private PDF/DOCX exports.
 - [ ] `npm run smoke:evidence:check` passes against the completed private
   final smoke evidence file.
+- [ ] `npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`
+  passes after exports and evidence are complete.
 
 ## Marketplace Gate
 

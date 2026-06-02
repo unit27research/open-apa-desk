@@ -233,6 +233,7 @@ Immediately before Marketplace submission:
 ```bash
 npm run upload:preflight
 npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
+npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
 ```
 
 Then confirm:
