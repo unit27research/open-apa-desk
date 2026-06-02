@@ -49,6 +49,7 @@ Then run:
 
 ```bash
 npm run build
+npm run build:check
 ./node_modules/.bin/clasp push --force
 ```
 

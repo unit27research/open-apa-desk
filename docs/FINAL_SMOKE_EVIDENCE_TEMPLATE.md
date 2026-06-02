@@ -36,6 +36,7 @@ Run before live smoke:
 ```bash
 npm run upload:preflight
 npm run build
+npm run build:check
 ```
 
 Record result:
@@ -43,6 +44,7 @@ Record result:
 ```text
 upload:preflight: pass/fail
 build: pass/fail
+build:check: pass/fail
 clasp push: pass/fail
 ```
 

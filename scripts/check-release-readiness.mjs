@@ -79,6 +79,7 @@ const REQUIRED_REPO_FILES = [
   'scripts/create-publish-archive.mjs',
   'scripts/create-smoke-evidence.mjs',
   'scripts/check-smoke-evidence.mjs',
+  'scripts/check-apps-script-bundle.mjs',
   'scripts/check-marketplace-drafts.mjs',
   'scripts/check-upload-readiness.mjs',
   'scripts/check-smoke-exports.mjs',
@@ -268,6 +269,9 @@ function checkPackageMetadata(pkg) {
   if (!pkg.scripts?.verify?.includes('build')) {
     failures.push('npm run verify must include Apps Script build.');
   }
+  if (!pkg.scripts?.verify?.includes('build:check')) {
+    failures.push('npm run verify must include Apps Script bundle check.');
+  }
   if (pkg.scripts?.['upload:preflight'] !== 'node scripts/check-upload-readiness.mjs') {
     failures.push('package.json must expose npm run upload:preflight.');
   }
@@ -285,6 +289,9 @@ function checkPackageMetadata(pkg) {
   }
   if (pkg.scripts?.['smoke:exports'] !== 'node scripts/check-smoke-exports.mjs') {
     failures.push('package.json must expose npm run smoke:exports.');
+  }
+  if (pkg.scripts?.['build:check'] !== 'node scripts/check-apps-script-bundle.mjs') {
+    failures.push('package.json must expose npm run build:check.');
   }
 }
 

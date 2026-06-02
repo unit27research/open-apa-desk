@@ -9,6 +9,7 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] `git status --short` is clean.
 - [ ] `npm ci` works from a fresh checkout.
 - [ ] `npm run verify` passes.
+- [ ] `npm run build:check` passes after `npm run build`.
 - [ ] `npm run release:check` passes inside `npm run verify`.
 - [ ] `npm run marketplace:drafts:check` passes before Marketplace submission.
 - [ ] `npm run publish:archive` creates a tracked-file-only public repo archive.

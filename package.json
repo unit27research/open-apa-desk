@@ -31,9 +31,10 @@
     "smoke:evidence:check": "node scripts/check-smoke-evidence.mjs",
     "smoke:exports": "node scripts/check-smoke-exports.mjs",
     "build": "node scripts/build.mjs",
+    "build:check": "node scripts/check-apps-script-bundle.mjs",
     "clasp:login": "clasp login",
     "clasp:push": "clasp push",
-    "verify": "npm run assets:brand && npm run site:build && npm run release:check && npm run typecheck && npm run test && npm run build"
+    "verify": "npm run assets:brand && npm run site:build && npm run release:check && npm run typecheck && npm run test && npm run build && npm run build:check"
   },
   "devDependencies": {
     "@google/clasp": "^3.3.0",

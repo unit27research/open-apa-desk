@@ -70,6 +70,7 @@ CROSSREF_MAILTO configured: yes
 \`\`\`text
 upload:preflight: pass
 build: pass
+build:check: pass
 clasp push: pass
 \`\`\`
 

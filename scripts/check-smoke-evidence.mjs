@@ -80,7 +80,7 @@ function checkRequiredTextFields(value) {
 }
 
 function checkPreflightResults(value) {
-  for (const command of ['upload:preflight', 'build', 'clasp push']) {
+  for (const command of ['upload:preflight', 'build', 'build:check', 'clasp push']) {
     if (!new RegExp(`^${escapeRegex(command)}:\\s*pass$`, 'im').test(value)) {
       failures.push(`${command} must be recorded as pass.`);
     }

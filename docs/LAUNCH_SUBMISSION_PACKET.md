@@ -32,6 +32,7 @@ Checked on 2026-06-02:
 - Source scope: APA 7 Paper + Refs only
 - Local release gate: `npm run verify`
 - Release preflight: `npm run release:check`
+- Apps Script bundle preflight: `npm run build && npm run build:check`
 - Marketplace draft preflight: `npm run marketplace:drafts:check`
 - Public repo archive: `npm run publish:archive`
 - Upload preflight: `npm run upload:preflight`
