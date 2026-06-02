@@ -26,6 +26,11 @@ export interface CrossrefWork {
   URL?: string;
 }
 
+export interface CrossrefMailtoStatus {
+  configured: boolean;
+  message: string;
+}
+
 export function normalizeDoi(input: string): string {
   return input
     .trim()
@@ -53,6 +58,26 @@ export function requireCrossrefMailto(input: string | null | undefined): string 
     throw new Error('CROSSREF_MAILTO must be a valid project contact email.');
   }
   return mailto;
+}
+
+export function getCrossrefMailtoStatus(
+  input: string | null | undefined
+): CrossrefMailtoStatus {
+  try {
+    requireCrossrefMailto(input);
+    return {
+      configured: true,
+      message: 'DOI lookup is configured for Crossref.'
+    };
+  } catch (error) {
+    return {
+      configured: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : 'CROSSREF_MAILTO script property is not configured.'
+    };
+  }
 }
 
 export function buildCrossrefWorksUrl(doi: string, mailto: string): string {

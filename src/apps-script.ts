@@ -1,5 +1,6 @@
 import {
   deleteReference,
+  getDoiSetupStatus,
   getInitialSidebarState,
   getReferences,
   insertCitation,
@@ -19,6 +20,7 @@ export function onOpen(): void {
     .addItem('Open Sidebar', 'showOpenApaDeskSidebar')
     .addItem('Setup APA Paper', 'showOpenApaDeskSidebar')
     .addItem('Page Number Help', 'showPageNumberHelp')
+    .addItem('Check DOI Setup', 'showDoiSetupStatus')
     .addSeparator()
     .addItem('Rebuild References', 'rebuildReferences')
     .addItem('Prepare Current Copy', 'prepareCurrentCopyForSubmission')
@@ -50,6 +52,15 @@ export function showPageNumberHelp(): void {
   );
 }
 
+export function showDoiSetupStatus(): void {
+  const status = getDoiSetupStatus();
+  DocumentApp.getUi().alert(
+    'Open APA Desk DOI setup',
+    status.message,
+    DocumentApp.getUi().ButtonSet.OK
+  );
+}
+
 export function apiGetState() {
   return getInitialSidebarState();
 }
@@ -72,6 +83,10 @@ export function apiGetReferences() {
 
 export function apiLookupDoi(doi: string) {
   return lookupDoi(doi);
+}
+
+export function apiGetDoiSetupStatus() {
+  return getDoiSetupStatus();
 }
 
 export function apiInsertCitation(

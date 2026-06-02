@@ -230,6 +230,7 @@ Functional evidence:
 Human/manual evidence still needed:
 
 - full copied-template sidebar form entry
+- `Check DOI Setup` confirms DOI lookup is configured
 - DOI lookup with real `CROSSREF_MAILTO`
 - manual reference entry
 - parenthetical and narrative citation insertion visual check

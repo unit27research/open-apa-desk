@@ -47,6 +47,7 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] Template menu shows `Prepare Current Copy`.
 - [ ] Sidebar opens after reduced-scope OAuth authorization.
 - [ ] `CROSSREF_MAILTO` is set to a real project contact email.
+- [ ] `Check DOI Setup` reports DOI lookup is configured.
 - [ ] Page number `1` is visually confirmed in the template header.
 - [ ] Copied-template smoke pass completes.
 - [ ] PDF and DOCX exports contain no `[[OPEN_APA_DESK` markers.

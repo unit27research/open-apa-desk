@@ -1,6 +1,7 @@
 import {
   buildCrossrefUserAgent,
   buildCrossrefWorksUrl,
+  getCrossrefMailtoStatus,
   normalizeCrossrefWork,
   normalizeDoi,
   requireCrossrefMailto
@@ -25,6 +26,23 @@ describe('Crossref normalization', () => {
     expect(requireCrossrefMailto(' contact@unit27research.com ')).toBe(
       'contact@unit27research.com'
     );
+  });
+
+  it('reports Crossref mailto setup without exposing the email address', () => {
+    const status = getCrossrefMailtoStatus('josh@unit27research.com');
+
+    expect(status).toEqual({
+      configured: true,
+      message: 'DOI lookup is configured for Crossref.'
+    });
+    expect(status.message).not.toContain('josh@unit27research.com');
+  });
+
+  it('reports placeholder Crossref mailto setup as not configured', () => {
+    const status = getCrossrefMailtoStatus('maintainer@example.com');
+
+    expect(status.configured).toBe(false);
+    expect(status.message).toMatch(/placeholder/);
   });
 
   it('builds Crossref request URL and User-Agent with the project mailto', () => {

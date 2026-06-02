@@ -20,7 +20,7 @@ Live template checks should confirm:
 - the template Doc loads
 - the `Open APA Desk` menu appears
 - the menu contains `Open Sidebar`, `Setup APA Paper`, `Page Number Help`,
-  `Rebuild References`, and `Prepare Current Copy`
+  `Check DOI Setup`, `Rebuild References`, and `Prepare Current Copy`
 - first sidebar open shows Google's expected `Authorization required` dialog
 - sidebar loading succeeds after OAuth authorization
 
@@ -55,21 +55,22 @@ Run this on a copy of the template:
 1. Reload the Doc and confirm the `Open APA Desk` menu appears.
 2. Open the sidebar and complete Google's authorization flow for the copied
    bound script.
-3. Run `Setup APA Paper`.
-4. Confirm title page, controlled body starter, font, margins, and spacing.
-5. Confirm Google Docs page numbers still appear in the header.
-6. Add one DOI journal article and one manual book.
-7. Edit one saved reference.
-8. Try saving a duplicate DOI and confirm it updates instead of duplicating.
-9. Insert a parenthetical citation with a locator.
-10. Insert a narrative citation.
-11. Select two references and insert a grouped parenthetical citation.
-12. Rebuild References twice.
-13. Delete one saved reference and confirm visible body citation text remains.
-14. Use Google Docs `File > Make a copy`.
-15. In the copied Doc, run `Prepare Current Copy`.
-16. Export the prepared copy to PDF and DOCX.
-17. Check exports for page numbers, title page, citation text, References, and
+3. Run `Check DOI Setup` and confirm DOI lookup is configured.
+4. Run `Setup APA Paper`.
+5. Confirm title page, controlled body starter, font, margins, and spacing.
+6. Confirm Google Docs page numbers still appear in the header.
+7. Add one DOI journal article and one manual book.
+8. Edit one saved reference.
+9. Try saving a duplicate DOI and confirm it updates instead of duplicating.
+10. Insert a parenthetical citation with a locator.
+11. Insert a narrative citation.
+12. Select two references and insert a grouped parenthetical citation.
+13. Rebuild References twice.
+14. Delete one saved reference and confirm visible body citation text remains.
+15. Use Google Docs `File > Make a copy`.
+16. In the copied Doc, run `Prepare Current Copy`.
+17. Export the prepared copy to PDF and DOCX.
+18. Check exports for page numbers, title page, citation text, References, and
     absence of `[[OPEN_APA_DESK` marker text.
 
 ## Package Contents

@@ -17,6 +17,7 @@ function onOpen(e) { return OpenAPADeskBundle.onOpen(e); }
 function onInstall(e) { return OpenAPADeskBundle.onInstall(e); }
 function showOpenApaDeskSidebar() { return OpenAPADeskBundle.showOpenApaDeskSidebar(); }
 function showPageNumberHelp() { return OpenAPADeskBundle.showPageNumberHelp(); }
+function showDoiSetupStatus() { return OpenAPADeskBundle.showDoiSetupStatus(); }
 function rebuildReferences() { return OpenAPADeskBundle.apiRebuildReferences(); }
 function prepareCurrentCopyForSubmission() { return OpenAPADeskBundle.apiPrepareCurrentCopyForSubmission(); }
 function apiGetState() { return OpenAPADeskBundle.apiGetState(); }
@@ -24,6 +25,7 @@ function apiSetupPaper(profile) { return OpenAPADeskBundle.apiSetupPaper(profile
 function apiSaveReference(reference) { return OpenAPADeskBundle.apiSaveReference(reference); }
 function apiDeleteReference(referenceId) { return OpenAPADeskBundle.apiDeleteReference(referenceId); }
 function apiGetReferences() { return OpenAPADeskBundle.apiGetReferences(); }
+function apiGetDoiSetupStatus() { return OpenAPADeskBundle.apiGetDoiSetupStatus(); }
 function apiLookupDoi(doi) { return OpenAPADeskBundle.apiLookupDoi(doi); }
 function apiInsertCitation(referenceId, locator, mode) { return OpenAPADeskBundle.apiInsertCitation(referenceId, locator, mode); }
 function apiInsertCitationGroup(referenceIds, locator) { return OpenAPADeskBundle.apiInsertCitationGroup(referenceIds, locator); }

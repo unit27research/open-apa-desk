@@ -6,6 +6,7 @@ import {
 import {
   buildCrossrefUserAgent,
   buildCrossrefWorksUrl,
+  getCrossrefMailtoStatus,
   normalizeCrossrefWork,
   normalizeDoi,
   requireCrossrefMailto
@@ -200,6 +201,12 @@ export function lookupDoi(doiInput: string): ApaReference {
     throw new Error('Crossref response did not include a work record.');
   }
   return normalizeCrossrefWork(payload.message);
+}
+
+export function getDoiSetupStatus() {
+  return getCrossrefMailtoStatus(
+    PropertiesService.getScriptProperties().getProperty('CROSSREF_MAILTO')
+  );
 }
 
 export function getInitialSidebarState(): DocumentState {

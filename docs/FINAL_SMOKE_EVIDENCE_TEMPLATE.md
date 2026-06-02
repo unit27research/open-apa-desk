@@ -47,6 +47,7 @@ clasp push: pass/fail
 | --- | --- | --- |
 | Google Docs `Open APA Desk` menu appears | TODO |  |
 | Sidebar opens after OAuth authorization | TODO |  |
+| `Check DOI Setup` reports DOI lookup is configured | TODO |  |
 | `Setup APA Paper` creates one controlled title/body starter | TODO |  |
 | Re-running `Setup APA Paper` replaces, not duplicates | TODO |  |
 | Page number `1` is visible in the header/template | TODO |  |
@@ -116,4 +117,3 @@ npm run marketplace:assets:final: pass/fail
 Ready for Marketplace console submission: yes/no
 Remaining blockers:
 ```
-

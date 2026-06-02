@@ -101,7 +101,10 @@
 
     <h2>DOI Lookup</h2>
     <label>DOI<input id="doi-input" placeholder="10.xxxx/example"></label>
-    <button type="button" class="secondary" onclick="lookupDoi()">Lookup DOI</button>
+    <div class="button-row">
+      <button type="button" class="secondary" onclick="checkDoiSetup()">Check DOI Setup</button>
+      <button type="button" class="secondary" onclick="lookupDoi()">Lookup DOI</button>
+    </div>
 
     <h2>Reference</h2>
     <label>Type
@@ -208,6 +211,20 @@
           .withSuccessHandler(fillReference)
           .withFailureHandler(showError)
           .apiLookupDoi(value('doi-input'));
+      }
+
+      function checkDoiSetup() {
+        if (busy) {
+          return;
+        }
+        setBusy(true, 'Checking DOI setup.');
+        google.script.run
+          .withSuccessHandler((status) => {
+            setBusy(false);
+            setStatus(status.message);
+          })
+          .withFailureHandler(showError)
+          .apiGetDoiSetupStatus();
       }
 
       function fillReference(reference) {

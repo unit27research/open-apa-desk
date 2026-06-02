@@ -113,6 +113,10 @@ In Apps Script project settings, add or confirm:
 CROSSREF_MAILTO=josh@unit27research.com
 ```
 
+After reloading the Google Doc, use `Open APA Desk > Check DOI Setup` or the
+sidebar `Check DOI Setup` button to verify that DOI lookup is configured. The
+check does not display the configured email address.
+
 Create a new Apps Script version after the public icon URL, manifest scopes,
 and script property are confirmed. Record the version number in local operator
 notes and update public docs only if the version number is safe to publish.

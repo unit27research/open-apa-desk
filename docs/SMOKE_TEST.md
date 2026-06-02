@@ -61,6 +61,8 @@ Open the test Google Doc and reload it after pushing.
 
 - `Open APA Desk` menu appears.
 - `Open Sidebar` opens the sidebar.
+- `Check DOI Setup` reports that DOI lookup is configured after
+  `CROSSREF_MAILTO` is set.
 - `Setup APA Paper` creates one controlled title page with one-inch margins,
   12-point Times New Roman, double spacing, centered student-paper fields, and
   a page break into the body.
