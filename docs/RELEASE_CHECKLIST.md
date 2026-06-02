@@ -52,6 +52,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] Copied-template smoke pass completes.
 - [ ] PDF and DOCX exports contain no `[[OPEN_APA_DESK` markers.
 - [ ] `npm run smoke:exports` passes against the private PDF/DOCX exports.
+- [ ] `npm run smoke:evidence:check` passes against the completed private
+  final smoke evidence file.
 
 ## Marketplace Gate
 

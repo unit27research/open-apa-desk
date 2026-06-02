@@ -28,6 +28,7 @@
     "upload:preflight": "node scripts/check-upload-readiness.mjs",
     "crossref:smoke": "node scripts/smoke-crossref.mjs",
     "smoke:evidence": "node scripts/create-smoke-evidence.mjs",
+    "smoke:evidence:check": "node scripts/check-smoke-evidence.mjs",
     "smoke:exports": "node scripts/check-smoke-exports.mjs",
     "build": "node scripts/build.mjs",
     "clasp:login": "clasp login",

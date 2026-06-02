@@ -88,6 +88,12 @@ This helper catches obvious `[[OPEN_APA_DESK` marker leakage in DOCX exports
 and byte-level PDF output. It does not replace the human visual PDF/DOCX export
 check because PDF text can be compressed or encoded.
 
+After filling the private final smoke evidence file, validate it:
+
+```bash
+npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
+```
+
 ## Manual Acceptance Checklist
 
 Open the test Google Doc and reload it after pushing.
@@ -141,6 +147,8 @@ Open the test Google Doc and reload it after pushing.
   does not create a duplicate automatically.
 - `npm run smoke:exports` is a marker-leak helper, not proof of correct APA
   formatting or readable export layout.
+- `npm run smoke:evidence:check` validates the private evidence file's required
+  pass/yes/no fields. It cannot replace the actual live smoke actions.
 - In the bound-script smoke-test path, the copied Google Doc can still show the
   `Open APA Desk` editor menu. That menu is not document body content and will
   not appear in PDF/DOCX exports.

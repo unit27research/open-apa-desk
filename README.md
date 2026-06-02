@@ -116,6 +116,9 @@ Before the final live pass, create the ignored private evidence packet:
 npm run smoke:evidence
 ```
 
+After completing the private evidence file, validate it with
+`npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`.
+
 ## Release Readiness
 
 Open APA Desk is not ready for Google Workspace Marketplace submission yet.

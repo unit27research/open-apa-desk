@@ -221,6 +221,8 @@ Record local/private evidence for:
 - DOCX export without visible marker text
 - `npm run smoke:exports` against private PDF/DOCX exports as a marker-leak
   helper, while still completing the human visual export check
+- `npm run smoke:evidence:check` against the completed private final smoke
+  evidence file
 
 Keep Google Doc URLs, script IDs, tester account details, and export files out
 of the public repo unless they are explicitly sanitized.
@@ -231,6 +233,7 @@ Immediately before Marketplace submission:
 
 ```bash
 npm run upload:preflight
+npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
 ```
 
 Then confirm:

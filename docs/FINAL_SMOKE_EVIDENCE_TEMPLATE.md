@@ -130,3 +130,9 @@ npm run marketplace:assets:final: pass/fail
 Ready for Marketplace console submission: yes/no
 Remaining blockers:
 ```
+
+After completing this private evidence file, run:
+
+```bash
+npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
+```
