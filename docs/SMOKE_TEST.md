@@ -98,6 +98,9 @@ After filling the private final smoke evidence file, validate it:
 npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
 ```
 
+This check also verifies that the evidence file's `Build commit` matches the
+current local `git HEAD`.
+
 After the evidence check passes, run the composed final submission gate:
 
 ```bash

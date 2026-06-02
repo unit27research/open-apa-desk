@@ -20,6 +20,7 @@ From the repo root:
 npm run upload:preflight
 npm run marketplace:assets:final
 npm run submission:preflight -- --dry-run private/smoke-evidence/2026-06-02-final-smoke.md
+git rev-parse --short HEAD
 ```
 
 Confirm the private evidence file exists:
@@ -27,6 +28,10 @@ Confirm the private evidence file exists:
 ```text
 private/smoke-evidence/2026-06-02-final-smoke.md
 ```
+
+Confirm its `Build commit` matches the `git rev-parse --short HEAD` output.
+If it does not, refresh the Apps Script build and rerun the affected smoke
+checks before filling final evidence.
 
 ## In Google Docs
 

@@ -29,6 +29,11 @@ Apps Script version: <version number>
 CROSSREF_MAILTO configured: yes/no
 ```
 
+`Build commit` must match the current local `git HEAD` when
+`npm run smoke:evidence:check` is run. If the repository changes after live
+smoke testing, refresh the Apps Script build and rerun the affected smoke
+checks before marking the evidence ready.
+
 ## Preflight Commands
 
 Run before live smoke:

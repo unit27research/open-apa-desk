@@ -1,6 +1,9 @@
 import { readFile } from 'node:fs/promises';
+import { execFile as execFileCallback } from 'node:child_process';
+import { promisify } from 'node:util';
 
 const evidenceFile = process.argv[2];
+const execFile = promisify(execFileCallback);
 
 if (!evidenceFile || process.argv.includes('--help') || process.argv.includes('-h')) {
   printHelp();
@@ -13,6 +16,7 @@ const failures = [];
 checkNoPlaceholders(content);
 checkNoPrivateUrls(content);
 checkRequiredTextFields(content);
+await checkBuildCommitMatchesHead(content);
 checkPreflightResults(content);
 checkManualChecklist(content);
 checkApaSpotCheck(content);
@@ -69,13 +73,35 @@ function checkNoPrivateUrls(value) {
 function checkRequiredTextFields(value) {
   for (const [label, pattern] of [
     ['Date', /^Date:\s*\d{4}-\d{2}-\d{2}$/m],
-    ['Build commit', /^Build commit:\s*[A-Za-z0-9._-]+$/m],
+    ['Build commit', /^Build commit:\s*[A-Fa-f0-9]{7,40}$/m],
     ['Apps Script version', /^Apps Script version:\s*(?!<version number>|TODO)\S+/m],
     ['CROSSREF_MAILTO configured', /^CROSSREF_MAILTO configured:\s*yes$/im]
   ]) {
     if (!pattern.test(value)) {
       failures.push(`${label} is missing or incomplete.`);
     }
+  }
+}
+
+async function checkBuildCommitMatchesHead(value) {
+  const evidenceCommit = findLineValue(value, 'Build commit');
+  if (!evidenceCommit) {
+    return;
+  }
+
+  let headCommit;
+  try {
+    const { stdout } = await execFile('git', ['rev-parse', 'HEAD']);
+    headCommit = stdout.trim();
+  } catch {
+    failures.push('Unable to determine current git HEAD for Build commit check.');
+    return;
+  }
+
+  if (!headCommit.startsWith(evidenceCommit)) {
+    failures.push(
+      `Build commit must match current git HEAD (${headCommit.slice(0, 7)}); found ${evidenceCommit}.`
+    );
   }
 }
 
@@ -204,5 +230,6 @@ function printHelp() {
 
 Validates a private final smoke evidence Markdown file before Marketplace console work.
 It checks required PASS/yes/no fields, APA spot-check entries, marker-leak results,
-and obvious private Google URLs that should stay in separate operator notes.`);
+the Build commit against current git HEAD, and obvious private Google URLs that
+should stay in separate operator notes.`);
 }

@@ -11,7 +11,7 @@ describe('smoke evidence check script', () => {
     const root = await mkdtemp(join(tmpdir(), 'open-apa-smoke-check-'));
     try {
       const evidenceFile = join(root, 'complete-final-smoke.md');
-      await writeFile(evidenceFile, completeEvidence());
+      await writeFile(evidenceFile, await completeEvidence());
 
       const { stdout } = await execFile('node', [
         'scripts/check-smoke-evidence.mjs',
@@ -30,8 +30,8 @@ describe('smoke evidence check script', () => {
       const evidenceFile = join(root, 'incomplete-final-smoke.md');
       await writeFile(
         evidenceFile,
-        completeEvidence()
-          .replace('Build commit: abc1234', 'Build commit: <git SHA>')
+        (await completeEvidence())
+          .replace(/^Build commit: [A-Fa-f0-9]{7,40}$/m, 'Build commit: <git SHA>')
           .replace('| DOI lookup succeeds with real `CROSSREF_MAILTO` | PASS |', '| DOI lookup succeeds with real `CROSSREF_MAILTO` | TODO |')
           .replace('Marker text found in PDF: no', 'Marker text found in PDF: yes')
           .replace('Ready for Marketplace console submission: yes', 'Ready for Marketplace console submission: no')
@@ -47,9 +47,33 @@ describe('smoke evidence check script', () => {
       await rm(root, { force: true, recursive: true });
     }
   });
+
+  it('fails when evidence was recorded against an old build commit', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'open-apa-smoke-check-'));
+    try {
+      const evidenceFile = join(root, 'stale-final-smoke.md');
+      await writeFile(
+        evidenceFile,
+        (await completeEvidence()).replace(
+          /^Build commit: [A-Fa-f0-9]{7,40}$/m,
+          'Build commit: 0000000'
+        )
+      );
+
+      await expect(
+        execFile('node', ['scripts/check-smoke-evidence.mjs', evidenceFile])
+      ).rejects.toMatchObject({
+        stderr: expect.stringContaining('Build commit must match current git HEAD')
+      });
+    } finally {
+      await rm(root, { force: true, recursive: true });
+    }
+  });
 });
 
-function completeEvidence() {
+async function completeEvidence() {
+  const { stdout } = await execFile('git', ['rev-parse', '--short', 'HEAD']);
+  const headCommit = stdout.trim();
   return `# Final Smoke Evidence Template
 
 Date: 2026-06-02
@@ -60,7 +84,7 @@ Date: 2026-06-02
 Apps Script project: recorded in private operator notes
 Google Doc target: recorded in private operator notes
 Browser/profile: Chrome, authenticated publishing/test account
-Build commit: abc1234
+Build commit: ${headCommit}
 Apps Script version: 2
 CROSSREF_MAILTO configured: yes
 \`\`\`
