@@ -36,7 +36,7 @@ The Google console execution path is
 | --- | --- | --- |
 | Functional add-on | V0.1 build passes local verification and has live smoke coverage in a bound Doc. | Partial |
 | Editor add-on menu | `onOpen()` and `onInstall()` populate an `Open APA Desk` menu. Sprint 2 confirmed the menu appears in the template Doc. | Passing for alpha |
-| Apps Script version | Post-Pages Apps Script version `1` exists in the operator environment after the public `logoUrl` manifest change was pushed. | Passing for alpha |
+| Apps Script version | Apps Script version `2` exists in the operator environment after the final smoke-ready alpha build was pushed. | Passing for alpha |
 | Standard Google Cloud project | No standard Cloud project is linked yet. Required setup is documented in the SDK and OAuth drafts. | Missing |
 | Cloud billing | Google lists billing as an OAuth/publishing prerequisite for the Cloud project. Billing has not been confirmed. | Missing |
 | Marketplace SDK config | Draft field map exists in `docs/MARKETPLACE_SDK_CONFIG_DRAFT.md`. | Draft |

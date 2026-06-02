@@ -57,9 +57,9 @@ npm run upload:preflight
 ```
 
 Push the verified build to the alpha Apps Script project after public-site or
-manifest changes. Apps Script version `1` exists in the operator environment
-with description `0.1.0-alpha.0 post-pages public-url alpha` and is the current
-post-Pages alpha reference.
+manifest changes. Apps Script version `2` exists in the operator environment
+with description `0.1.0-alpha.0 final-smoke-ready alpha` and is the current
+final-smoke-ready alpha reference.
 
 ## Files That Need URL Updates
 

@@ -128,9 +128,9 @@ Apps Script:
 
 ```text
 Template script ID: keep in local/operator notes only
-Current alpha version: 1
-Submission version: 1
-Version description: 0.1.0-alpha.0 post-pages public-url alpha
+Current alpha version: 2
+Submission version: 2
+Version description: 0.1.0-alpha.0 final-smoke-ready alpha
 ```
 
 Marketplace SDK app configuration:
@@ -139,7 +139,7 @@ Marketplace SDK app configuration:
 App visibility: Public
 Install setting: Individual + Admin Install
 Integration: Google Docs Editor Add-on
-Apps Script version: 1
+Apps Script version: 2
 Developer name: Unit27 Research
 Developer website URL: https://unit27research.com
 Developer email: josh@unit27research.com

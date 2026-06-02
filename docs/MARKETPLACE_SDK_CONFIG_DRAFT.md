@@ -17,8 +17,8 @@ Sources checked on 2026-06-02:
 
 The Marketplace SDK configuration has not been created yet.
 
-Post-Pages Apps Script version `1` exists in the operator environment after the
-public manifest `logoUrl` was pushed.
+Apps Script version `2` exists in the operator environment after the final
+smoke-ready alpha build was pushed.
 
 Use [LAUNCH_SUBMISSION_PACKET.md](LAUNCH_SUBMISSION_PACKET.md) as the
 copy/paste handoff packet when entering the SDK, OAuth, and listing fields.
@@ -59,13 +59,13 @@ TODO: Apps Script project ID from the standard Cloud-linked deployment
 Apps Script version:
 
 ```text
-1
+2
 ```
 
 Version description:
 
 ```text
-0.1.0-alpha.0 post-pages public-url alpha
+0.1.0-alpha.0 final-smoke-ready alpha
 ```
 
 ## OAuth Scopes
