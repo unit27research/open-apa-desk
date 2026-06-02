@@ -29,6 +29,8 @@ exports. Keep PDF/DOCX exports under `private/` as well.
 
 Use [SMOKE_TEST_FIXTURES.md](SMOKE_TEST_FIXTURES.md) for public-safe field
 values and expected APA citation/reference output during the final smoke pass.
+Use [FINAL_SMOKE_QUICK_RUN.md](FINAL_SMOKE_QUICK_RUN.md) as the short
+step-by-step operator checklist.
 
 ## Command Sequence
 

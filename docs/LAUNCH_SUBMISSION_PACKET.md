@@ -41,6 +41,7 @@ Checked on 2026-06-02:
 - Private smoke evidence check: `npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`
 - Final submission preflight: `npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`
 - Final smoke fixtures: `docs/SMOKE_TEST_FIXTURES.md`
+- Final smoke quick run: `docs/FINAL_SMOKE_QUICK_RUN.md`
 - Optional Crossref network smoke: `CROSSREF_MAILTO=project-contact@example.com npm run crossref:smoke`
 - Optional export marker scan after PDF/DOCX export: `npm run smoke:exports`
 

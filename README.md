@@ -109,7 +109,9 @@ npm run verify
 The next milestone is a copied-template alpha smoke pass using a prepared
 template target. See [docs/SMOKE_TEST.md](docs/SMOKE_TEST.md) for the command
 sequence, [docs/SMOKE_TEST_FIXTURES.md](docs/SMOKE_TEST_FIXTURES.md) for
-public-safe fixture values, and
+public-safe fixture values,
+[docs/FINAL_SMOKE_QUICK_RUN.md](docs/FINAL_SMOKE_QUICK_RUN.md) for the compact
+operator checklist, and
 [docs/ALPHA_TEMPLATE_PACKAGE.md](docs/ALPHA_TEMPLATE_PACKAGE.md) for the
 share-package checklist.
 
