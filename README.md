@@ -110,6 +110,12 @@ template target. See [docs/SMOKE_TEST.md](docs/SMOKE_TEST.md) for the command
 sequence and [docs/ALPHA_TEMPLATE_PACKAGE.md](docs/ALPHA_TEMPLATE_PACKAGE.md)
 for the share-package checklist.
 
+Before the final live pass, create the ignored private evidence packet:
+
+```bash
+npm run smoke:evidence
+```
+
 ## Release Readiness
 
 Open APA Desk is not ready for Google Workspace Marketplace submission yet.

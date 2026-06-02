@@ -37,6 +37,12 @@ Before final submission, also complete:
 - PDF and DOCX export check with no `[[OPEN_APA_DESK` marker text
 - final Marketplace screenshots
 
+Create the ignored private evidence packet before the live pass:
+
+```bash
+npm run smoke:evidence
+```
+
 ## 1. Confirm Owner Account
 
 - Use the publishing account intended to own the public Marketplace listing.

@@ -42,8 +42,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 ## Alpha Template Gate
 
 - [ ] Current build is pushed to the alpha template Apps Script project.
-- [ ] Final smoke evidence template is copied into ignored `private/` evidence
-  storage before live testing.
+- [ ] `npm run smoke:evidence` creates ignored `private/` evidence storage
+  before live testing.
 - [ ] Template menu shows `Prepare Current Copy`.
 - [ ] Sidebar opens after reduced-scope OAuth authorization.
 - [ ] `CROSSREF_MAILTO` is set to a real project contact email.
@@ -51,6 +51,7 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] Page number `1` is visually confirmed in the template header.
 - [ ] Copied-template smoke pass completes.
 - [ ] PDF and DOCX exports contain no `[[OPEN_APA_DESK` markers.
+- [ ] `npm run smoke:exports` passes against the private PDF/DOCX exports.
 
 ## Marketplace Gate
 

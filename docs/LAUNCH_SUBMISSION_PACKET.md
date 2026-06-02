@@ -35,7 +35,9 @@ Checked on 2026-06-02:
 - Marketplace draft preflight: `npm run marketplace:drafts:check`
 - Public repo archive: `npm run publish:archive`
 - Upload preflight: `npm run upload:preflight`
+- Private smoke evidence setup: `npm run smoke:evidence`
 - Optional Crossref network smoke: `CROSSREF_MAILTO=project-contact@example.com npm run crossref:smoke`
+- Optional export marker scan after PDF/DOCX export: `npm run smoke:exports`
 
 Current manifest scopes:
 

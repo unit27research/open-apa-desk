@@ -77,6 +77,7 @@ const REQUIRED_REPO_FILES = [
   'package-lock.json',
   '.clasp.example.json',
   'scripts/create-publish-archive.mjs',
+  'scripts/create-smoke-evidence.mjs',
   'scripts/check-marketplace-drafts.mjs',
   'scripts/check-upload-readiness.mjs',
   'scripts/check-smoke-exports.mjs',
@@ -274,6 +275,9 @@ function checkPackageMetadata(pkg) {
   }
   if (pkg.scripts?.['publish:archive'] !== 'node scripts/create-publish-archive.mjs') {
     failures.push('package.json must expose npm run publish:archive.');
+  }
+  if (pkg.scripts?.['smoke:evidence'] !== 'node scripts/create-smoke-evidence.mjs') {
+    failures.push('package.json must expose npm run smoke:evidence.');
   }
   if (pkg.scripts?.['smoke:exports'] !== 'node scripts/check-smoke-exports.mjs') {
     failures.push('package.json must expose npm run smoke:exports.');

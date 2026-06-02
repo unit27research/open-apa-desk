@@ -6,8 +6,13 @@ Do not fill this template with private Google Doc URLs, Apps Script URLs,
 script IDs, Cloud project numbers, tester account emails, PDF exports, or DOCX
 exports in the public repository.
 
-Copy this template into an ignored private path before final Marketplace smoke
-testing, for example:
+Create an ignored private copy before final Marketplace smoke testing:
+
+```bash
+npm run smoke:evidence
+```
+
+This creates an evidence file like:
 
 ```text
 private/smoke-evidence/YYYY-MM-DD-final-smoke.md

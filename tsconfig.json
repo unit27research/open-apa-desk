@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": ["google-apps-script", "vitest/globals"],
+    "types": ["google-apps-script", "vitest/globals", "node"],
     "outDir": "dist"
   },
   "include": ["src/**/*.ts", "tests/**/*.ts", "scripts/**/*.mjs"]
