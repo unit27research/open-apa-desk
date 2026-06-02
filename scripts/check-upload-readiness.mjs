@@ -185,6 +185,7 @@ if (failed.length > 0) {
 }
 
 console.log('\nUpload preflight passed.');
+process.exit(0);
 
 async function runCheck(check) {
   try {
