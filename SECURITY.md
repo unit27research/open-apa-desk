@@ -26,3 +26,17 @@ Security review should focus on:
 
 Open APA Desk V0 should not add a backend server, analytics service, AI call, or
 account system without a new privacy and security review.
+
+## Dependency Audit Note
+
+As of 2026-06-02, `npm audit --audit-level=moderate` reports a moderate
+advisory through the local `@google/clasp` development-tooling dependency tree:
+`@google/clasp` -> `googleapis` / `googleapis-common` -> `gaxios` -> `uuid`.
+The generated Apps Script bundle does not package `node_modules` or the local
+`clasp` CLI.
+
+Do not run `npm audit fix --force` blindly. The current forced npm remediation
+would downgrade `@google/clasp` to `2.5.0`, which is a breaking tooling change.
+Track the upstream `@google/clasp` dependency path, then rerun
+`npm run verify`, `npm audit --audit-level=moderate`, and
+`npm run upload:preflight` after the upstream fix is available.
