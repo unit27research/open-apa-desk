@@ -3,6 +3,24 @@ import { promisify } from 'node:util';
 
 const execFile = promisify(execFileCallback);
 const REPO_FULL_NAME = 'unit27research/open-apa-desk';
+const REMOTE_REF_SCAN_NAMESPACE = 'refs/tmp/open-apa-upload-scan';
+
+const FORBIDDEN_REMOTE_PATH_PREFIXES = [
+  '.agents',
+  '.codex',
+  '.clasp.json',
+  '.env',
+  'dist/',
+  'node_modules/',
+  'release/',
+  'docs/LIVE_SMOKE_STATUS_',
+  'docs/SPRINT_',
+  'docs/FRESH_CHECKOUT_STATUS_',
+  'docs/APPS_SCRIPT_RELEASE_STATUS_'
+];
+
+const FORBIDDEN_REMOTE_TEXT_PATTERN =
+  'josh@gigcityai\\.ai|/Users/|Documents/Codex|Melissa Bloodworth|https://docs\\.google\\.com/document/d/[A-Za-z0-9_-]{20,}|https://drive\\.google\\.com/open\\?id=[A-Za-z0-9_-]{20,}|https://script\\.google\\.com/d/[A-Za-z0-9_-]{20,}';
 
 const checks = [
   {
@@ -77,13 +95,12 @@ const checks = [
     failureHint: 'Create the public GitHub repository, or switch it back to public after cleanup.'
   },
   {
-    id: 'remote-pr-refs',
-    name: 'No stale remote pull-request refs exist',
-    command: ['git', 'ls-remote', 'origin', 'refs/pull/*/head'],
+    id: 'remote-public-boundary',
+    name: 'Remote branch and pull-request refs pass public-boundary scan',
+    run: checkRemotePublicBoundary,
     requires: ['origin-remote'],
-    validate: ({ stdout }) => stdout.trim() === '',
     failureHint:
-      'Delete/recreate the brand-new GitHub repo from the sanitized local tree. Closed GitHub PR refs cannot be cleaned by force-pushing main.'
+      'Delete/recreate the brand-new GitHub repo from the sanitized local tree if stale GitHub refs contain internal files.'
   }
 ];
 
@@ -102,7 +119,7 @@ for (const check of checks) {
     });
     continue;
   }
-  results.push(await runCheck(check));
+  results.push(check.run ? await check.run(check) : await runCheck(check));
 }
 
 for (const result of results) {
@@ -168,5 +185,110 @@ function parseJson(value) {
     return JSON.parse(value);
   } catch {
     return null;
+  }
+}
+
+async function checkRemotePublicBoundary(check) {
+  const details = [];
+  try {
+    await cleanupRemoteScanRefs();
+    await execFile('git', [
+      'fetch',
+      '--quiet',
+      '--depth=1',
+      'origin',
+      `+refs/heads/*:${REMOTE_REF_SCAN_NAMESPACE}/heads/*`,
+      `+refs/pull/*/head:${REMOTE_REF_SCAN_NAMESPACE}/pull/*`
+    ]);
+
+    const { stdout } = await execFile('git', [
+      'for-each-ref',
+      '--format=%(refname)',
+      REMOTE_REF_SCAN_NAMESPACE
+    ]);
+    const refs = stdout
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    for (const ref of refs) {
+      const pathFindings = await findForbiddenPaths(ref);
+      const textFindings = await findForbiddenText(ref);
+      for (const finding of [...pathFindings, ...textFindings]) {
+        details.push(`${ref}: ${finding}`);
+      }
+    }
+
+    return {
+      ...check,
+      output:
+        details.length > 0
+          ? details.join('\n')
+          : `Scanned ${refs.length} remote branch/pull-request ref(s).`,
+      passed: details.length === 0
+    };
+  } catch (error) {
+    return {
+      ...check,
+      output: `${error.stdout ?? ''}${error.stderr ?? ''}${error.message ?? ''}`,
+      passed: false
+    };
+  } finally {
+    await cleanupRemoteScanRefs();
+  }
+}
+
+async function findForbiddenPaths(ref) {
+  const { stdout } = await execFile('git', ['ls-tree', '-r', '--name-only', ref]);
+  return stdout
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((file) =>
+      FORBIDDEN_REMOTE_PATH_PREFIXES.some(
+        (prefix) => file === prefix || file.startsWith(prefix)
+      )
+    )
+    .map((file) => `internal/local-only file tracked: ${file}`);
+}
+
+async function findForbiddenText(ref) {
+  try {
+    const { stdout } = await execFile('git', [
+      'grep',
+      '-n',
+      '-I',
+      '-E',
+      FORBIDDEN_REMOTE_TEXT_PATTERN,
+      ref,
+      '--',
+      ':!scripts/check-release-readiness.mjs'
+    ]);
+    return stdout
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .slice(0, 20);
+  } catch (error) {
+    if (error.code === 1) {
+      return [];
+    }
+    throw error;
+  }
+}
+
+async function cleanupRemoteScanRefs() {
+  const { stdout } = await execFile('git', [
+    'for-each-ref',
+    '--format=%(refname)',
+    REMOTE_REF_SCAN_NAMESPACE
+  ]);
+  const refs = stdout
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  for (const ref of refs) {
+    await execFile('git', ['update-ref', '-d', ref]);
   }
 }

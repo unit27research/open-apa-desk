@@ -348,7 +348,11 @@ async function checkPublicLeakBoundary() {
   }
 
   for (const file of trackedFiles) {
-    if (file === 'scripts/check-release-readiness.mjs' || !isPublicTextFile(file)) {
+    if (
+      file === 'scripts/check-release-readiness.mjs' ||
+      file === 'scripts/check-upload-readiness.mjs' ||
+      !isPublicTextFile(file)
+    ) {
       continue;
     }
 
