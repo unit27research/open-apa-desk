@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Privacy and terms
+    url: https://github.com/unit27research/open-apa-desk
+    about: Use the repository README until public docs URLs are finalized.

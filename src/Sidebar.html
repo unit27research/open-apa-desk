@@ -1,0 +1,554 @@
+<!doctype html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body {
+        color: #172026;
+        font: 13px Arial, sans-serif;
+        margin: 0;
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 18px;
+        margin: 0 0 12px;
+      }
+
+      h2 {
+        border-top: 1px solid #d8dee4;
+        font-size: 14px;
+        margin: 18px 0 8px;
+        padding-top: 14px;
+      }
+
+      label {
+        display: block;
+        font-weight: 700;
+        margin-top: 8px;
+      }
+
+      input,
+      select,
+      textarea {
+        border: 1px solid #b8c2cc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font: inherit;
+        margin-top: 4px;
+        padding: 7px;
+        width: 100%;
+      }
+
+      textarea {
+        min-height: 56px;
+        resize: vertical;
+      }
+
+      button {
+        background: #155e75;
+        border: 0;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        margin-top: 10px;
+        padding: 8px 10px;
+      }
+
+      button.secondary {
+        background: #495865;
+      }
+
+      button:disabled {
+        background: #9aa6b2;
+        cursor: not-allowed;
+      }
+
+      .row {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .status {
+        background: #eef7f9;
+        border-left: 3px solid #155e75;
+        margin-top: 12px;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Open APA Desk</h1>
+    <p>APA 7 paper setup, references, DOI lookup, and citation insertion for Google Docs.</p>
+
+    <h2>Paper</h2>
+    <label>Title<input id="paper-title"></label>
+    <label>Author<input id="paper-author"></label>
+    <label>Institution<input id="paper-institution"></label>
+    <label>Course<input id="paper-course"></label>
+    <label>Instructor<input id="paper-instructor"></label>
+    <label>Due date<input id="paper-due-date"></label>
+    <button type="button" onclick="setupPaper()">Setup APA Paper</button>
+
+    <h2>DOI Lookup</h2>
+    <label>DOI<input id="doi-input" placeholder="10.xxxx/example"></label>
+    <button type="button" class="secondary" onclick="lookupDoi()">Lookup DOI</button>
+
+    <h2>Reference</h2>
+    <label>Type
+      <select id="source-type">
+        <option value="journalArticle">Journal article</option>
+        <option value="book">Book</option>
+        <option value="bookChapter">Book chapter</option>
+        <option value="website">Website</option>
+        <option value="report">Report</option>
+      </select>
+    </label>
+    <label>Authors
+      <textarea id="authors-lines" placeholder="Miller, Jordan&#10;Khan, Priya&#10;Open Education Lab"></textarea>
+    </label>
+    <div class="row">
+      <label>Year<input id="year"></label>
+      <label>DOI<input id="doi"></label>
+    </div>
+    <label>Title<input id="title"></label>
+    <label>Container / Journal<input id="container-title"></label>
+    <label>Publisher / Site<input id="publisher"></label>
+    <div class="row">
+      <label>Volume<input id="volume"></label>
+      <label>Issue<input id="issue"></label>
+    </div>
+    <label>Pages<input id="pages"></label>
+    <label>URL<input id="url"></label>
+    <div class="button-row">
+      <button type="button" onclick="saveReference()">Save Reference</button>
+      <button type="button" class="secondary" onclick="resetReferenceForm()">New Reference</button>
+    </div>
+
+    <h2>Use</h2>
+    <label>Saved reference(s)
+      <select id="reference-picker" multiple size="6"></select>
+    </label>
+    <div class="button-row">
+      <button type="button" class="secondary" onclick="loadSelectedReference()">Edit Selected</button>
+      <button type="button" class="secondary" onclick="deleteSelectedReference()">Delete Selected</button>
+    </div>
+    <label>Citation mode
+      <select id="citation-mode">
+        <option value="parenthetical">Parenthetical</option>
+        <option value="narrative">Narrative</option>
+      </select>
+    </label>
+    <label>Page or paragraph for quote
+      <input id="citation-locator" placeholder="Optional: 23, 23-24, para. 4">
+    </label>
+    <button type="button" onclick="insertCitation()">Insert Citation</button>
+    <button type="button" class="secondary" onclick="rebuildReferences()">Rebuild References</button>
+    <button type="button" class="secondary" onclick="prepareCurrentCopy()">Prepare Current Copy</button>
+
+    <h2>Page Numbers</h2>
+    <button type="button" class="secondary" onclick="showPageNumberHelp()">Show Page Number Step</button>
+
+    <div class="status" id="status" role="status" aria-live="polite">Loading.</div>
+
+    <script>
+      let references = [];
+      let editingReferenceId = null;
+      let busy = false;
+
+      function setStatus(message) {
+        document.getElementById('status').textContent = message;
+      }
+
+      function setBusy(isBusy, message) {
+        busy = isBusy;
+        Array.from(document.querySelectorAll('button')).forEach((button) => {
+          button.disabled = isBusy;
+        });
+        if (message) {
+          setStatus(message);
+        }
+      }
+
+      function setupPaper() {
+        if (busy) {
+          return;
+        }
+        const profile = {
+          title: value('paper-title'),
+          author: value('paper-author'),
+          institution: value('paper-institution'),
+          course: value('paper-course'),
+          instructor: value('paper-instructor'),
+          dueDate: value('paper-due-date'),
+          paperType: 'student'
+        };
+        setBusy(true, 'Setting up APA paper.');
+        google.script.run
+          .withSuccessHandler(loadState)
+          .withFailureHandler(showError)
+          .apiSetupPaper(profile);
+      }
+
+      function lookupDoi() {
+        if (busy) {
+          return;
+        }
+        setBusy(true, 'Looking up DOI. This sends the DOI to Crossref.');
+        google.script.run
+          .withSuccessHandler(fillReference)
+          .withFailureHandler(showError)
+          .apiLookupDoi(value('doi-input'));
+      }
+
+      function fillReference(reference) {
+        setBusy(false);
+        editingReferenceId = null;
+        document.getElementById('source-type').value = reference.sourceType;
+        document.getElementById('authors-lines').value = authorsToLines(
+          reference.authors || []
+        );
+        setValue('year', reference.year);
+        setValue('title', reference.title);
+        setValue('container-title', reference.containerTitle);
+        setValue('volume', reference.volume);
+        setValue('issue', reference.issue);
+        setValue('pages', reference.pages);
+        setValue('doi', reference.doi);
+        setValue('url', reference.url);
+        setValue('publisher', reference.publisher || reference.siteName);
+        setStatus('DOI metadata loaded. Review before saving.');
+      }
+
+      function saveReference() {
+        if (busy) {
+          return;
+        }
+        const reference = {
+          id: editingReferenceId || currentReferenceId(),
+          sourceType: value('source-type'),
+          authors: parseAuthorLines(value('authors-lines')),
+          year: value('year'),
+          title: value('title'),
+          containerTitle: value('container-title'),
+          siteName: value('publisher'),
+          publisher: value('publisher'),
+          volume: value('volume'),
+          issue: value('issue'),
+          pages: value('pages'),
+          doi: value('doi'),
+          url: value('url')
+        };
+        const duplicate = editingReferenceId ? null : findLocalDuplicate(reference);
+        if (duplicate) {
+          const shouldUpdate = confirm(
+            `Possible duplicate found:\n\n${duplicate.title}\n\nUpdate that saved reference instead of adding another copy?`
+          );
+          if (!shouldUpdate) {
+            setStatus('Save canceled.');
+            return;
+          }
+          reference.id = duplicate.id;
+        }
+        setBusy(true, 'Saving reference.');
+        google.script.run
+          .withSuccessHandler(loadState)
+          .withFailureHandler(showError)
+          .apiSaveReference(reference);
+      }
+
+      function insertCitation() {
+        if (busy) {
+          return;
+        }
+        const referenceIds = selectedReferenceIds();
+        if (referenceIds.length === 0) {
+          setStatus('Choose a saved reference first.');
+          return;
+        }
+        const mode = value('citation-mode');
+        if (referenceIds.length > 1) {
+          if (mode === 'narrative') {
+            setStatus('Narrative citation supports one source at a time.');
+            return;
+          }
+          setBusy(true, 'Inserting grouped citation.');
+          google.script.run
+            .withSuccessHandler(loadState)
+            .withFailureHandler(showError)
+            .apiInsertCitationGroup(referenceIds);
+          return;
+        }
+        setBusy(true, 'Inserting citation.');
+        google.script.run
+          .withSuccessHandler(loadState)
+          .withFailureHandler(showError)
+          .apiInsertCitation(referenceIds[0], value('citation-locator'), mode);
+      }
+
+      function rebuildReferences() {
+        if (busy) {
+          return;
+        }
+        setBusy(true, 'Rebuilding References section.');
+        google.script.run
+          .withSuccessHandler(loadState)
+          .withFailureHandler(showError)
+          .apiRebuildReferences();
+      }
+
+      function prepareCurrentCopy() {
+        if (busy) {
+          return;
+        }
+        const shouldPrepare = confirm(
+          'Use this on a copy of your Google Doc. It removes hidden Open APA Desk control markers from the current document so the copy is ready for submission. Continue?'
+        );
+        if (!shouldPrepare) {
+          setStatus('Submission prep canceled.');
+          return;
+        }
+        setBusy(true, 'Preparing current copy.');
+        google.script.run
+          .withSuccessHandler((message) => {
+            setBusy(false);
+            setStatus(message);
+          })
+          .withFailureHandler(showError)
+          .apiPrepareCurrentCopyForSubmission();
+      }
+
+      function showPageNumberHelp() {
+        setStatus(
+          'Use Insert > Page elements > Page numbers in Google Docs and choose the top-right option. Open APA Desk cannot safely insert dynamic page-number fields yet.'
+        );
+      }
+
+      function loadState(state) {
+        setBusy(false);
+        fillPaperProfile(state.paperProfile || {});
+        references = state.references || [];
+        if (
+          editingReferenceId &&
+          !references.some((reference) => reference.id === editingReferenceId)
+        ) {
+          editingReferenceId = null;
+        }
+        renderReferences();
+        setStatus('Saved.');
+      }
+
+      function loadInitialState(state) {
+        setBusy(false);
+        fillPaperProfile(state.paperProfile || {});
+        references = state.references || [];
+        renderReferences();
+        setStatus('Ready.');
+      }
+
+      function fillPaperProfile(profile) {
+        setValue('paper-title', profile.title);
+        setValue('paper-author', profile.author);
+        setValue('paper-institution', profile.institution);
+        setValue('paper-course', profile.course);
+        setValue('paper-instructor', profile.instructor);
+        setValue('paper-due-date', profile.dueDate);
+      }
+
+      function renderReferences() {
+        const picker = document.getElementById('reference-picker');
+        const selectedIds = new Set(selectedReferenceIds());
+        picker.innerHTML = '';
+        references.forEach((reference) => {
+          const option = document.createElement('option');
+          option.value = reference.id;
+          option.textContent = `${reference.authors?.[0]?.family || 'Unknown'} (${reference.year || 'n.d.'}) - ${reference.title}`;
+          option.selected = selectedIds.has(reference.id);
+          picker.appendChild(option);
+        });
+      }
+
+      function loadSelectedReference() {
+        const referenceId = selectedReferenceIds()[0];
+        const reference = references.find((item) => item.id === referenceId);
+        if (!reference) {
+          setStatus('Choose one saved reference to edit.');
+          return;
+        }
+        editingReferenceId = reference.id;
+        document.getElementById('source-type').value = reference.sourceType;
+        document.getElementById('authors-lines').value = authorsToLines(
+          reference.authors || []
+        );
+        setValue('year', reference.year);
+        setValue('title', reference.title);
+        setValue('container-title', reference.containerTitle);
+        setValue('publisher', reference.publisher || reference.siteName);
+        setValue('volume', reference.volume);
+        setValue('issue', reference.issue);
+        setValue('pages', reference.pages);
+        setValue('doi', reference.doi);
+        setValue('url', reference.url);
+        setStatus('Editing saved reference. Save to update it.');
+      }
+
+      function deleteSelectedReference() {
+        if (busy) {
+          return;
+        }
+        const referenceId = selectedReferenceIds()[0];
+        const reference = references.find((item) => item.id === referenceId);
+        if (!reference) {
+          setStatus('Choose one saved reference to delete.');
+          return;
+        }
+        const shouldDelete = confirm(
+          `Delete this reference from the document library?\n\n${reference.title}\n\nExisting citation text in the document will not be removed.`
+        );
+        if (!shouldDelete) {
+          setStatus('Delete canceled.');
+          return;
+        }
+        setBusy(true, 'Deleting reference.');
+        google.script.run
+          .withSuccessHandler((state) => {
+            if (editingReferenceId === referenceId) {
+              resetReferenceForm();
+            }
+            loadState(state);
+          })
+          .withFailureHandler(showError)
+          .apiDeleteReference(referenceId);
+      }
+
+      function resetReferenceForm() {
+        editingReferenceId = null;
+        [
+          'year',
+          'doi',
+          'title',
+          'container-title',
+          'publisher',
+          'volume',
+          'issue',
+          'pages',
+          'url',
+          'authors-lines'
+        ].forEach((id) => setValue(id, ''));
+        document.getElementById('source-type').value = 'journalArticle';
+        setStatus('Ready for a new reference.');
+      }
+
+      function selectedReferenceIds() {
+        return Array.from(
+          document.getElementById('reference-picker').selectedOptions
+        ).map((option) => option.value);
+      }
+
+      function currentReferenceId() {
+        return `ref_${Date.now().toString(36)}_${Math.random()
+          .toString(36)
+          .slice(2, 8)}`;
+      }
+
+      function parseAuthorLines(lines) {
+        return lines
+          .split(/\r?\n/)
+          .map((line) => line.trim())
+          .filter(Boolean)
+          .map((line) => {
+            const commaIndex = line.indexOf(',');
+            if (commaIndex < 0) {
+              return { family: line };
+            }
+            const family = line.slice(0, commaIndex).trim();
+            const given = line.slice(commaIndex + 1).trim();
+            return given ? { family, given } : { family };
+          });
+      }
+
+      function authorsToLines(authors) {
+        return authors
+          .map((author) =>
+            author.given ? `${author.family}, ${author.given}` : author.family
+          )
+          .join('\n');
+      }
+
+      function value(id) {
+        return document.getElementById(id).value.trim();
+      }
+
+      function setValue(id, value) {
+        document.getElementById(id).value = value || '';
+      }
+
+      function findLocalDuplicate(reference) {
+        const doi = normalizeDoiForDuplicate(reference.doi);
+        if (doi) {
+          return references.find(
+            (item) =>
+              item.id !== reference.id &&
+              normalizeDoiForDuplicate(item.doi) === doi
+          );
+        }
+        const key = manualDuplicateKey(reference);
+        if (!key) {
+          return null;
+        }
+        return references.find(
+          (item) => item.id !== reference.id && manualDuplicateKey(item) === key
+        );
+      }
+
+      function normalizeDoiForDuplicate(doi) {
+        return (doi || '')
+          .trim()
+          .replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')
+          .replace(/^doi:\s*/i, '')
+          .toLowerCase();
+      }
+
+      function manualDuplicateKey(reference) {
+        const title = normalizeManualKeyPart(reference.title);
+        if (!title) {
+          return '';
+        }
+        return [
+          reference.sourceType,
+          title,
+          normalizeManualKeyPart(reference.year || ''),
+          normalizeManualKeyPart(reference.authors?.[0]?.family || '')
+        ].join('|');
+      }
+
+      function normalizeManualKeyPart(value) {
+        return (value || '')
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, ' ')
+          .replace(/[.,:;!?]+$/g, '');
+      }
+
+      function showError(error) {
+        setBusy(false);
+        setStatus(error.message || String(error));
+      }
+
+      setBusy(true, 'Loading.');
+      google.script.run
+        .withSuccessHandler(loadInitialState)
+        .withFailureHandler(showError)
+        .apiGetState();
+    </script>
+  </body>
+</html>

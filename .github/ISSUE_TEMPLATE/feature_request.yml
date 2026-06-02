@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest a scoped Open APA Desk improvement.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: User need
+      description: What student or writing workflow would this improve?
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope area
+      options:
+        - APA 7 paper setup
+        - APA 7 references
+        - APA 7 citations
+        - Google Docs workflow
+        - Marketplace/privacy
+        - Out of V0 scope
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Keep V0 scope in mind. No MLA, Turabian, AI writing, backend accounts, or URL scraping.
+    validations:
+      required: true

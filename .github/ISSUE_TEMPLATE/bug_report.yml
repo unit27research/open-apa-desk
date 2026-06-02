@@ -1,0 +1,47 @@
+name: Bug report
+description: Report a reproducible Open APA Desk problem.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include private paper content, private Google Doc URLs, access tokens, or student data.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the issue and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the Open APA Desk action and Google Docs context.
+      placeholder: |
+        1. Open a copied template Doc
+        2. Open Open APA Desk sidebar
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Paper setup
+        - DOI lookup
+        - References
+        - Citation insertion
+        - Prepare Current Copy
+        - Google Docs authorization
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Browser, account type, school requirements, or screenshots with private content removed.

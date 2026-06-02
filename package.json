@@ -1,0 +1,41 @@
+{
+  "name": "open-apa-desk",
+  "version": "0.1.0-alpha.0",
+  "private": true,
+  "description": "A free, privacy-first APA 7 helper for Google Docs.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unit27research/open-apa-desk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unit27research/open-apa-desk/issues"
+  },
+  "homepage": "https://unit27research.github.io/open-apa-desk/",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "assets:brand": "node scripts/generate-brand-assets.mjs",
+    "site:build": "node scripts/build-public-site.mjs",
+    "release:check": "node scripts/check-release-readiness.mjs",
+    "marketplace:assets:final": "node scripts/check-release-readiness.mjs --final-screenshots",
+    "marketplace:drafts:check": "node scripts/check-marketplace-drafts.mjs",
+    "publish:archive": "node scripts/create-publish-archive.mjs",
+    "upload:preflight": "node scripts/check-upload-readiness.mjs",
+    "build": "node scripts/build.mjs",
+    "clasp:login": "clasp login",
+    "clasp:push": "clasp push",
+    "verify": "npm run assets:brand && npm run site:build && npm run release:check && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@google/clasp": "^3.0.6-alpha",
+    "@types/google-apps-script": "^1.0.99",
+    "esbuild": "^0.25.5",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.0"
+  }
+}

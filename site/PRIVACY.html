@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy | Open APA Desk</title>
+    <link rel="icon" href="assets/branding/open-apa-desk-icon-32.png">
+    <style>
+      :root {
+        color: #172026;
+        background: #f8fafc;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        margin: 0 auto;
+        max-width: 880px;
+        padding: 32px 20px 56px;
+      }
+      .hero {
+        align-items: center;
+        display: flex;
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 34px;
+        line-height: 1.1;
+        margin: 0 0 8px;
+      }
+      h2 {
+        border-top: 1px solid #d8dee4;
+        font-size: 22px;
+        margin: 28px 0 10px;
+        padding-top: 20px;
+      }
+      p, li {
+        font-size: 16px;
+        line-height: 1.55;
+      }
+      a {
+        color: #155e75;
+        font-weight: 700;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin: 20px 0 28px;
+      }
+      .status {
+        color: #495865;
+        font-size: 14px;
+        margin: 0;
+      }
+      code {
+        background: #edf2f7;
+        border-radius: 4px;
+        padding: 2px 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+<h1>Privacy Note</h1>
+<p>Open APA Desk V0 is designed to keep paper data inside the user's Google workspace.</p>
+<h2>What Stays Local To The User's Google Account</h2>
+<ul>
+  <li>paper profile metadata</li>
+  <li>per-document references</li>
+  <li>inserted citation records</li>
+  <li>generated section anchors</li>
+</ul>
+<h2>Google Permissions</h2>
+<p>The current Apps Script build no longer requests full Google Drive or Google Sheets scope.</p>
+<p>Open APA Desk uses current-document Docs access for controlled paper setup, citations, References rebuild, and marker removal. For submission prep, users make a copy in Google Docs and run <code>Prepare Current Copy</code> on that copy. Open APA Desk removes hidden marker paragraphs from the current document only.</p>
+<p>V0 has no Open APA Desk server. Reusable cross-document reference library sync is deferred from Marketplace V0 to avoid Google Sheets OAuth scope.</p>
+<h2>External Requests</h2>
+<p>DOI lookup uses Crossref. When a user enters a DOI and clicks lookup, Open APA Desk sends that DOI to Crossref and receives publication metadata. DOI lookup is optional; manual entry remains available.</p>
+<p>DOI lookup requires the project maintainer to configure a real <code>CROSSREF_MAILTO</code> contact email in Apps Script script properties. If that property is missing, malformed, or still uses an example address, Open APA Desk stops before sending a Crossref request.</p>
+<h2>What V0 Does Not Do</h2>
+<ul>
+  <li>no Open APA Desk account</li>
+  <li>no backend server</li>
+  <li>no AI generation or summarization calls</li>
+  <li>no URL scraping</li>
+  <li>no analytics service</li>
+  <li>no sale or sharing of user document data by this project</li>
+</ul>
+<p>Google Docs, Apps Script, and Crossref each remain governed by their own terms and privacy policies.</p>
+    </main>
+  </body>
+</html>

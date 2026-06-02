@@ -1,0 +1,21 @@
+{
+  "timeZone": "America/New_York",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/documents.currentonly",
+    "https://www.googleapis.com/auth/script.container.ui",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.storage"
+  ],
+  "addOns": {
+    "common": {
+      "name": "Open APA Desk",
+      "logoUrl": "https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png",
+      "layoutProperties": {
+        "primaryColor": "#155E75"
+      }
+    },
+    "docs": {}
+  }
+}

@@ -1,0 +1,121 @@
+# OAuth Consent Draft
+
+Date: 2026-06-01
+
+Use this as the working draft for Google Cloud OAuth consent setup.
+
+Sources checked on 2026-06-01:
+
+- Configure OAuth:
+  https://developers.google.com/workspace/marketplace/configure-oauth-consent-screen
+- Publish an add-on:
+  https://developers.google.com/workspace/add-ons/how-tos/publish-add-on-overview
+
+## Current Status
+
+OAuth consent is not configured for public release yet.
+
+The OAuth consent screen, Google Workspace Marketplace SDK, and Apps Script
+manifest scopes must match before submission.
+
+Google lists billing and a standard Cloud project as publishing prerequisites.
+Neither has been confirmed yet for Open APA Desk.
+
+## App Information
+
+App name:
+
+```text
+Open APA Desk
+```
+
+User support email:
+
+```text
+TODO: confirmed project support email
+```
+
+App logo:
+
+```text
+https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
+```
+
+Application home page:
+
+```text
+https://unit27research.github.io/open-apa-desk/
+```
+
+Application privacy policy:
+
+```text
+https://unit27research.github.io/open-apa-desk/PRIVACY.html
+```
+
+Application terms of service:
+
+```text
+https://unit27research.github.io/open-apa-desk/TERMS.html
+```
+
+Authorized domains:
+
+```text
+github.io
+```
+
+Developer contact email:
+
+```text
+TODO: confirmed project contact email
+```
+
+## Audience
+
+Recommended first public setting:
+
+```text
+External
+```
+
+Reason: Open APA Desk is intended as a public, free tool rather than a private
+domain-only add-on.
+
+## Scopes
+
+Current Apps Script manifest scopes:
+
+```text
+https://www.googleapis.com/auth/documents.currentonly
+https://www.googleapis.com/auth/script.container.ui
+https://www.googleapis.com/auth/script.external_request
+https://www.googleapis.com/auth/script.storage
+```
+
+Scope justifications:
+
+- `documents.currentonly`: create and update controlled APA sections, citations,
+  References, and marker removal inside the active copied Google Doc.
+- `script.container.ui`: show the Google Docs menu, sidebar, and page-number
+  help dialog.
+- `script.external_request`: send DOI lookup requests to Crossref.
+- `script.storage`: store per-document state and read the project
+  `CROSSREF_MAILTO` script property.
+
+## Sensitive Scope Watch
+
+The current manifest avoids Google Drive and Google Sheets scopes. Reusable
+cross-document reference library sync is deferred from Marketplace V0 to reduce
+consent friction.
+
+## Verification Notes
+
+Google might require OAuth verification for public apps with sensitive scopes.
+If requested, prepare:
+
+- a demo video showing the exact OAuth flow and feature use
+- public privacy policy URL
+- explanation of every scope
+- confirmation that Open APA Desk has no backend server, account system,
+  analytics service, AI calls, or hosted database
