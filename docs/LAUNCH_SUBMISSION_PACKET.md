@@ -80,6 +80,9 @@ Post-push proof required:
 - Pages workflow publishes `site/`.
 - Public home, privacy, terms, support, and icon URLs resolve.
 - PNG branding assets render in the GitHub file browser.
+- No stale GitHub pull-request refs from pre-public cleanup remain. If stale PR
+  refs exist on a newly created repo, delete and recreate the repo from the
+  sanitized local tree before making it public.
 
 Expected public URLs:
 

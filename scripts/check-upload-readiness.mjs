@@ -60,10 +60,30 @@ const checks = [
   },
   {
     id: 'github-repo',
-    name: `GitHub repo exists: ${REPO_FULL_NAME}`,
-    command: ['gh', 'repo', 'view', REPO_FULL_NAME, '--json', 'url'],
+    name: `GitHub repo is public: ${REPO_FULL_NAME}`,
+    command: [
+      'gh',
+      'repo',
+      'view',
+      REPO_FULL_NAME,
+      '--json',
+      'url,visibility,isPrivate'
+    ],
     requires: ['github-auth'],
-    failureHint: 'Create and push the public GitHub repository first.'
+    validate: ({ stdout }) => {
+      const repo = parseJson(stdout);
+      return repo?.isPrivate === false && repo?.visibility === 'PUBLIC';
+    },
+    failureHint: 'Create the public GitHub repository, or switch it back to public after cleanup.'
+  },
+  {
+    id: 'remote-pr-refs',
+    name: 'No stale remote pull-request refs exist',
+    command: ['git', 'ls-remote', 'origin', 'refs/pull/*/head'],
+    requires: ['origin-remote'],
+    validate: ({ stdout }) => stdout.trim() === '',
+    failureHint:
+      'Delete/recreate the brand-new GitHub repo from the sanitized local tree. Closed GitHub PR refs cannot be cleaned by force-pushing main.'
   }
 ];
 
@@ -141,4 +161,12 @@ function indent(value) {
     .split('\n')
     .map((line) => `  ${line}`)
     .join('\n');
+}
+
+function parseJson(value) {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
 }
