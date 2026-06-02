@@ -27,6 +27,9 @@ This creates `private/smoke-evidence/YYYY-MM-DD-final-smoke.md` from
 the current commit, and creates `private/smoke-evidence/exports/` for PDF/DOCX
 exports. Keep PDF/DOCX exports under `private/` as well.
 
+Use [SMOKE_TEST_FIXTURES.md](SMOKE_TEST_FIXTURES.md) for public-safe field
+values and expected APA citation/reference output during the final smoke pass.
+
 ## Command Sequence
 
 From the project root:

@@ -51,6 +51,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] `Check DOI Setup` reports DOI lookup is configured.
 - [ ] Page number `1` is visually confirmed in the template header.
 - [ ] Copied-template smoke pass completes.
+- [ ] Copied-template smoke pass uses public-safe fixture values from
+  `docs/SMOKE_TEST_FIXTURES.md`.
 - [ ] PDF and DOCX exports contain no `[[OPEN_APA_DESK` markers.
 - [ ] `npm run smoke:exports` passes against the private PDF/DOCX exports.
 - [ ] `npm run smoke:evidence:check` passes against the completed private
