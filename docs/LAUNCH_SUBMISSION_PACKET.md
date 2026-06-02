@@ -131,6 +131,10 @@ App visibility: Public
 Install setting: Individual + Admin Install
 Integration: Google Docs Editor Add-on
 Apps Script version: 1
+Developer name: Unit27 Research
+Developer website URL: https://unit27research.com
+Developer email: josh@unit27research.com
+Trader status: Non-trader
 ```
 
 Visibility warning: Google documents the visibility choice as effectively
@@ -157,7 +161,8 @@ Store listing:
 - Use support URLs from the public GitHub/Pages deployment.
 - Use final screenshots only after the human-assisted sidebar/export smoke
   pass.
-- Do not submit while any placeholder developer/support email remains.
+- Revisit trader/non-trader status if Google review treats the Unit27 Research
+  publisher identity as business/professional activity.
 
 Run the strict draft check before entering final Google Cloud or Marketplace
 console fields:
@@ -166,8 +171,7 @@ console fields:
 npm run marketplace:drafts:check
 ```
 
-It should fail until support/developer contact fields, developer identity
-fields, and post-Pages Apps Script version fields are filled.
+It should pass before final Google Cloud or Marketplace console entry.
 
 Graphic assets:
 
@@ -244,4 +248,4 @@ Human/manual evidence still needed:
 - A post-Pages Apps Script version is created and recorded.
 - Marketplace SDK draft points to the post-Pages Apps Script version.
 - Human-assisted sidebar/export smoke pass is recorded.
-- Public support/developer identity fields are confirmed.
+- Trader/non-trader status is copied from the launch packet into the SDK.

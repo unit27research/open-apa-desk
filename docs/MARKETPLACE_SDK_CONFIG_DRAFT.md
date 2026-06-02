@@ -121,6 +121,8 @@ visibility decision before saving the final configuration.
 
 The Marketplace SDK asks whether the developer is a trader or non-trader for
 EEA consumer disclosure. Open APA Desk is free and open-source, but the listing
-is planned under Unit27 Research. Confirm the account-owner/legal choice before
-selecting this field. If trader status is selected, Google requires a mailing
-address.
+is planned under Unit27 Research. For the initial draft, use Non-trader because
+the project is not monetized and the developer does not want to disclose a home
+address. If Google review treats the Unit27 Research publisher identity as
+business/professional activity, revisit this choice and either switch to Trader
+with a business-safe mailing address or adjust the developer identity.

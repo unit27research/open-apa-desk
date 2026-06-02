@@ -92,14 +92,16 @@ josh@unit27research.com
 Trader/non-trader status:
 
 ```text
-TODO: confirmed trader status
+Non-trader
 ```
 
 Google's Marketplace SDK describes this as an EEA consumer-disclosure field.
-Publishing under Unit27 Research may be treated as acting for a business,
-profession, or organization even when Open APA Desk is free and open-source. Do
-not select non-trader without account-owner confirmation. If trader status is
-selected, Google requires a mailing address.
+Non-trader is selected for the initial draft because Open APA Desk is free,
+open-source, and not monetized, and the developer does not want to disclose a
+home address as a Marketplace mailing address. If Google review treats the
+Unit27 Research publisher identity as business/professional activity, revisit
+this choice and either switch to Trader with a business-safe mailing address or
+adjust the developer identity.
 
 ## OAuth Scope Justifications
 

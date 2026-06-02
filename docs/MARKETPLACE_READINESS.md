@@ -22,8 +22,8 @@ Sources checked on 2026-06-02:
 
 Open APA Desk is public-repo and public-URL ready, but it is not
 Marketplace-ready yet. It has partial no-Sheets copied-template smoke coverage
-and still needs confirmed trader/non-trader status, Google Cloud/Marketplace
-console setup, and human-assisted sidebar/export checks.
+and still needs Google Cloud/Marketplace console setup and human-assisted
+sidebar/export checks.
 
 The consolidated launch/submission handoff is
 [LAUNCH_SUBMISSION_PACKET.md](LAUNCH_SUBMISSION_PACKET.md).
@@ -39,7 +39,7 @@ The consolidated launch/submission handoff is
 | Cloud billing | Google lists billing as an OAuth/publishing prerequisite for the Cloud project. Billing has not been confirmed. | Missing |
 | Marketplace SDK config | Draft field map exists in `docs/MARKETPLACE_SDK_CONFIG_DRAFT.md`. | Draft |
 | OAuth consent screen | Draft field map exists in `docs/OAUTH_CONSENT_DRAFT.md`. | Draft |
-| Marketplace draft preflight | `npm run marketplace:drafts:check` fails until support/developer contact fields, developer identity fields, and post-Pages Apps Script version fields are filled. | Failing as expected |
+| Marketplace draft preflight | `npm run marketplace:drafts:check` passes after the non-trader field decision and confirmed support/developer contact fields. | Passing locally |
 | OAuth scopes | Manifest now uses current-document Docs scope and no Drive or Sheets scope. No-Sheets copied-template OAuth/menu path partially passed, but Chrome did not capture the final permission-list screen. | Improved; needs human consent review |
 | Sidebar review UX | Sidebar has explicit button types, disables actions while Apps Script calls are pending, exposes status through an ARIA live region, and is guarded by `npm run release:check`. | Passing locally |
 | OAuth verification | Required if public release uses sensitive or restricted scopes. Not started. | Missing |
@@ -47,6 +47,7 @@ The consolidated launch/submission handoff is
 | Terms of service | `TERMS.md` exists locally, generated `site/TERMS.html` is checked in, and the public Pages URL resolves. | Passing public URL gate |
 | Privacy policy | `PRIVACY.md` exists locally, generated `site/PRIVACY.html` is checked in, and the public Pages URL resolves. | Passing public URL gate |
 | Support/contact | Project support and developer contact email are set in the drafts as `josh@unit27research.com`. | Draft field filled |
+| Trader status | Non-trader is selected for the initial draft because Open APA Desk is free, open-source, and not monetized. If Google treats the Unit27 Research identity as business/professional activity, revisit this choice. | Draft field filled |
 | Branding assets | Project-owned PNG assets exist under `assets/branding/` and `site/assets/branding/`. Source manifest uses the public Pages icon URL, and the public icon URL resolves. | Passing public URL gate |
 | Screenshots | Alpha screenshot assets exist under `assets/screenshots/` and are copied into `site/assets/screenshots/`. Final human-assisted Marketplace screenshots still needed after sidebar/export checks. | Partial |
 | Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The confirmed project email is `josh@unit27research.com`; the live Apps Script property still needs to be set before public DOI testing. | Missing live config |
@@ -94,8 +95,8 @@ The next sprint should finish release packaging:
 - Create the standard Google Cloud project, confirm billing, and cut a
   post-Pages Apps Script version after the public icon URL is live.
 - Capture Marketplace screenshots using `docs/SCREENSHOT_CAPTURE_PLAN.md`.
-- Confirm trader/non-trader status in the Marketplace SDK. If trader status is
-  selected, collect the required mailing address.
+- Revisit trader/non-trader status only if Google review questions the
+  non-trader selection for a Unit27-branded free/open-source project.
 - Fill any remaining Marketplace/OAuth fields until
   `npm run marketplace:drafts:check` passes.
 

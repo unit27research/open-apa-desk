@@ -75,5 +75,5 @@ change.
 ## Remaining Marketplace Blocker
 
 The public URL lane is no longer blocked. Marketplace submission still needs
-confirmed trader/non-trader status, standard Google Cloud project setup, and
-final human-assisted sidebar/export evidence.
+standard Google Cloud project setup and final human-assisted sidebar/export
+evidence.

@@ -98,6 +98,12 @@ function checkPlaceholderFields() {
   if (listingDraft.includes('TODO: confirmed trader status')) {
     blockers.push('Marketplace listing draft still needs confirmed trader/non-trader status.');
   }
+  if (listingDraft.includes('TODO: confirmed developer mailing address for Trader status')) {
+    blockers.push('Marketplace listing draft still needs developer mailing address for Trader status.');
+  }
+  if (launchPacket.includes('Developer mailing address: TODO confirmed business-safe mailing address')) {
+    blockers.push('Launch packet still needs developer mailing address for Trader status.');
+  }
   if (launchPacket.includes('Support email: TODO confirmed project support email')) {
     blockers.push('Launch packet still needs confirmed project support email.');
   }
