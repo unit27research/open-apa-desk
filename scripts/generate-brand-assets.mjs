@@ -214,7 +214,9 @@ async function writePng(path, image) {
 
   const chunks = [
     chunk('IHDR', concatUint8(uint32(image.width), uint32(image.height), new Uint8Array([8, 6, 0, 0, 0]))),
-    chunk('IDAT', deflateSync(raw)),
+    // Stable bytes matter more than compression here; GitHub Actions may run
+    // a different zlib than local development.
+    chunk('IDAT', deflateSync(raw, { level: 0 })),
     chunk('IEND', new Uint8Array())
   ];
 
