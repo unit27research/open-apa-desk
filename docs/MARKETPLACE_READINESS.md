@@ -25,6 +25,11 @@ Marketplace-ready yet. It has partial no-Sheets copied-template smoke coverage
 and still needs Google Cloud/Marketplace console setup and human-assisted
 sidebar/export checks.
 
+Marketplace draft fields are filled for the current public-safe plan, and
+`npm run marketplace:drafts:check` now rejects public `TODO:` placeholders.
+The remaining pre-submission evidence gap is the live Google Docs
+sidebar/export smoke pass plus private export evidence.
+
 The consolidated launch/submission handoff is
 [LAUNCH_SUBMISSION_PACKET.md](LAUNCH_SUBMISSION_PACKET.md).
 The Google console execution path is
@@ -39,9 +44,9 @@ The Google console execution path is
 | Apps Script version | Apps Script version `2` exists in the smoke-test operator environment, and the refreshed alpha template has a final-smoke-ready template version. | Passing for alpha |
 | Standard Google Cloud project | No standard Cloud project is linked yet. Required setup is documented in the SDK and OAuth drafts. | Missing |
 | Cloud billing | Google lists billing as an OAuth/publishing prerequisite for the Cloud project. Billing has not been confirmed. | Missing |
-| Marketplace SDK config | Draft field map exists in `docs/MARKETPLACE_SDK_CONFIG_DRAFT.md`. | Draft |
-| OAuth consent screen | Draft field map exists in `docs/OAUTH_CONSENT_DRAFT.md`. | Draft |
-| Marketplace draft preflight | `npm run marketplace:drafts:check` passes after the non-trader field decision and confirmed support/developer contact fields. | Passing locally |
+| Marketplace SDK config | Draft field map exists in `docs/MARKETPLACE_SDK_CONFIG_DRAFT.md`; private script IDs are intentionally kept in operator notes only. | Draft |
+| OAuth consent screen | Draft field map exists in `docs/OAUTH_CONSENT_DRAFT.md`, including the External/not-Testing review guard. | Draft |
+| Marketplace draft preflight | `npm run marketplace:drafts:check` passes and rejects public `TODO:` placeholders in Marketplace draft files. | Passing locally |
 | OAuth scopes | Manifest now uses current-document Docs scope and no Drive or Sheets scope. No-Sheets copied-template OAuth/menu path partially passed, but Chrome did not capture the final permission-list screen. | Improved; needs human consent review |
 | Sidebar review UX | Sidebar has explicit button types, disables actions while Apps Script calls are pending, exposes status through an ARIA live region, and is guarded by `npm run release:check`. | Passing locally |
 | OAuth verification | Required if public release uses sensitive or restricted scopes. Not started. | Missing |
@@ -53,7 +58,7 @@ The Google console execution path is
 | Branding assets | Project-owned PNG assets exist under `assets/branding/` and `site/assets/branding/`. Source manifest uses the public Pages icon URL, and the public icon URL resolves. | Passing public URL gate |
 | Screenshots | Alpha screenshot assets exist under `assets/screenshots/` and are copied into `site/assets/screenshots/`. Final human-assisted Marketplace screenshots still needed after sidebar/export checks. | Partial |
 | Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The live smoke-test and refreshed alpha-template scripts have the project email configured, and `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for Crossref. The actual sidebar DOI lookup call still needs the human-assisted form-entry smoke pass. | Configured for smoke; lookup pending |
-| Public repo | Public GitHub repo exists, `origin` is configured, GitHub auth is valid, remote branch/pull-request refs pass the public-boundary scan, and `Verify`/`Pages` are green on `main`. | Passing upload gate |
+| Public repo | Public GitHub repo exists, `origin` is configured, GitHub auth is valid, remote branch/pull-request refs pass the public-boundary scan, and `Verify`/`Pages` are green on `main`. `npm run upload:preflight` also retries short-lived public Pages URL propagation failures. | Passing upload gate |
 
 ## High-Risk Marketplace Items
 
@@ -102,7 +107,7 @@ The next sprint should finish release packaging:
 - Capture Marketplace screenshots using `docs/SCREENSHOT_CAPTURE_PLAN.md`.
 - Revisit trader/non-trader status only if Google review questions the
   non-trader selection for a Unit27-branded free/open-source project.
-- Fill any remaining Marketplace/OAuth fields until
-  `npm run marketplace:drafts:check` passes.
+- Keep `npm run marketplace:drafts:check` passing after any listing, OAuth, or
+  SDK wording changes.
 
 Do not submit to Marketplace until these packaging gates are closed.
