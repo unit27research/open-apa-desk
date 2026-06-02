@@ -5,6 +5,13 @@ const execFile = promisify(execFileCallback);
 const REPO_FULL_NAME = 'unit27research/open-apa-desk';
 const REMOTE_REF_SCAN_NAMESPACE = 'refs/tmp/open-apa-upload-scan';
 const REQUIRED_MAIN_WORKFLOWS = ['Verify', 'Pages'];
+const PUBLIC_URL_RETRY_ATTEMPTS = 3;
+const PUBLIC_URL_RETRY_DELAY_MS = 1500;
+
+if (process.argv.includes('--public-url-retry-self-test')) {
+  await runPublicUrlRetrySelfTest();
+  process.exit(0);
+}
 
 const PUBLIC_URLS = [
   {
@@ -285,22 +292,9 @@ async function checkPublicUrls(check) {
   const findings = [];
 
   for (const publicUrl of PUBLIC_URLS) {
-    try {
-      const response = await fetch(publicUrl.url, { redirect: 'follow' });
-      const contentType = response.headers.get('content-type') ?? '';
-      if (response.status !== 200) {
-        findings.push(`${publicUrl.label}: HTTP ${response.status} ${publicUrl.url}`);
-        continue;
-      }
-      if (!contentType.includes(publicUrl.contentType)) {
-        findings.push(
-          `${publicUrl.label}: expected ${publicUrl.contentType}, got ${
-            contentType || 'missing content-type'
-          }`
-        );
-      }
-    } catch (error) {
-      findings.push(`${publicUrl.label}: ${error.message ?? error}`);
+    const finding = await checkPublicUrl(publicUrl);
+    if (finding) {
+      findings.push(finding);
     }
   }
 
@@ -312,6 +306,79 @@ async function checkPublicUrls(check) {
         : `Resolved ${PUBLIC_URLS.length} public URL(s).`,
     passed: findings.length === 0
   };
+}
+
+async function checkPublicUrl(
+  publicUrl,
+  {
+    fetchImpl = fetch,
+    retryAttempts = PUBLIC_URL_RETRY_ATTEMPTS,
+    retryDelayMs = PUBLIC_URL_RETRY_DELAY_MS
+  } = {}
+) {
+  let lastFinding = '';
+
+  for (let attempt = 1; attempt <= retryAttempts; attempt += 1) {
+    try {
+      const response = await fetchImpl(publicUrl.url, { redirect: 'follow' });
+      const contentType = response.headers.get('content-type') ?? '';
+      if (response.status === 200 && contentType.includes(publicUrl.contentType)) {
+        return '';
+      }
+
+      lastFinding =
+        response.status !== 200
+          ? `${publicUrl.label}: HTTP ${response.status} ${publicUrl.url}`
+          : `${publicUrl.label}: expected ${publicUrl.contentType}, got ${
+              contentType || 'missing content-type'
+            }`;
+    } catch (error) {
+      lastFinding = `${publicUrl.label}: ${error.message ?? error}`;
+    }
+
+    if (attempt < retryAttempts) {
+      await delay(retryDelayMs);
+    }
+  }
+
+  return lastFinding;
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function runPublicUrlRetrySelfTest() {
+  let attempts = 0;
+  const finding = await checkPublicUrl(
+    {
+      label: 'Self-test',
+      url: 'https://example.test/',
+      contentType: 'text/html'
+    },
+    {
+      retryAttempts: 3,
+      retryDelayMs: 0,
+      fetchImpl: async () => {
+        attempts += 1;
+        return {
+          status: attempts < 3 ? 503 : 200,
+          headers: {
+            get: (name) => (name === 'content-type' ? 'text/html; charset=utf-8' : '')
+          }
+        };
+      }
+    }
+  );
+
+  if (finding) {
+    throw new Error(`Expected public URL retry self-test to pass, got: ${finding}`);
+  }
+  if (attempts !== 3) {
+    throw new Error(`Expected 3 public URL retry attempts, got ${attempts}.`);
+  }
+
+  console.log('Public URL retry self-test passed.');
 }
 
 async function checkRemotePublicBoundary(check) {
