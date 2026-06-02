@@ -39,6 +39,7 @@ Checked on 2026-06-02:
 - Upload preflight: `npm run upload:preflight`
 - Private smoke evidence setup: `npm run smoke:evidence`
 - Private smoke evidence check: `npm run smoke:evidence:check -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md`
+- Final smoke fixtures: `docs/SMOKE_TEST_FIXTURES.md`
 - Optional Crossref network smoke: `CROSSREF_MAILTO=project-contact@example.com npm run crossref:smoke`
 - Optional export marker scan after PDF/DOCX export: `npm run smoke:exports`
 
@@ -230,11 +231,12 @@ Functional evidence:
 - `npm run verify` passes locally.
 - Fresh checkout `npm ci` and `npm run verify` passed.
 - No-Sheets copied-template smoke pass confirmed copied Doc menu, sidebar load
-  after authorization/reopen, menu-driven References rebuild, and
-  `Prepare Current Copy`.
-- Live smoke-test script has `CROSSREF_MAILTO` configured and
-  `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for
-  Crossref.
+  after authorization/reopen, and `Open APA Desk > Check DOI Setup`.
+- Live smoke-test and refreshed alpha-template scripts have
+  `CROSSREF_MAILTO` configured, and `Open APA Desk > Check DOI Setup` confirms
+  DOI lookup is configured for Crossref.
+- Final smoke fixture values and expected APA output are documented in
+  `docs/SMOKE_TEST_FIXTURES.md`.
 - Optional local Crossref network smoke can confirm Crossref endpoint
   connectivity with a public fixture DOI, but it does not replace the live
   Google Docs sidebar DOI lookup smoke check.
@@ -249,6 +251,8 @@ Human/manual evidence still needed:
 - manual reference entry
 - parenthetical and narrative citation insertion visual check
 - grouped citation visual check
+- References rebuild visual check
+- `Prepare Current Copy` visual check
 - PDF export check
 - DOCX export check
 - `npm run smoke:exports` after exports are saved under `private/`

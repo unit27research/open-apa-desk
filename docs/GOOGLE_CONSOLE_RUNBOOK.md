@@ -201,8 +201,8 @@ npm run marketplace:assets:final
 
 ## 7. Final Smoke Evidence
 
-Use [SMOKE_TEST.md](SMOKE_TEST.md) and
-[SCREENSHOT_CAPTURE_PLAN.md](SCREENSHOT_CAPTURE_PLAN.md).
+Use [SMOKE_TEST.md](SMOKE_TEST.md), [SMOKE_TEST_FIXTURES.md](SMOKE_TEST_FIXTURES.md),
+and [SCREENSHOT_CAPTURE_PLAN.md](SCREENSHOT_CAPTURE_PLAN.md).
 Copy [FINAL_SMOKE_EVIDENCE_TEMPLATE.md](FINAL_SMOKE_EVIDENCE_TEMPLATE.md) into
 an ignored private path before recording live evidence.
 

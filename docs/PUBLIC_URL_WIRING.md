@@ -61,16 +61,12 @@ manifest changes. Apps Script version `2` exists in the operator environment
 with description `0.1.0-alpha.0 final-smoke-ready alpha` and is the current
 final-smoke-ready alpha reference.
 
-## Files That Need URL Updates
+## Public URL Consumers
 
-- `src/appsscript.json` source is already updated and has been pushed into the
-  current post-Pages Apps Script version
-- `docs/MARKETPLACE_LISTING_DRAFT.md`
-- `docs/MARKETPLACE_READINESS.md`
-- `docs/OAUTH_CONSENT_DRAFT.md`
-- `docs/MARKETPLACE_SDK_CONFIG_DRAFT.md`
-- OAuth consent screen
-- Marketplace SDK app configuration
+`src/appsscript.json`, Marketplace drafts, OAuth consent draft, and public-site
+files already use the public GitHub Pages URLs. Copy the same URLs into the
+OAuth consent screen and Marketplace SDK app configuration during console
+setup.
 
 ## Remaining Marketplace Blocker
 
