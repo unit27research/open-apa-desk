@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@google/clasp": "^3.0.6-alpha",
-    "@types/google-apps-script": "^1.0.99",
+    "@types/google-apps-script": "^2.0.9",
     "esbuild": "^0.25.5",
     "typescript": "^5.8.3",
     "vitest": "^3.2.0"
