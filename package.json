@@ -27,6 +27,7 @@
     "publish:archive": "node scripts/create-publish-archive.mjs",
     "upload:preflight": "node scripts/check-upload-readiness.mjs",
     "crossref:smoke": "node scripts/smoke-crossref.mjs",
+    "smoke:exports": "node scripts/check-smoke-exports.mjs",
     "build": "node scripts/build.mjs",
     "clasp:login": "clasp login",
     "clasp:push": "clasp push",

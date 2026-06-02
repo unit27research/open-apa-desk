@@ -65,6 +65,23 @@ This sends one public fixture DOI to Crossref and confirms that Crossref returns
 usable metadata. It does not replace the live Google Docs sidebar DOI lookup
 check because it does not exercise Apps Script `UrlFetchApp` or the add-on UI.
 
+Optional private export marker scan after PDF/DOCX export:
+
+```bash
+npm run smoke:exports
+```
+
+By default this scans PDF and DOCX files under
+`private/smoke-evidence/exports/`. You can also pass export files or directories:
+
+```bash
+npm run smoke:exports -- private/smoke-evidence/exports/final.docx private/smoke-evidence/exports/final.pdf
+```
+
+This helper catches obvious `[[OPEN_APA_DESK` marker leakage in DOCX exports
+and byte-level PDF output. It does not replace the human visual PDF/DOCX export
+check because PDF text can be compressed or encoded.
+
 ## Manual Acceptance Checklist
 
 Open the test Google Doc and reload it after pushing.
@@ -116,6 +133,8 @@ Open the test Google Doc and reload it after pushing.
 - `Prepare Current Copy` should be run only on a copied submission document.
   It removes hidden Open APA Desk control markers from the current document and
   does not create a duplicate automatically.
+- `npm run smoke:exports` is a marker-leak helper, not proof of correct APA
+  formatting or readable export layout.
 - In the bound-script smoke-test path, the copied Google Doc can still show the
   `Open APA Desk` editor menu. That menu is not document body content and will
   not appear in PDF/DOCX exports.

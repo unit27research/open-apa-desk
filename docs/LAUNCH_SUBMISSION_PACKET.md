@@ -233,6 +233,9 @@ Functional evidence:
 - Optional local Crossref network smoke can confirm Crossref endpoint
   connectivity with a public fixture DOI, but it does not replace the live
   Google Docs sidebar DOI lookup smoke check.
+- Optional private export marker scan can run with `npm run smoke:exports`
+  after PDF/DOCX export. It helps catch marker leakage but does not replace
+  human visual export review.
 
 Human/manual evidence still needed:
 
@@ -243,6 +246,7 @@ Human/manual evidence still needed:
 - grouped citation visual check
 - PDF export check
 - DOCX export check
+- `npm run smoke:exports` after exports are saved under `private/`
 - no visible `[[OPEN_APA_DESK` marker text in exports
 - final Marketplace screenshots
 

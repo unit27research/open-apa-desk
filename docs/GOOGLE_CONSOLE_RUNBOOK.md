@@ -213,6 +213,8 @@ Record local/private evidence for:
 - `Prepare Current Copy`
 - PDF export without visible marker text
 - DOCX export without visible marker text
+- `npm run smoke:exports` against private PDF/DOCX exports as a marker-leak
+  helper, while still completing the human visual export check
 
 Keep Google Doc URLs, script IDs, tester account details, and export files out
 of the public repo unless they are explicitly sanitized.

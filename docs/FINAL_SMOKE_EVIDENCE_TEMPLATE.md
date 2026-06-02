@@ -87,13 +87,21 @@ Keep export files in an ignored private path such as:
 private/smoke-evidence/exports/
 ```
 
+Run the marker-leak helper after exporting:
+
+```bash
+npm run smoke:exports
+```
+
 Record:
 
 ```text
 PDF export checked: yes/no
 DOCX export checked: yes/no
+npm run smoke:exports: pass/fail
 Marker text found in PDF: yes/no
 Marker text found in DOCX: yes/no
+Human visual export check completed: yes/no
 ```
 
 ## Screenshot Evidence
