@@ -75,6 +75,11 @@ function checkPlaceholderFields() {
   const listingDraft = files.get('docs/MARKETPLACE_LISTING_DRAFT.md') ?? '';
   const launchPacket = files.get('docs/LAUNCH_SUBMISSION_PACKET.md') ?? '';
 
+  for (const [file, content] of files) {
+    if (content.includes('TODO:')) {
+      blockers.push(`Marketplace draft still contains TODO placeholder text: ${file}`);
+    }
+  }
   if (oauthDraft.includes('TODO: confirmed project support email')) {
     blockers.push('OAuth consent draft still needs confirmed project support email.');
   }

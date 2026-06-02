@@ -53,7 +53,7 @@ Google Docs Editor Add-on
 Apps Script project ID:
 
 ```text
-TODO: Apps Script project ID from the standard Cloud-linked deployment
+Record in private operator notes only. Do not commit the script ID publicly.
 ```
 
 Apps Script version:
