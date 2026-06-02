@@ -56,15 +56,15 @@ npm run verify
 npm run upload:preflight
 ```
 
-Push the verified build to the alpha Apps Script project and create a new Apps
-Script version for Marketplace submission. Apps Script version `2` remains the
-no-Sheets alpha smoke reference, but it was created before the public icon URL
-change.
+Push the verified build to the alpha Apps Script project after public-site or
+manifest changes. Apps Script version `1` exists in the operator environment
+with description `0.1.0-alpha.0 post-pages public-url alpha` and is the current
+post-Pages alpha reference.
 
 ## Files That Need URL Updates
 
-- `src/appsscript.json` source is already updated; live Apps Script still needs
-  a post-Pages push/version
+- `src/appsscript.json` source is already updated and has been pushed into the
+  current post-Pages Apps Script version
 - `docs/MARKETPLACE_LISTING_DRAFT.md`
 - `docs/MARKETPLACE_READINESS.md`
 - `docs/OAUTH_CONSENT_DRAFT.md`
