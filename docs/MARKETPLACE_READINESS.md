@@ -20,9 +20,10 @@ Sources checked on 2026-06-02:
 
 ## Current Position
 
-Open APA Desk is not Marketplace-ready yet. It has partial no-Sheets
-copied-template smoke coverage and still needs human-assisted sidebar/export
-checks.
+Open APA Desk is public-repo and public-URL ready, but it is not
+Marketplace-ready yet. It has partial no-Sheets copied-template smoke coverage
+and still needs confirmed trader/non-trader status, Google Cloud/Marketplace
+console setup, and human-assisted sidebar/export checks.
 
 The consolidated launch/submission handoff is
 [LAUNCH_SUBMISSION_PACKET.md](LAUNCH_SUBMISSION_PACKET.md).
@@ -43,13 +44,13 @@ The consolidated launch/submission handoff is
 | Sidebar review UX | Sidebar has explicit button types, disables actions while Apps Script calls are pending, exposes status through an ARIA live region, and is guarded by `npm run release:check`. | Passing locally |
 | OAuth verification | Required if public release uses sensitive or restricted scopes. Not started. | Missing |
 | Store listing | Draft copy exists in `docs/MARKETPLACE_LISTING_DRAFT.md`. | Draft |
-| Terms of service | `TERMS.md` exists locally, generated `site/TERMS.html` is ready for GitHub Pages, and `site/LICENSE` is copied for the license link. Public deployment still needed. | Partial |
-| Privacy policy | `PRIVACY.md` exists locally and generated `site/PRIVACY.html` is ready for GitHub Pages. Public deployment still needed. | Partial |
-| Support/contact | Real project contact email is still needed. | Missing |
-| Branding assets | Project-owned PNG assets exist under `assets/branding/` and `site/assets/branding/`. Source manifest uses the expected public Pages icon URL. Public deployment and post-Pages Apps Script version still needed. | Partial |
+| Terms of service | `TERMS.md` exists locally, generated `site/TERMS.html` is checked in, and the public Pages URL resolves. | Passing public URL gate |
+| Privacy policy | `PRIVACY.md` exists locally, generated `site/PRIVACY.html` is checked in, and the public Pages URL resolves. | Passing public URL gate |
+| Support/contact | Project support and developer contact email are set in the drafts as `josh@unit27research.com`. | Draft field filled |
+| Branding assets | Project-owned PNG assets exist under `assets/branding/` and `site/assets/branding/`. Source manifest uses the public Pages icon URL, and the public icon URL resolves. | Passing public URL gate |
 | Screenshots | Alpha screenshot assets exist under `assets/screenshots/` and are copied into `site/assets/screenshots/`. Final human-assisted Marketplace screenshots still needed after sidebar/export checks. | Partial |
-| Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The live Apps Script project still needs the real project contact email set before public DOI testing. | Missing live config |
-| Public repo | Public GitHub repo exists, `origin` is configured, GitHub auth is valid, and local upload preflight now reaches only Marketplace draft placeholders. | Partial |
+| Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The confirmed project email is `josh@unit27research.com`; the live Apps Script property still needs to be set before public DOI testing. | Missing live config |
+| Public repo | Public GitHub repo exists, `origin` is configured, GitHub auth is valid, remote branch/pull-request refs pass the public-boundary scan, and `Verify`/`Pages` are green on `main`. | Passing upload gate |
 
 ## High-Risk Marketplace Items
 
@@ -59,7 +60,8 @@ The consolidated launch/submission handoff is
    project cannot be used for publishing.
 3. Confirm Cloud billing if required by the Google publishing flow.
 4. Use the post-Pages Apps Script version for the Marketplace SDK draft.
-5. Publish the generated `site/` output to stable public URLs.
+5. Keep `npm run upload:preflight` passing after each push so the public URLs,
+   GitHub Actions, and remote ref hygiene stay verified.
 
 ## Sprint 4 Scope Decision
 
@@ -87,13 +89,14 @@ remain human-assisted checks.
 The next sprint should finish release packaging:
 
 - Run a human-assisted sidebar/export smoke test against the no-Sheets manifest.
-- Keep the public repo and GitHub Actions checks green using
-  `docs/GITHUB_PUBLISH_CHECKLIST.md`.
-- Wire public URLs using `docs/PUBLIC_URL_WIRING.md`.
+- Keep the public repo, GitHub Actions checks, remote public-boundary scan, and
+  Pages URLs green with `npm run upload:preflight`.
 - Create the standard Google Cloud project, confirm billing, and cut a
   post-Pages Apps Script version after the public icon URL is live.
 - Capture Marketplace screenshots using `docs/SCREENSHOT_CAPTURE_PLAN.md`.
-- Fill confirmed Marketplace/OAuth support, developer identity, and post-Pages
-  Apps Script version fields until `npm run marketplace:drafts:check` passes.
+- Confirm trader/non-trader status in the Marketplace SDK. If trader status is
+  selected, collect the required mailing address.
+- Fill any remaining Marketplace/OAuth fields until
+  `npm run marketplace:drafts:check` passes.
 
 Do not submit to Marketplace until these packaging gates are closed.

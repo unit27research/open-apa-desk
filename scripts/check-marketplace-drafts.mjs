@@ -89,12 +89,14 @@ function checkPlaceholderFields() {
   for (const field of [
     'Developer name',
     'Developer website URL',
-    'Developer email',
-    'Trader/non-trader status'
+    'Developer email'
   ]) {
     if (listingDraft.includes(`- ${field}`)) {
       blockers.push(`Marketplace listing draft still needs ${field}.`);
     }
+  }
+  if (listingDraft.includes('TODO: confirmed trader status')) {
+    blockers.push('Marketplace listing draft still needs confirmed trader/non-trader status.');
   }
   if (launchPacket.includes('Support email: TODO confirmed project support email')) {
     blockers.push('Launch packet still needs confirmed project support email.');

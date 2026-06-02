@@ -1,10 +1,10 @@
 # OAuth Consent Draft
 
-Date: 2026-06-01
+Date: 2026-06-02
 
 Use this as the working draft for Google Cloud OAuth consent setup.
 
-Sources checked on 2026-06-01:
+Sources checked on 2026-06-02:
 
 - Configure OAuth:
   https://developers.google.com/workspace/marketplace/configure-oauth-consent-screen
@@ -32,7 +32,7 @@ Open APA Desk
 User support email:
 
 ```text
-TODO: confirmed project support email
+josh@unit27research.com
 ```
 
 App logo:
@@ -68,7 +68,7 @@ github.io
 Developer contact email:
 
 ```text
-TODO: confirmed project contact email
+josh@unit27research.com
 ```
 
 ## Audience

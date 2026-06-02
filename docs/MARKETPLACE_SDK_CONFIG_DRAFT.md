@@ -1,10 +1,10 @@
 # Marketplace SDK Config Draft
 
-Date: 2026-06-01
+Date: 2026-06-02
 
 Use this as the working field map for the Google Workspace Marketplace SDK.
 
-Sources checked on 2026-06-01:
+Sources checked on 2026-06-02:
 
 - Configure your app in the Google Workspace Marketplace SDK:
   https://developers.google.com/workspace/marketplace/enable-configure-sdk
@@ -90,7 +90,7 @@ smoke pass. Alpha files currently available:
 - `assets/screenshots/02-sidebar-paper-setup.jpg`
 - `assets/screenshots/03-references-output.jpg`
 
-Expected public URLs after GitHub Pages deploy:
+Verified public URLs:
 
 - Privacy policy URL:
   https://unit27research.github.io/open-apa-desk/PRIVACY.html
@@ -116,3 +116,11 @@ Expected public URLs after GitHub Pages deploy:
 Google documents that some visibility choices cannot be changed after saving the
 Marketplace SDK app configuration. Confirm the target owner/account and public
 visibility decision before saving the final configuration.
+
+## Trader Status Note
+
+The Marketplace SDK asks whether the developer is a trader or non-trader for
+EEA consumer disclosure. Open APA Desk is free and open-source, but the listing
+is planned under Unit27 Research. Confirm the account-owner/legal choice before
+selecting this field. If trader status is selected, Google requires a mailing
+address.

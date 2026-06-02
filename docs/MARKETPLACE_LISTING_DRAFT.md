@@ -1,6 +1,6 @@
 # Marketplace Listing Draft
 
-Date: 2026-06-01
+Date: 2026-06-02
 
 This is draft copy for the Google Workspace Marketplace listing. Do not submit
 until the readiness gates in `docs/MARKETPLACE_READINESS.md` are closed.
@@ -55,7 +55,7 @@ Free of charge
 
 ## Support Links
 
-These URLs should be verified after GitHub Pages is deployed:
+These public URLs are verified through `npm run upload:preflight`:
 
 - Privacy policy: https://unit27research.github.io/open-apa-desk/PRIVACY.html
 - Terms of service: https://unit27research.github.io/open-apa-desk/TERMS.html
@@ -64,13 +64,42 @@ These URLs should be verified after GitHub Pages is deployed:
 
 ## Developer Information
 
-Needed before submission:
+Developer name:
 
-- Developer name
-- Developer website URL
-- Developer email
-- Trader/non-trader status
-- Mailing address if trader status applies
+```text
+Unit27 Research
+```
+
+If the Marketplace SDK requires a personal legal name instead of an organization
+display name, use:
+
+```text
+Joshua Bloodworth
+```
+
+Developer website URL:
+
+```text
+https://unit27research.com
+```
+
+Developer email:
+
+```text
+josh@unit27research.com
+```
+
+Trader/non-trader status:
+
+```text
+TODO: confirmed trader status
+```
+
+Google's Marketplace SDK describes this as an EEA consumer-disclosure field.
+Publishing under Unit27 Research may be treated as acting for a business,
+profession, or organization even when Open APA Desk is free and open-source. Do
+not select non-trader without account-owner confirmation. If trader status is
+selected, Google requires a mailing address.
 
 ## OAuth Scope Justifications
 

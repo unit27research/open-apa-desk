@@ -142,8 +142,8 @@ OAuth consent:
 ```text
 App name: Open APA Desk
 Audience: External
-Support email: TODO confirmed project support email
-Developer contact email: TODO confirmed project contact email
+Support email: josh@unit27research.com
+Developer contact email: josh@unit27research.com
 Authorized domain: github.io
 ```
 

@@ -45,8 +45,8 @@ Date: 2026-05-31
 
 - Prepare Marketplace-compatible branding and consent copy.
   - V0.1 status: draft listing copy and readiness matrix added; custom branding
-    assets generated in Sprint 5. Public asset URLs still needed after GitHub or
-    site upload.
+    assets generated in Sprint 5. Public Pages asset URLs are live and checked
+    by `npm run upload:preflight`.
 - Confirm real `CROSSREF_MAILTO` is set in the live Apps Script project before
   public DOI testing.
   - V0.1 status: runtime now blocks DOI lookup if the script property is

@@ -1,15 +1,16 @@
 # Public URL Wiring
 
-Date: 2026-06-01
+Date: 2026-06-02
 
 Open APA Desk needs stable public URLs before Marketplace submission.
 
-## Preferred Path
+## Current Status
 
-After GitHub authentication is fixed, publish the repository and use the
-included GitHub Pages workflow for stable project URLs.
+GitHub authentication is working for the publishing account, the public
+repository is live, and the included GitHub Pages workflow is publishing the
+static public site from `site/`.
 
-Recommended public URLs:
+Verified public URLs:
 
 ```text
 Project home: https://unit27research.github.io/open-apa-desk/
@@ -27,10 +28,12 @@ npm run site:build
 ```
 
 The GitHub Pages workflow is `.github/workflows/pages.yml`. It publishes the
-`site/` directory after `main` is pushed.
+`site/` directory after `main` is pushed. The upload preflight now checks the
+home, privacy, terms, and icon URLs directly:
 
-If GitHub Pages is not enabled, use raw GitHub URLs only as a temporary alpha
-fallback.
+```bash
+npm run upload:preflight
+```
 
 ## Manifest Status
 
@@ -46,10 +49,11 @@ fallback.
 }
 ```
 
-After GitHub Pages is live, confirm the URL resolves, then run:
+After any manifest or public-site change, run:
 
 ```bash
 npm run verify
+npm run upload:preflight
 ```
 
 Push the verified build to the alpha Apps Script project and create a new Apps
@@ -68,11 +72,8 @@ change.
 - OAuth consent screen
 - Marketplace SDK app configuration
 
-## Current Blocker
+## Remaining Marketplace Blocker
 
-GitHub CLI auth is invalid for `unit27research`. Fix with:
-
-```bash
-gh auth login -h github.com
-gh auth status
-```
+The public URL lane is no longer blocked. Marketplace submission still needs
+confirmed trader/non-trader status, standard Google Cloud project setup, and
+final human-assisted sidebar/export evidence.
