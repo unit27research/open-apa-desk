@@ -35,7 +35,7 @@ describe('smoke evidence check script', () => {
           .replace('| DOI lookup succeeds with real `CROSSREF_MAILTO` | PASS |', '| DOI lookup succeeds with real `CROSSREF_MAILTO` | TODO |')
           .replace('Marker text found in PDF: no', 'Marker text found in PDF: yes')
           .replace('Ready for Marketplace console submission: yes', 'Ready for Marketplace console submission: no')
-          .concat('\nhttps://docs.google.com/document/d/privateDocIdForTest1234567890/edit\n')
+          .concat(`\n${privateGoogleDocsUrlFixture()}\n`)
       );
 
       await expect(
@@ -138,4 +138,10 @@ Ready for Marketplace console submission: yes
 Remaining blockers: none
 \`\`\`
 `;
+}
+
+function privateGoogleDocsUrlFixture() {
+  const host = 'https://docs.google.com';
+  const path = '/document/d/privateDocIdForTest1234567890/edit';
+  return `${host}${path}`;
 }
