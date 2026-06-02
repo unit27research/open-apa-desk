@@ -307,6 +307,8 @@ async function checkWorkflows() {
   const verifyWorkflow = await readFile('.github/workflows/verify.yml', 'utf8');
   for (const required of [
     'FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true',
+    'actions/checkout@v6',
+    'actions/setup-node@v6',
     'node-version: 24',
     'npm ci',
     'npm run verify'
@@ -319,11 +321,13 @@ async function checkWorkflows() {
   const pagesWorkflow = await readFile('.github/workflows/pages.yml', 'utf8');
   for (const required of [
     'FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true',
+    'actions/checkout@v6',
+    'actions/setup-node@v6',
     'node-version: 24',
     'npm ci',
     'npm run site:build',
-    'actions/upload-pages-artifact',
-    'actions/deploy-pages'
+    'actions/upload-pages-artifact@v5',
+    'actions/deploy-pages@v5'
   ]) {
     if (!pagesWorkflow.includes(required)) {
       failures.push(`Pages workflow missing: ${required}`);
