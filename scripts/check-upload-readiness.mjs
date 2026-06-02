@@ -85,7 +85,7 @@ const checks = [
     name: 'Marketplace submission drafts are complete',
     command: ['npm', 'run', 'marketplace:drafts:check'],
     failureHint:
-      'Fill confirmed support/developer contacts and post-Pages Apps Script version fields before Marketplace submission.'
+      'Fill the remaining confirmed Marketplace draft fields before Marketplace submission.'
   },
   {
     id: 'github-auth',
