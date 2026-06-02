@@ -53,6 +53,10 @@ review after the live add-on is refreshed.
 Capture these after no-Sheets OAuth and human-assisted sidebar/export smoke
 testing succeeds.
 
+Record private smoke/export evidence with
+[FINAL_SMOKE_EVIDENCE_TEMPLATE.md](FINAL_SMOKE_EVIDENCE_TEMPLATE.md). Commit
+only sanitized final Marketplace screenshots.
+
 1. Google Docs with `Open APA Desk` menu open
    - Shows the add-on is a Docs Editor Add-on.
    - Include `Prepare Current Copy` in the menu.

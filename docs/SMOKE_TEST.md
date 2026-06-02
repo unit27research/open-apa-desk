@@ -16,6 +16,11 @@ template-bound Google Doc for copied-template share testing. Keep the actual
 Google Doc URLs, file IDs, Apps Script URLs, script IDs, and tester account
 details out of the public repository.
 
+For final Marketplace evidence, copy
+[FINAL_SMOKE_EVIDENCE_TEMPLATE.md](FINAL_SMOKE_EVIDENCE_TEMPLATE.md) into an
+ignored private path such as `private/smoke-evidence/YYYY-MM-DD-final-smoke.md`.
+Keep PDF/DOCX exports under `private/` as well.
+
 ## Command Sequence
 
 From the project root:

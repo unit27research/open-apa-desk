@@ -1,6 +1,6 @@
 import { execFile as execFileCallback } from 'node:child_process';
 import { access, readFile, readdir } from 'node:fs/promises';
-import { join } from 'node:path';
+import { extname, join } from 'node:path';
 import { promisify } from 'node:util';
 
 const execFile = promisify(execFileCallback);
@@ -92,6 +92,7 @@ const REQUIRED_REPO_FILES = [
   'docs/MARKETPLACE_SDK_CONFIG_DRAFT.md',
   'docs/OAUTH_CONSENT_DRAFT.md',
   'docs/GOOGLE_CONSOLE_RUNBOOK.md',
+  'docs/FINAL_SMOKE_EVIDENCE_TEMPLATE.md',
   'docs/PUBLIC_URL_WIRING.md',
   'docs/SCREENSHOT_CAPTURE_PLAN.md'
 ];
@@ -112,12 +113,16 @@ const FORBIDDEN_PUBLIC_PATH_PREFIXES = [
   '.env',
   'dist/',
   'node_modules/',
+  'private/',
+  'smoke-evidence/',
   'release/',
   'docs/LIVE_SMOKE_STATUS_',
   'docs/SPRINT_',
   'docs/FRESH_CHECKOUT_STATUS_',
   'docs/APPS_SCRIPT_RELEASE_STATUS_'
 ];
+
+const FORBIDDEN_PUBLIC_FILE_EXTENSIONS = new Set(['.docx', '.pdf']);
 
 const PUBLIC_TEXT_FILE_EXTENSIONS = new Set([
   '',
@@ -286,7 +291,11 @@ async function checkRequiredFiles() {
     'dist/',
     '.clasp.json',
     'coverage/',
-    'release/'
+    'release/',
+    'private/',
+    'smoke-evidence/',
+    '*.pdf',
+    '*.docx'
   ]) {
     if (!gitignore.includes(ignoredPath)) {
       failures.push(`.gitignore must ignore ${ignoredPath}`);
@@ -345,6 +354,9 @@ async function checkPublicLeakBoundary() {
       )
     ) {
       failures.push(`Internal or local-only file is tracked: ${file}`);
+    }
+    if (FORBIDDEN_PUBLIC_FILE_EXTENSIONS.has(extname(file).toLowerCase())) {
+      failures.push(`Private export artifact must not be tracked: ${file}`);
     }
   }
 

@@ -42,6 +42,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 ## Alpha Template Gate
 
 - [ ] Current build is pushed to the alpha template Apps Script project.
+- [ ] Final smoke evidence template is copied into ignored `private/` evidence
+  storage before live testing.
 - [ ] Template menu shows `Prepare Current Copy`.
 - [ ] Sidebar opens after reduced-scope OAuth authorization.
 - [ ] `CROSSREF_MAILTO` is set to a real project contact email.
@@ -64,6 +66,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [x] Post-Pages Apps Script version is created for the alpha template.
 - [ ] Marketplace SDK app configuration is complete.
 - [ ] Final store screenshots are captured or selected.
+- [ ] Final screenshots are sanitized and contain no private Google Doc URLs,
+  account details, or private student data.
 - [ ] Final store screenshots are `1280 x 800`, `640 x 400`, or
   `2560 x 1600`.
 - [ ] `npm run marketplace:assets:final` passes after final screenshots are

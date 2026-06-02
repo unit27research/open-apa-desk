@@ -36,12 +36,16 @@ const FORBIDDEN_REMOTE_PATH_PREFIXES = [
   '.env',
   'dist/',
   'node_modules/',
+  'private/',
+  'smoke-evidence/',
   'release/',
   'docs/LIVE_SMOKE_STATUS_',
   'docs/SPRINT_',
   'docs/FRESH_CHECKOUT_STATUS_',
   'docs/APPS_SCRIPT_RELEASE_STATUS_'
 ];
+
+const FORBIDDEN_REMOTE_FILE_EXTENSIONS = ['.docx', '.pdf'];
 
 const FORBIDDEN_REMOTE_TEXT_PATTERN =
   'josh@gigcityai\\.ai|/Users/|Documents/Codex|Melissa Bloodworth|https://docs\\.google\\.com/document/d/[A-Za-z0-9_-]{20,}|https://drive\\.google\\.com/open\\?id=[A-Za-z0-9_-]{20,}|https://script\\.google\\.com/d/[A-Za-z0-9_-]{20,}';
@@ -365,12 +369,24 @@ async function findForbiddenPaths(ref) {
     .split('\n')
     .map((line) => line.trim())
     .filter(Boolean)
-    .filter((file) =>
-      FORBIDDEN_REMOTE_PATH_PREFIXES.some(
-        (prefix) => file === prefix || file.startsWith(prefix)
-      )
-    )
-    .map((file) => `internal/local-only file tracked: ${file}`);
+    .flatMap((file) => {
+      const findings = [];
+      if (
+        FORBIDDEN_REMOTE_PATH_PREFIXES.some(
+          (prefix) => file === prefix || file.startsWith(prefix)
+        )
+      ) {
+        findings.push(`internal/local-only file tracked: ${file}`);
+      }
+      if (
+        FORBIDDEN_REMOTE_FILE_EXTENSIONS.some((extension) =>
+          file.toLowerCase().endsWith(extension)
+        )
+      ) {
+        findings.push(`private export artifact tracked: ${file}`);
+      }
+      return findings;
+    });
 }
 
 async function findForbiddenText(ref) {
