@@ -53,6 +53,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 
 - [ ] Launch submission packet is current:
   `docs/LAUNCH_SUBMISSION_PACKET.md`.
+- [ ] Google console runbook is current:
+  `docs/GOOGLE_CONSOLE_RUNBOOK.md`.
 - [ ] Public `PRIVACY.md` URL is available.
 - [ ] Public `TERMS.md` URL is available.
 - [ ] Public `open-apa-desk-icon-128.png` URL is available.

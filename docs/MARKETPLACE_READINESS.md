@@ -27,6 +27,8 @@ sidebar/export checks.
 
 The consolidated launch/submission handoff is
 [LAUNCH_SUBMISSION_PACKET.md](LAUNCH_SUBMISSION_PACKET.md).
+The Google console execution path is
+[GOOGLE_CONSOLE_RUNBOOK.md](GOOGLE_CONSOLE_RUNBOOK.md).
 
 ## Upload Requirements
 
@@ -92,8 +94,9 @@ The next sprint should finish release packaging:
 - Run a human-assisted sidebar/export smoke test against the no-Sheets manifest.
 - Keep the public repo, GitHub Actions checks, remote public-boundary scan, and
   Pages URLs green with `npm run upload:preflight`.
-- Create the standard Google Cloud project, confirm billing, and cut a
-  post-Pages Apps Script version after the public icon URL is live.
+- Follow `docs/GOOGLE_CONSOLE_RUNBOOK.md` to create the standard Google Cloud
+  project, confirm billing if required, configure OAuth, configure the
+  Marketplace SDK, and cut a post-console Apps Script version.
 - Capture Marketplace screenshots using `docs/SCREENSHOT_CAPTURE_PLAN.md`.
 - Revisit trader/non-trader status only if Google review questions the
   non-trader selection for a Unit27-branded free/open-source project.

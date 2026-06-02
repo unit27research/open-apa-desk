@@ -91,6 +91,7 @@ const REQUIRED_REPO_FILES = [
   'docs/MARKETPLACE_LISTING_DRAFT.md',
   'docs/MARKETPLACE_SDK_CONFIG_DRAFT.md',
   'docs/OAUTH_CONSENT_DRAFT.md',
+  'docs/GOOGLE_CONSOLE_RUNBOOK.md',
   'docs/PUBLIC_URL_WIRING.md',
   'docs/SCREENSHOT_CAPTURE_PLAN.md'
 ];
@@ -425,6 +426,9 @@ async function checkLaunchPacket() {
   const readme = await readFile('README.md', 'utf8');
   if (!readme.includes('docs/LAUNCH_SUBMISSION_PACKET.md')) {
     failures.push('README.md must link to docs/LAUNCH_SUBMISSION_PACKET.md.');
+  }
+  if (!readme.includes('docs/GOOGLE_CONSOLE_RUNBOOK.md')) {
+    failures.push('README.md must link to docs/GOOGLE_CONSOLE_RUNBOOK.md.');
   }
 
   const launchPacket = await readFile('docs/LAUNCH_SUBMISSION_PACKET.md', 'utf8');

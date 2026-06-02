@@ -117,6 +117,8 @@ Marketplace preparation is tracked in
 [docs/MARKETPLACE_READINESS.md](docs/MARKETPLACE_READINESS.md), with draft
 listing copy in
 [docs/MARKETPLACE_LISTING_DRAFT.md](docs/MARKETPLACE_LISTING_DRAFT.md).
+Google Cloud, OAuth consent, and Marketplace SDK console steps are tracked in
+[docs/GOOGLE_CONSOLE_RUNBOOK.md](docs/GOOGLE_CONSOLE_RUNBOOK.md).
 Branding assets are tracked in [docs/BRANDING_ASSETS.md](docs/BRANDING_ASSETS.md).
 GitHub publication is tracked in
 [docs/GITHUB_PUBLISH_CHECKLIST.md](docs/GITHUB_PUBLISH_CHECKLIST.md).
@@ -129,9 +131,9 @@ The public Pages site is generated into `site/` with `npm run site:build`.
 
 The former full Google Drive scope risk has been reduced by replacing automatic
 Doc duplication with current-copy submission prep. Before public submission, the
-project still needs public privacy/terms URLs, public branding asset URLs, a
-standard Google Cloud project, OAuth consent configuration, screenshots, and an
-Apps Script version for the Marketplace SDK.
+project still needs a standard Google Cloud project, OAuth consent
+configuration, Marketplace SDK console entry, final sidebar/export smoke
+evidence, and final Marketplace screenshots.
 
 ## Apps Script Deployment
 

@@ -5,6 +5,9 @@ Date: 2026-06-02
 Use this file as the single handoff packet for publishing Open APA Desk to
 GitHub and preparing the first Google Workspace Marketplace submission.
 
+Use [GOOGLE_CONSOLE_RUNBOOK.md](GOOGLE_CONSOLE_RUNBOOK.md) for the step-by-step
+Google Cloud, OAuth consent, Marketplace SDK, and final smoke-test sequence.
+
 ## Official Sources Refreshed
 
 Checked on 2026-06-02:
