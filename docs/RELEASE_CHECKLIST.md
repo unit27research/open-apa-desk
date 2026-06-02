@@ -72,6 +72,8 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] `src/appsscript.json` `logoUrl` uses the public Open APA Desk icon URL.
 - [ ] Standard Google Cloud project is linked to the Apps Script project.
 - [ ] OAuth consent screen is configured.
+- [ ] OAuth consent audience/user type is `External`, and publishing status is
+  not `Testing` if Google requires production status for review.
 - [x] Post-Pages Apps Script version is created for the alpha template.
 - [ ] Marketplace SDK app configuration is complete.
 - [ ] Final store screenshots are captured or selected.

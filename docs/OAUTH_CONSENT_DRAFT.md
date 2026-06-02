@@ -119,3 +119,7 @@ If requested, prepare:
 - explanation of every scope
 - confirmation that Open APA Desk has no backend server, account system,
   analytics service, AI calls, or hosted database
+
+Before Marketplace review, confirm the OAuth audience/user type is `External`
+and the publishing status is not `Testing` if Google requires production status
+for review.

@@ -20,7 +20,8 @@ const requiredClaims = [
   'no backend server',
   'no Open APA Desk account',
   'no AI calls',
-  'DOI lookup sends'
+  'DOI lookup sends',
+  'publishing status is not `Testing`'
 ];
 
 const blockers = [];
