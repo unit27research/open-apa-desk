@@ -114,8 +114,9 @@ Apps Script:
 
 ```text
 Template script ID: keep in local/operator notes only
-Current alpha version: keep in local/operator notes only
-Submission version: TODO after GitHub Pages URLs are live and the manifest is pushed
+Current alpha version: 1
+Submission version: 1
+Version description: 0.1.0-alpha.0 post-pages public-url alpha
 ```
 
 Marketplace SDK app configuration:
@@ -124,7 +125,7 @@ Marketplace SDK app configuration:
 App visibility: Public
 Install setting: Individual + Admin Install
 Integration: Google Docs Editor Add-on
-Apps Script version: TODO post-Pages version
+Apps Script version: 1
 ```
 
 Visibility warning: Google documents the visibility choice as effectively

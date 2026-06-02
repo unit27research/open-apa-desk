@@ -33,7 +33,7 @@ The consolidated launch/submission handoff is
 | --- | --- | --- |
 | Functional add-on | V0.1 build passes local verification and has live smoke coverage in a bound Doc. | Partial |
 | Editor add-on menu | `onOpen()` and `onInstall()` populate an `Open APA Desk` menu. Sprint 2 confirmed the menu appears in the template Doc. | Passing for alpha |
-| Apps Script version | An alpha version exists in the operator environment. A post-Pages version is needed after the public `logoUrl` manifest change is pushed. | Passing for alpha |
+| Apps Script version | Post-Pages Apps Script version `1` exists in the operator environment after the public `logoUrl` manifest change was pushed. | Passing for alpha |
 | Standard Google Cloud project | No standard Cloud project is linked yet. Required setup is documented in the SDK and OAuth drafts. | Missing |
 | Cloud billing | Google lists billing as an OAuth/publishing prerequisite for the Cloud project. Billing has not been confirmed. | Missing |
 | Marketplace SDK config | Draft field map exists in `docs/MARKETPLACE_SDK_CONFIG_DRAFT.md`. | Draft |
@@ -53,8 +53,8 @@ The consolidated launch/submission handoff is
 
 ## High-Risk Marketplace Items
 
-1. Confirm the GitHub Pages icon URL resolves, push the manifest, and create a
-   post-Pages Apps Script version for Marketplace SDK use.
+1. Confirm the standard Google Cloud project and Marketplace SDK owner/account
+   before entering the post-Pages Apps Script version in the SDK.
 2. Create and link a standard Google Cloud project. Apps Script's default Cloud
    project cannot be used for publishing.
 3. Confirm Cloud billing if required by the Google publishing flow.
