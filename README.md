@@ -11,7 +11,7 @@ V0 focuses on a practical student workflow:
 - look up journal article metadata by DOI through Crossref
 - edit, delete, and de-duplicate saved references
 - insert readable parenthetical or narrative citations, including optional
-  page/paragraph locators for direct quotes
+  page/paragraph locators for single-source direct quotes
 - insert grouped parenthetical citations from multiple selected references
 - rebuild a generated References section
 - prepare a copied document for submission by removing hidden tool markers

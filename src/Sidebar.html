@@ -298,6 +298,10 @@
             setStatus('Narrative citation supports one source at a time.');
             return;
           }
+          if (value('citation-locator')) {
+            setStatus('Page and paragraph locators are only supported for one source at a time.');
+            return;
+          }
           setBusy(true, 'Inserting grouped citation.');
           google.script.run
             .withSuccessHandler(loadState)

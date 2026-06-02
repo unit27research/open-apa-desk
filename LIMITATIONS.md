@@ -7,9 +7,10 @@ Open APA Desk V0 is intentionally narrow.
 - DOI lookup is limited to Crossref journal metadata.
 - URL lookup and webpage scraping are not included.
 - Reference formatting covers common student-paper cases, not every APA edge case.
+- Book chapter references do not yet capture edited-book contributor metadata.
 - Parenthetical and narrative citations support common author-date cases,
   no-author title fallback, missing dates as `n.d.`, and optional
-  page/paragraph locators.
+  page/paragraph locators for one cited source at a time.
 - Multiple selected sources can be inserted as one grouped parenthetical
   citation sorted like the References list.
 - Citation insertion does not yet support same-author same-year `a`/`b`

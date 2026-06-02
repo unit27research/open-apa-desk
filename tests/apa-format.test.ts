@@ -46,6 +46,46 @@ describe('APA 7 formatting', () => {
     );
   });
 
+  it('formats the remaining v0 source types for common student references', () => {
+    const book: ApaReference = {
+      id: 'book',
+      sourceType: 'book',
+      authors: [{ family: 'Garcia', given: 'Lena' }],
+      year: '2021',
+      title: 'Writing in public',
+      publisher: 'River Press'
+    };
+    const chapter: ApaReference = {
+      id: 'chapter',
+      sourceType: 'bookChapter',
+      authors: [{ family: 'Lee', given: 'Robin' }],
+      year: '2022',
+      title: 'Designing classroom routines',
+      containerTitle: 'Teaching with structure',
+      pages: '12-24',
+      publisher: 'Example Press'
+    };
+    const report: ApaReference = {
+      id: 'report',
+      sourceType: 'report',
+      authors: [{ family: 'Civic Learning Group' }],
+      year: '2023',
+      title: 'Student support systems',
+      publisher: 'Urban Education Office',
+      url: 'https://example.edu/student-support'
+    };
+
+    expect(formatReference(book)).toBe(
+      'Garcia, L. (2021). Writing in public. River Press.'
+    );
+    expect(formatReference(chapter)).toBe(
+      'Lee, R. (2022). Designing classroom routines. In Teaching with structure (pp. 12-24). Example Press.'
+    );
+    expect(formatReference(report)).toBe(
+      'Civic Learning Group. (2023). Student support systems. Urban Education Office. https://example.edu/student-support'
+    );
+  });
+
   it('formats parenthetical citations for one, two, and three-plus authors', () => {
     const one: ApaReference = {
       id: 'one',
@@ -130,6 +170,34 @@ describe('APA 7 formatting', () => {
     );
   });
 
+  it('formats narrative citations for three-plus authors and no-author titles', () => {
+    const three: ApaReference = {
+      id: 'three',
+      sourceType: 'report',
+      authors: [
+        { family: 'Williams', given: 'Mara' },
+        { family: 'Chen', given: 'Iris' },
+        { family: 'Brown', given: 'Theo' }
+      ],
+      year: '2019',
+      title: 'Student support systems',
+      publisher: 'Civic Learning Group'
+    };
+    const noAuthorArticle: ApaReference = {
+      id: 'no-author-article',
+      sourceType: 'journalArticle',
+      authors: [],
+      year: '2001',
+      title: 'using citations',
+      containerTitle: 'Journal of Student Writing'
+    };
+
+    expect(formatNarrativeCitation(three)).toBe('Williams et al. (2019)');
+    expect(formatNarrativeCitation(noAuthorArticle)).toBe(
+      '"Using Citations" (2001)'
+    );
+  });
+
   it('formats grouped parenthetical citations sorted like references', () => {
     const references: ApaReference[] = [
       {
@@ -151,6 +219,34 @@ describe('APA 7 formatting', () => {
     ];
 
     expect(formatCitationGroup(references)).toBe('(Adams, 2023; Zimmer, 2020)');
+  });
+
+  it('formats grouped parenthetical citations with per-source locators', () => {
+    const references: ApaReference[] = [
+      {
+        id: 'zimmer',
+        sourceType: 'book',
+        authors: [{ family: 'Zimmer', given: 'Noah' }],
+        year: '2020',
+        title: 'Late alphabet',
+        publisher: 'Example Press'
+      },
+      {
+        id: 'adams',
+        sourceType: 'book',
+        authors: [{ family: 'Adams', given: 'Robin' }],
+        year: '2023',
+        title: 'Early alphabet',
+        publisher: 'Example Press'
+      }
+    ];
+
+    expect(
+      formatCitationGroup(references, {
+        adams: '23',
+        zimmer: 'section 4'
+      })
+    ).toBe('(Adams, 2023, p. 23; Zimmer, 2020, section 4)');
   });
 
   it('formats no-author parenthetical citations from titles', () => {
