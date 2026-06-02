@@ -52,7 +52,7 @@ The Google console execution path is
 | Trader status | Non-trader is selected for the initial draft because Open APA Desk is free, open-source, and not monetized. If Google treats the Unit27 Research identity as business/professional activity, revisit this choice. | Draft field filled |
 | Branding assets | Project-owned PNG assets exist under `assets/branding/` and `site/assets/branding/`. Source manifest uses the public Pages icon URL, and the public icon URL resolves. | Passing public URL gate |
 | Screenshots | Alpha screenshot assets exist under `assets/screenshots/` and are copied into `site/assets/screenshots/`. Final human-assisted Marketplace screenshots still needed after sidebar/export checks. | Partial |
-| Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The confirmed project email is `josh@unit27research.com`; the live Apps Script property still needs to be set before public DOI testing. | Missing live config |
+| Crossref mailto | Runtime now blocks DOI lookup if `CROSSREF_MAILTO` is missing, malformed, or still an example email. The live smoke-test script has the project email configured, and `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for Crossref. The actual sidebar DOI lookup call still needs the human-assisted form-entry smoke pass. | Configured for smoke; lookup pending |
 | Public repo | Public GitHub repo exists, `origin` is configured, GitHub auth is valid, remote branch/pull-request refs pass the public-boundary scan, and `Verify`/`Pages` are green on `main`. | Passing upload gate |
 
 ## High-Risk Marketplace Items
@@ -91,7 +91,8 @@ remain human-assisted checks.
 
 The next sprint should finish release packaging:
 
-- Run a human-assisted sidebar/export smoke test against the no-Sheets manifest.
+- Run the remaining human-assisted sidebar/export smoke test against the
+  no-Sheets manifest, starting with DOI field entry and `Lookup DOI`.
 - Keep the public repo, GitHub Actions checks, remote public-boundary scan, and
   Pages URLs green with `npm run upload:preflight`.
 - Follow `docs/GOOGLE_CONSOLE_RUNBOOK.md` to create the standard Google Cloud

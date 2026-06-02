@@ -96,6 +96,9 @@ Open the test Google Doc and reload it after pushing.
 - Apps Script scopes may need adjustment after first authorization.
 - Chrome automation can see the sidebar visually but may not be able to read
   add-on iframe contents through DOM locators.
+- Chrome automation may also be unable to type or paste into Google's
+  sandboxed add-on sidebar iframe; DOI and reference form-entry checks can
+  require manual entry even when the sidebar is visible.
 - Google Docs canvas text and export URLs may not be machine-readable through
   browser automation, so final citation body text and PDF/DOCX checks can
   require human visual inspection.

@@ -38,8 +38,9 @@ remove hidden Open APA Desk markers before submission.
   manual.
 - The current early install path is still a bound/template Google Doc, not a
   published Google Workspace Marketplace add-on.
-- A confirmed project `CROSSREF_MAILTO` script property is required before DOI
-  lookup is used by public testers.
+- The current smoke-test script has a confirmed project `CROSSREF_MAILTO`
+  script property. Future template or Marketplace deployments must confirm the
+  same setting before DOI lookup is used by public testers.
 - PDF/DOCX export after `Prepare Current Copy` still needs a human/manual check
   in the current no-Drive-scope path.
 - Reusable cross-document reference library sync is deferred from Marketplace

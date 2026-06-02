@@ -226,11 +226,13 @@ Functional evidence:
 - No-Sheets copied-template smoke pass confirmed copied Doc menu, sidebar load
   after authorization/reopen, menu-driven References rebuild, and
   `Prepare Current Copy`.
+- Live smoke-test script has `CROSSREF_MAILTO` configured and
+  `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for
+  Crossref.
 
 Human/manual evidence still needed:
 
 - full copied-template sidebar form entry
-- `Check DOI Setup` confirms DOI lookup is configured
 - DOI lookup with real `CROSSREF_MAILTO`
 - manual reference entry
 - parenthetical and narrative citation insertion visual check

@@ -50,7 +50,10 @@ Date: 2026-05-31
 - Confirm real `CROSSREF_MAILTO` is set in the live Apps Script project before
   public DOI testing.
   - V0.1 status: runtime now blocks DOI lookup if the script property is
-    missing, malformed, or still an example email.
+    missing, malformed, or still an example email. The current smoke-test
+    script property is configured and passes `Check DOI Setup`; the actual
+    sidebar DOI lookup call still needs the human-assisted form-entry smoke
+    pass.
 - Add screenshots/GIFs for install and first-use docs.
 - Add contributor setup notes.
   - V0.1 status: `CONTRIBUTING.md` added.
