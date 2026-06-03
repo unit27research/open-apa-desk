@@ -15,6 +15,7 @@ describe('Apps Script bundle check script', () => {
           'function onOpen(e) {}',
           'function showOpenApaDeskSidebar() {}',
           'function apiLookupDoi(doi) {}',
+          'function apiCreateApaStarterDocument() {}',
           'function apiPrepareCurrentCopyForSubmission() {}'
         ].join('\n')
       });
@@ -41,6 +42,7 @@ describe('Apps Script bundle check script', () => {
           'function onOpen(e) {}',
           'function showOpenApaDeskSidebar() {}',
           'function apiLookupDoi(doi) {}',
+          'function apiCreateApaStarterDocument() {}',
           'function apiPrepareCurrentCopyForSubmission() {}',
           'DriveApp.getFileById("abc");',
           privateGoogleDocsUrlFixture()
@@ -62,6 +64,66 @@ describe('Apps Script bundle check script', () => {
       await rm(root, { force: true, recursive: true });
     }
   });
+
+  it('requires the APA starter template creation wrapper', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'open-apa-bundle-check-'));
+    try {
+      const { distDir, manifestFile } = await writeBundleFixture(root, {
+        code: [
+          'function onOpen(e) {}',
+          'function showOpenApaDeskSidebar() {}',
+          'function apiLookupDoi(doi) {}',
+          'function apiPrepareCurrentCopyForSubmission() {}'
+        ].join('\n')
+      });
+
+      await expect(
+        execFile('node', [
+          'scripts/check-apps-script-bundle.mjs',
+          '--dist-dir',
+          distDir,
+          '--source-manifest',
+          manifestFile
+        ])
+      ).rejects.toMatchObject({
+        stderr: expect.stringContaining(
+          'dist/Code.js missing required wrapper: function apiCreateApaStarterDocument'
+        )
+      });
+    } finally {
+      await rm(root, { force: true, recursive: true });
+    }
+  });
+
+  it('rejects optional page-number-helper wording in the Apps Script bundle', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'open-apa-bundle-check-'));
+    try {
+      const { distDir, manifestFile } = await writeBundleFixture(root, {
+        code: [
+          'function onOpen(e) {}',
+          'function showOpenApaDeskSidebar() {}',
+          'function apiLookupDoi(doi) {}',
+          'function apiCreateApaStarterDocument() {}',
+          'function apiPrepareCurrentCopyForSubmission() {}',
+          'const copy = "Open APA Desk cannot safely insert dynamic page-number fields yet.";'
+        ].join('\n')
+      });
+
+      await expect(
+        execFile('node', [
+          'scripts/check-apps-script-bundle.mjs',
+          '--dist-dir',
+          distDir,
+          '--source-manifest',
+          manifestFile
+        ])
+      ).rejects.toMatchObject({
+        stderr: expect.stringContaining('optional page-number helper')
+      });
+    } finally {
+      await rm(root, { force: true, recursive: true });
+    }
+  });
 });
 
 async function writeBundleFixture(root: string, options: { code: string }) {
@@ -74,6 +136,7 @@ async function writeBundleFixture(root: string, options: { code: string }) {
       exceptionLogging: 'STACKDRIVER',
       runtimeVersion: 'V8',
       oauthScopes: [
+        'https://www.googleapis.com/auth/drive.file',
         'https://www.googleapis.com/auth/documents.currentonly',
         'https://www.googleapis.com/auth/script.container.ui',
         'https://www.googleapis.com/auth/script.external_request',

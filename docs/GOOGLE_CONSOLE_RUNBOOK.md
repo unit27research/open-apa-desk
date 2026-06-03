@@ -33,7 +33,7 @@ Do not enter final Google console fields unless this passes.
 Before final submission, also complete:
 
 - final no-Sheets sidebar/export smoke pass
-- DOI lookup with live `CROSSREF_MAILTO`
+- DOI lookup with the project Crossref mailto
 - PDF and DOCX export check with no `[[OPEN_APA_DESK` marker text
 - final Marketplace screenshots
 
@@ -89,6 +89,7 @@ Scopes must match `src/appsscript.json`, the OAuth consent screen, and the
 Marketplace SDK:
 
 ```text
+https://www.googleapis.com/auth/drive.file
 https://www.googleapis.com/auth/documents.currentonly
 https://www.googleapis.com/auth/script.container.ui
 https://www.googleapis.com/auth/script.external_request
@@ -112,15 +113,17 @@ npm run verify
 npm run clasp:push
 ```
 
-In Apps Script project settings, add or confirm:
+In Apps Script project settings, optionally add or confirm the override:
 
 ```text
 CROSSREF_MAILTO=josh@unit27research.com
 ```
 
-After reloading the Google Doc, use `Open APA Desk > Check DOI Setup` or the
-sidebar `Check DOI Setup` button to verify that DOI lookup is configured. The
-check does not display the configured email address.
+The build also includes the public Unit27 Research project contact fallback for
+copied-template alpha installs where script properties are not preserved. After
+reloading the Google Doc, use `Open APA Desk > Check DOI Setup` or the sidebar
+`Check DOI Setup` button to verify that DOI lookup is configured. The check does
+not display the email address.
 
 Optionally run the local Crossref network smoke check from the repository root:
 
@@ -132,7 +135,7 @@ This verifies Crossref connectivity and metadata shape for a public fixture
 DOI. It does not replace the final live sidebar DOI lookup check in Google Docs.
 
 Create a new Apps Script version after the public icon URL, manifest scopes,
-and script property are confirmed. Record the version number in local operator
+and Crossref mailto behavior are confirmed. Record the version number in local operator
 notes and update public docs only if the version number is safe to publish.
 
 ## 5. Configure Marketplace SDK
@@ -209,7 +212,7 @@ an ignored private path before recording live evidence.
 Record local/private evidence for:
 
 - sidebar form entry
-- DOI lookup with real `CROSSREF_MAILTO`
+- DOI lookup with the project Crossref mailto
 - manual reference entry
 - parenthetical citation insertion
 - narrative citation insertion

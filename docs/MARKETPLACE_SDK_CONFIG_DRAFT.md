@@ -73,6 +73,7 @@ Version description:
 Add exactly the same scopes used in `src/appsscript.json`:
 
 ```text
+https://www.googleapis.com/auth/drive.file
 https://www.googleapis.com/auth/documents.currentonly
 https://www.googleapis.com/auth/script.container.ui
 https://www.googleapis.com/auth/script.external_request

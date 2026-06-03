@@ -90,6 +90,8 @@
     <h1>Open APA Desk</h1>
     <p>APA 7 paper setup, references, DOI lookup, and citation insertion for Google Docs.</p>
 
+    <button type="button" onclick="createApaStarterDocument()">Create APA Starter Doc</button>
+
     <h2>Paper</h2>
     <label>Title<input id="paper-title"></label>
     <label>Author<input id="paper-author"></label>
@@ -159,7 +161,7 @@
     <button type="button" class="secondary" onclick="prepareCurrentCopy()">Prepare Current Copy</button>
 
     <h2>Page Numbers</h2>
-    <button type="button" class="secondary" onclick="showPageNumberHelp()">Show Page Number Step</button>
+    <button type="button" class="secondary" onclick="showPageNumberHelp()">Show Page Number Requirement</button>
 
     <div class="status" id="status" role="status" aria-live="polite">Loading.</div>
 
@@ -169,7 +171,20 @@
       let busy = false;
 
       function setStatus(message) {
-        document.getElementById('status').textContent = message;
+        const status = document.getElementById('status');
+        status.textContent = message;
+      }
+
+      function setStatusLink(message, url, label) {
+        const status = document.getElementById('status');
+        status.textContent = '';
+        status.appendChild(document.createTextNode(`${message} `));
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = label;
+        status.appendChild(link);
       }
 
       function setBusy(isBusy, message) {
@@ -200,6 +215,24 @@
           .withSuccessHandler(loadState)
           .withFailureHandler(showError)
           .apiSetupPaper(profile);
+      }
+
+      function createApaStarterDocument() {
+        if (busy) {
+          return;
+        }
+        setBusy(true, 'Creating APA starter document from template.');
+        google.script.run
+          .withSuccessHandler((result) => {
+            setBusy(false);
+            setStatusLink(
+              result.message,
+              result.url,
+              result.linkLabel || 'Open starter document'
+            );
+          })
+          .withFailureHandler(showError)
+          .apiCreateApaStarterDocument();
       }
 
       function lookupDoi() {
@@ -350,7 +383,7 @@
 
       function showPageNumberHelp() {
         setStatus(
-          'Use Insert > Page elements > Page numbers in Google Docs and choose the top-right option. Open APA Desk cannot safely insert dynamic page-number fields yet.'
+          'APA 7 student papers require dynamic page numbers. Start from the Open APA Desk APA template, or confirm this document already has Google Docs page numbers in the top-right header before using it for submission.'
         );
       }
 

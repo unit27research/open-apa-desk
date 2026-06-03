@@ -16,6 +16,7 @@ await build({
 function onOpen(e) { return OpenAPADeskBundle.onOpen(e); }
 function onInstall(e) { return OpenAPADeskBundle.onInstall(e); }
 function showOpenApaDeskSidebar() { return OpenAPADeskBundle.showOpenApaDeskSidebar(); }
+function createApaStarterDocumentFromMenu() { return OpenAPADeskBundle.createApaStarterDocumentFromMenu(); }
 function showPageNumberHelp() { return OpenAPADeskBundle.showPageNumberHelp(); }
 function showDoiSetupStatus() { return OpenAPADeskBundle.showDoiSetupStatus(); }
 function rebuildReferences() { return OpenAPADeskBundle.apiRebuildReferences(); }
@@ -27,6 +28,7 @@ function apiDeleteReference(referenceId) { return OpenAPADeskBundle.apiDeleteRef
 function apiGetReferences() { return OpenAPADeskBundle.apiGetReferences(); }
 function apiGetDoiSetupStatus() { return OpenAPADeskBundle.apiGetDoiSetupStatus(); }
 function apiLookupDoi(doi) { return OpenAPADeskBundle.apiLookupDoi(doi); }
+function apiCreateApaStarterDocument() { return OpenAPADeskBundle.apiCreateApaStarterDocument(); }
 function apiInsertCitation(referenceId, locator, mode) { return OpenAPADeskBundle.apiInsertCitation(referenceId, locator, mode); }
 function apiInsertCitationGroup(referenceIds, locator) { return OpenAPADeskBundle.apiInsertCitationGroup(referenceIds, locator); }
 function apiRebuildReferences() { return OpenAPADeskBundle.apiRebuildReferences(); }

@@ -56,14 +56,15 @@ Then run:
 npm run clasp:push
 ```
 
-In Apps Script project settings, add script property:
+The build includes the public Unit27 Research project contact email for Crossref
+DOI lookup. In Apps Script project settings, optionally add an override:
 
 ```text
 CROSSREF_MAILTO=maintainer@example.com
 ```
 
 Replace the placeholder with the actual project contact email before public
-testing.
+testing if an override is needed.
 
 Optional local Crossref network check:
 
@@ -113,8 +114,8 @@ Open the test Google Doc and reload it after pushing.
 
 - `Open APA Desk` menu appears.
 - `Open Sidebar` opens the sidebar.
-- `Check DOI Setup` reports that DOI lookup is configured after
-  `CROSSREF_MAILTO` is set.
+- `Check DOI Setup` reports that DOI lookup is configured using either the
+  public project fallback or a real `CROSSREF_MAILTO` override.
 - `Setup APA Paper` creates one controlled title page with one-inch margins,
   12-point Times New Roman, double spacing, centered student-paper fields, and
   a page break into the body.
@@ -166,6 +167,7 @@ Open the test Google Doc and reload it after pushing.
   `Open APA Desk` editor menu. That menu is not document body content and will
   not appear in PDF/DOCX exports.
 - Google Docs visual formatting must be judged in the actual document, not from local tests.
-- Dynamic page-number/header automation is not implemented. Users must add
-  Google Docs page numbers manually or start from a prepared template before
-  submission.
+- Dynamic page-number/header automation is not implemented. Final Marketplace
+  smoke evidence must start from a prepared APA template, or another proven
+  dynamic-page-number path, and must prove page numbers survive setup and
+  export.

@@ -20,12 +20,14 @@ Use this checklist before tagging or submitting Open APA Desk.
 - [ ] Release preflight validates Marketplace branding dimensions and warns if
   alpha screenshots are not final Marketplace screenshot sizes.
 - [ ] Release preflight validates sidebar review UX guardrails.
-- [ ] Release preflight validates DOI lookup blocks missing or placeholder
-  `CROSSREF_MAILTO` before external requests.
+- [ ] Release preflight validates DOI lookup has a project contact mailto and
+  blocks malformed or placeholder `CROSSREF_MAILTO` overrides before external
+  requests.
 - [ ] `npm run assets:brand` leaves no asset diff.
 - [ ] `npm run site:build` leaves no site diff.
 - [ ] `src/appsscript.json` uses only intended OAuth scopes.
-- [ ] Marketplace V0 does not request Google Drive or Google Sheets scope.
+- [ ] Marketplace V0 requests `drive.file` only for APA starter-template copy
+  creation and does not request full Google Drive or Google Sheets scope.
 - [ ] Alpha screenshot assets exist under `assets/screenshots/`.
 - [ ] `.clasp.json`, `dist/`, and `node_modules/` are not tracked.
 
@@ -47,9 +49,14 @@ Use this checklist before tagging or submitting Open APA Desk.
   before live testing.
 - [ ] Template menu shows `Prepare Current Copy`.
 - [ ] Sidebar opens after reduced-scope OAuth authorization.
-- [ ] `CROSSREF_MAILTO` is set to a real project contact email.
+- [ ] Crossref uses the public project contact fallback or a real
+  `CROSSREF_MAILTO` override.
 - [ ] `Check DOI Setup` reports DOI lookup is configured.
+- [ ] Smoke target starts from a prepared APA template or otherwise already has
+  dynamic Google Docs page numbers.
 - [ ] Page number `1` is visually confirmed in the template header.
+- [ ] Page number `1` remains visible after `Setup APA Paper`.
+- [ ] A later page shows the next page number, not a repeated static `1`.
 - [ ] Copied-template smoke pass completes.
 - [ ] Copied-template smoke pass uses public-safe fixture values from
   `docs/SMOKE_TEST_FIXTURES.md`.

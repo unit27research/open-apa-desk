@@ -1,6 +1,7 @@
 import type { ApaAuthor, ApaReference } from './types';
 
 const PLACEHOLDER_CROSSREF_MAILTO = 'open-apa-desk@example.com';
+const DEFAULT_PROJECT_CROSSREF_MAILTO = 'josh@unit27research.com';
 const EXAMPLE_EMAIL_DOMAIN_PATTERN = /@example\.(com|org|net)$/i;
 const BASIC_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -40,12 +41,7 @@ export function normalizeDoi(input: string): string {
 }
 
 export function requireCrossrefMailto(input: string | null | undefined): string {
-  const mailto = input?.trim() ?? '';
-  if (!mailto) {
-    throw new Error(
-      'CROSSREF_MAILTO script property must be set to a real project contact email before DOI lookup can run.'
-    );
-  }
+  const mailto = input?.trim() || DEFAULT_PROJECT_CROSSREF_MAILTO;
   if (
     mailto.toLowerCase() === PLACEHOLDER_CROSSREF_MAILTO ||
     EXAMPLE_EMAIL_DOMAIN_PATTERN.test(mailto)

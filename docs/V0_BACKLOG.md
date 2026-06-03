@@ -4,18 +4,21 @@ Date: 2026-05-31
 
 ## Highest Priority
 
-- Add student-paper page-number/header support or a clear manual helper flow.
-  - V0.1 status: manual helper/template path documented; dynamic insertion is
-    still deferred.
+- Resolve required APA page numbers for V0.
+  - V0.1 status: starter-template copy path implemented and live-proven in
+    Google Docs for page `1`, dynamic page `2`, and setup preservation.
+    Marketplace readiness still needs PDF/DOCX export proof.
+  - Required path: prepared APA starter template with export evidence, or
+    another proven dynamic-field method.
 - Add reference edit/delete controls in the sidebar.
   - V0.1 status: implemented locally; needs next live smoke pass.
 - Add body-section insertion so users have a clean writing area after the title page.
   - V0.1 status: controlled body-title starter implemented locally; needs next
     live smoke pass.
 - Improve Clean Copy so future template/Marketplace paths avoid copied bound-script UI where possible.
-  - V0.2 status: automatic Drive copy removed from active build. Users make a
-    Google Docs copy and run `Prepare Current Copy` to remove markers from that
-    copied document.
+  - V0.1 status: active build uses `Prepare Current Copy` marker removal. It
+    does not request full Drive scope; the only Drive scope is narrow
+    `drive.file` access for APA starter-template copy creation.
 
 ## Citation And Reference Accuracy
 
@@ -47,13 +50,11 @@ Date: 2026-05-31
   - V0.1 status: draft listing copy and readiness matrix added; custom branding
     assets generated in Sprint 5. Public Pages asset URLs are live and checked
     by `npm run upload:preflight`.
-- Confirm real `CROSSREF_MAILTO` is set in the live Apps Script project before
-  public DOI testing.
-  - V0.1 status: runtime now blocks DOI lookup if the script property is
-    missing, malformed, or still an example email. The current smoke-test
-    script property is configured and passes `Check DOI Setup`; the actual
-    sidebar DOI lookup call still needs the human-assisted form-entry smoke
-    pass.
+- Confirm DOI lookup uses a project contact email before public DOI testing.
+  - V0.1 status: runtime now uses the public Unit27 Research fallback when
+    copied-template scripts do not carry script properties, and still blocks
+    malformed or example `CROSSREF_MAILTO` overrides. The actual sidebar DOI
+    lookup call still needs the final smoke pass.
 - Add screenshots/GIFs for install and first-use docs.
 - Add contributor setup notes.
   - V0.1 status: `CONTRIBUTING.md` added.

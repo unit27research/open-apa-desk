@@ -103,7 +103,7 @@ Manual book: Miller, Jordan. 2024. Open Study Systems. Example Press.
 Do not treat screenshots as final Marketplace screenshots until:
 
 - reduced-scope OAuth authorization succeeds
-- `CROSSREF_MAILTO` is set
+- Crossref uses the public project contact fallback or a real override
 - page number is visually confirmed in the template
 - copied-template smoke pass succeeds
 - copied-template sidebar form entry is visually confirmed

@@ -50,3 +50,13 @@ export interface DocumentState {
   citations: CitationRecord[];
   generatedSectionIds: Record<string, string>;
 }
+
+export interface TemplateCopyResult {
+  id?: string | undefined;
+  name: string;
+  url: string;
+  webViewLink?: string | undefined;
+  creationMode: 'driveCopy' | 'manualTemplateCopy';
+  linkLabel: string;
+  message: string;
+}

@@ -11,16 +11,32 @@ represent page numbers as `AutoText` with `PAGE_NUMBER`. However, the public
 Docs API `batchUpdate` request list does not expose an insert-auto-text request,
 and Apps Script `DocumentApp` documents page numbers as unsupported elements.
 
-## V0.1 Decision
+## V0 Release Blocker
 
-Use a manual/template flow:
+Page numbers are required for APA 7 student papers. Open APA Desk must not ship
+a Marketplace V0 that claims APA paper setup while relying on a manual
+page-number step.
 
-- For alpha smoke tests, add page numbers in Google Docs with
-  `Insert > Page elements > Page numbers` and choose the top-right option.
-- For shared templates, prepare the template Doc with Google Docs page numbers
-  already inserted.
-- Open APA Desk can show a page-number reminder, but it should not insert static
-  numeric header text.
+Because Apps Script cannot safely insert dynamic Google Docs page-number fields,
+V0 must use a prepared APA starter document with Google Docs page numbers
+already inserted, or another proven dynamic-field path. Static header numbers
+are not acceptable because they fail on multi-page papers.
+
+Sprint 6 implements and live-proves the prepared-starter path. `Create APA
+Starter Doc` copies the configured template with narrow `drive.file` access when
+Google allows it. In the live alpha project, Google returned Drive status `403`
+for automatic copy, and the fallback Google Docs copy-page link successfully
+created the starter document without requesting full Drive scope.
+
+Live Google Docs proof on 2026-06-02 confirmed:
+
+- page `1` appears in the title-page header of a fresh starter copy
+- page `2` appears after a real page break, proving the field is dynamic
+- `Setup APA Paper` preserves page `1` on the generated title page
+- `Setup APA Paper` preserves page `2` on the next page
+
+PDF/DOCX export preservation still needs to be captured in final smoke evidence
+before Marketplace submission.
 
 ## Sources
 
@@ -39,7 +55,8 @@ Use a manual/template flow:
 
 - Re-check the Docs API before Marketplace packaging in case Google adds an
   insert-auto-text request.
-- Keep an alpha template with top-right page numbers already configured.
+- Keep an alpha template with top-right page numbers already configured and
+  treat it as the required starting surface for final smoke evidence.
 - If a template is used, verify clean-copy PDF/DOCX exports preserve the page
   numbers before public alpha release.
 
@@ -48,5 +65,14 @@ Use a manual/template flow:
 On 2026-06-01, Chrome verification found Google Docs' current page-number menu
 under `Insert > Page elements > Page numbers`. The top-right preset was clicked
 in the alpha template and the Doc saved, but the page number was not visually
-confirmed afterward. Treat page numbers as a human-confirmed template setup item
-until a copied-template PDF/DOCX export proves the header number survives.
+confirmed afterward.
+
+On 2026-06-02, live copied-template smoke testing confirmed that the current
+blank/current-document setup flow can produce a title block without visible page
+number `1`. That is a release blocker, not a cosmetic limitation. Treat final
+Marketplace smoke evidence as failed until a prepared-template or equivalent
+dynamic page-number path is proven.
+
+Later on 2026-06-02, the prepared-template path was corrected and proven in
+Google Docs. The remaining page-number risk is export preservation, not the
+in-editor setup path.

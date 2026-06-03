@@ -48,13 +48,16 @@ Checked on 2026-06-02:
 Current manifest scopes:
 
 ```text
+https://www.googleapis.com/auth/drive.file
 https://www.googleapis.com/auth/documents.currentonly
 https://www.googleapis.com/auth/script.container.ui
 https://www.googleapis.com/auth/script.external_request
 https://www.googleapis.com/auth/script.storage
 ```
 
-The active build does not request Google Drive or Google Sheets scope.
+The active build requests `drive.file` only to create/copy APA starter
+documents from the prepared template. It does not request full Google Drive or
+Google Sheets scope.
 
 ## GitHub Upload Packet
 
@@ -234,9 +237,14 @@ Functional evidence:
 - Fresh checkout `npm ci` and `npm run verify` passed.
 - No-Sheets copied-template smoke pass confirmed copied Doc menu, sidebar load
   after authorization/reopen, and `Open APA Desk > Check DOI Setup`.
-- Live smoke-test and refreshed alpha-template scripts have
-  `CROSSREF_MAILTO` configured, and `Open APA Desk > Check DOI Setup` confirms
-  DOI lookup is configured for Crossref.
+- Required APA page numbers must be proven in final Marketplace evidence. Final
+  smoke must start from a prepared APA template, or another proven dynamic page
+  number path, and must show page number `1` on the title page plus an
+  incrementing later page number.
+- DOI lookup uses the public Unit27 Research project contact fallback when
+  copied-template scripts do not carry script properties, and
+  `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for
+  Crossref.
 - Final smoke fixture values and expected APA output are documented in
   `docs/SMOKE_TEST_FIXTURES.md`.
 - Optional local Crossref network smoke can confirm Crossref endpoint
@@ -248,8 +256,9 @@ Functional evidence:
 
 Human/manual evidence still needed:
 
+- prepared-template dynamic page-number proof
 - full copied-template sidebar form entry
-- DOI lookup with real `CROSSREF_MAILTO`
+- DOI lookup with the project Crossref mailto
 - manual reference entry
 - parenthetical and narrative citation insertion visual check
 - grouped citation visual check
@@ -271,7 +280,8 @@ Human/manual evidence still needed:
 - Public repo exists and `main` is pushed.
 - GitHub Actions `Verify` passes on `main`.
 - GitHub Pages URLs resolve.
-- `CROSSREF_MAILTO` is set to a real project contact email.
+- Crossref uses the public project contact fallback or a real
+  `CROSSREF_MAILTO` override.
 - Standard Google Cloud project is linked to Apps Script.
 - OAuth consent screen is configured with matching scopes.
 - A post-Pages Apps Script version is created and recorded.

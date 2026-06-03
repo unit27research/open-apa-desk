@@ -4,6 +4,7 @@ import { join } from 'node:path';
 const EXPECTED_LOGO_URL =
   'https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png';
 const EXPECTED_SCOPES = [
+  'https://www.googleapis.com/auth/drive.file',
   'https://www.googleapis.com/auth/documents.currentonly',
   'https://www.googleapis.com/auth/script.container.ui',
   'https://www.googleapis.com/auth/script.external_request',
@@ -14,12 +15,12 @@ const REQUIRED_CODE_EXPORTS = [
   'function onOpen',
   'function showOpenApaDeskSidebar',
   'function apiLookupDoi',
+  'function apiCreateApaStarterDocument',
   'function apiPrepareCurrentCopyForSubmission'
 ];
 const FORBIDDEN_TOKENS = [
   'DriveApp.',
   'SpreadsheetApp.',
-  'https://www.googleapis.com/auth/drive',
   'https://www.googleapis.com/auth/spreadsheets',
   'Prepare Clean Copy',
   'apiPrepareCleanCopy',
@@ -28,6 +29,14 @@ const FORBIDDEN_TOKENS = [
 const FORBIDDEN_TEXT_PATTERNS = [
   { label: 'local macOS user path', pattern: /\/Users\// },
   { label: 'local Codex workspace path', pattern: /Documents\/Codex/ },
+  {
+    label: 'optional page-number helper wording',
+    pattern: /cannot safely insert dynamic page-number fields yet/i
+  },
+  {
+    label: 'full Google Drive OAuth scope',
+    pattern: /https:\/\/www\.googleapis\.com\/auth\/drive(?!\.file)/
+  },
   { label: 'private smoke-test account email', pattern: /josh@gigcityai\.ai/i },
   {
     label: 'private real-person test fixture',

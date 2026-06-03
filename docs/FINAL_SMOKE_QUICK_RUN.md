@@ -6,6 +6,10 @@ Use this as the short operator script for the final copied-template smoke pass.
 Keep Google Doc URLs, Apps Script IDs, tester emails, PDF files, and DOCX files
 out of the public repo.
 
+Use a copied Open APA Desk APA starter template Doc that already has Google Docs
+dynamic page numbers in the top-right header. Do not use a blank Doc for final
+Marketplace smoke evidence.
+
 Reference docs:
 
 - [SMOKE_TEST.md](SMOKE_TEST.md)
@@ -35,20 +39,24 @@ checks before filling final evidence.
 
 ## In Google Docs
 
-Use the copied alpha template Doc, not the public template source.
+Use the copied APA starter template Doc, not the public template source and not
+a blank Doc.
 
 1. Reload the copied Doc.
 2. Confirm `Open APA Desk` menu appears.
 3. Open `Open APA Desk > Check DOI Setup`.
 4. Confirm it says DOI lookup is configured for Crossref.
 5. Open the sidebar.
-6. Fill Paper fields from [SMOKE_TEST_FIXTURES.md](SMOKE_TEST_FIXTURES.md).
-7. Click `Setup APA Paper`.
-8. Visually confirm:
+6. Before setup, confirm page number `1` is visible in the title-page header.
+7. Fill Paper fields from [SMOKE_TEST_FIXTURES.md](SMOKE_TEST_FIXTURES.md).
+8. Click `Setup APA Paper`.
+9. Visually confirm:
    - one title page
    - body starts with centered `Testing Open APA Desk`
-   - page number `1` is visible in the header/template
-9. Run `Setup APA Paper` again and confirm it replaces the controlled starter
+   - page number `1` remains visible in the header/template
+10. Add enough body text or a page break to reach a second page and confirm the
+    next page shows `2`, proving the number is dynamic.
+11. Run `Setup APA Paper` again and confirm it replaces the controlled starter
    section instead of duplicating it.
 
 ## References And Citations
@@ -113,7 +121,8 @@ npm run smoke:exports
 ```
 
 Visually inspect both exports. The helper is a marker-leak scan; it is not a
-substitute for checking that the PDF and DOCX are readable.
+substitute for checking that the PDF and DOCX are readable and still show
+correct page numbers.
 
 ## Final Gates
 

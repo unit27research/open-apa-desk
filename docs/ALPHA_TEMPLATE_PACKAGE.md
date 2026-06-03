@@ -30,23 +30,26 @@ current-document `Prepare Current Copy`.
 ## Template Doc Setup
 
 1. Create a new Google Doc named `Open APA Desk Alpha Template`.
-2. Add page numbers manually in Google Docs:
-   `Insert > Page elements > Page numbers`, then choose the top-right option.
+2. Add real Google Docs dynamic page numbers in the top-right header and confirm
+   page number `1` is visible on the title page.
 3. Bind or attach the current Apps Script project.
 4. Push the built `dist/` files with `clasp push --force`.
-5. Set the script property:
+5. Optionally set the script-property override:
 
 ```text
 CROSSREF_MAILTO=maintainer@example.com
 ```
 
-6. Replace the placeholder email before any public tester uses DOI lookup.
+6. Replace the placeholder email before public testing if an override is used.
+   If no override is set, DOI lookup uses the public Unit27 Research project
+   contact fallback.
 
-For the current alpha template target above, the page-number menu path was
-verified in Chrome. The page-number preset click saved the Doc, but the
-top-right page number was not visually confirmed afterward. Before broader
-sharing, open the template, confirm page number `1` appears in the header, and
-re-apply the Google Docs page-number preset if needed.
+For the current alpha template target above, the page-number preset click was
+not enough evidence because the top-right page number was not visually confirmed
+afterward. Before broader sharing, open the template, confirm page number `1`
+appears in the title-page header, add enough content or a page break to confirm
+the next page shows `2`, and re-apply the Google Docs page-number preset if
+needed.
 
 ## Alpha Smoke Path
 
@@ -58,19 +61,20 @@ Run this on a copy of the template:
 3. Run `Check DOI Setup` and confirm DOI lookup is configured.
 4. Run `Setup APA Paper`.
 5. Confirm title page, controlled body starter, font, margins, and spacing.
-6. Confirm Google Docs page numbers still appear in the header.
-7. Add one DOI journal article and one manual book.
-8. Edit one saved reference.
-9. Try saving a duplicate DOI and confirm it updates instead of duplicating.
-10. Insert a parenthetical citation with a locator.
-11. Insert a narrative citation.
-12. Select two references and insert a grouped parenthetical citation.
-13. Rebuild References twice.
-14. Delete one saved reference and confirm visible body citation text remains.
-15. Use Google Docs `File > Make a copy`.
-16. In the copied Doc, run `Prepare Current Copy`.
-17. Export the prepared copy to PDF and DOCX.
-18. Check exports for page numbers, title page, citation text, References, and
+6. Confirm page number `1` still appears in the title-page header.
+7. Add enough content or a page break to confirm the next page shows `2`.
+8. Add one DOI journal article and one manual book.
+9. Edit one saved reference.
+10. Try saving a duplicate DOI and confirm it updates instead of duplicating.
+11. Insert a parenthetical citation with a locator.
+12. Insert a narrative citation.
+13. Select two references and insert a grouped parenthetical citation.
+14. Rebuild References twice.
+15. Delete one saved reference and confirm visible body citation text remains.
+16. Use Google Docs `File > Make a copy`.
+17. In the copied Doc, run `Prepare Current Copy`.
+18. Export the prepared copy to PDF and DOCX.
+19. Check exports for page numbers, title page, citation text, References, and
     absence of `[[OPEN_APA_DESK` marker text.
 
 ## Package Contents
@@ -89,14 +93,16 @@ Run this on a copy of the template:
 - Users remain responsible for instructor, institution, and APA requirements.
 - V0.1 has no backend server, no Open APA Desk account, and no AI calls.
 - DOI lookup sends the entered DOI to Crossref.
-- Dynamic page numbers are handled by Google Docs' built-in UI or a prepared
-  template, not by Open APA Desk automation.
+- Required dynamic page numbers are provided by the prepared APA starter
+  template until Open APA Desk has a proven API-safe way to create them.
 
 ## Not Public Yet
 
 Do not share this as a public alpha link until:
 
-- `CROSSREF_MAILTO` is set to a real project contact email.
+- Crossref uses the public project contact fallback or a real
+  `CROSSREF_MAILTO` override.
 - Sidebar loading is confirmed after authorizing the template script.
-- The template's top-right Google Docs page number is visually confirmed.
+- The template's top-right Google Docs page number `1` is visually confirmed.
+- A later template page shows an incremented dynamic page number.
 - One copied-template smoke pass completes the full checklist above.

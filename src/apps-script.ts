@@ -11,6 +11,7 @@ import {
   saveReference,
   setupApaPaper
 } from './app/docsActions';
+import { createApaStarterDocument } from './app/templateActions';
 import type { ApaReference, PaperProfile } from './core/types';
 import type { CitationMode } from './core/apa';
 
@@ -18,6 +19,7 @@ export function onOpen(): void {
   DocumentApp.getUi()
     .createMenu('Open APA Desk')
     .addItem('Open Sidebar', 'showOpenApaDeskSidebar')
+    .addItem('Create APA Starter Doc', 'createApaStarterDocumentFromMenu')
     .addItem('Setup APA Paper', 'showOpenApaDeskSidebar')
     .addItem('Page Number Help', 'showPageNumberHelp')
     .addItem('Check DOI Setup', 'showDoiSetupStatus')
@@ -42,14 +44,39 @@ export function showPageNumberHelp(): void {
   DocumentApp.getUi().alert(
     'Open APA Desk page numbers',
     [
-      'Google Docs supports automatic page numbers, but Apps Script does not expose a reliable dynamic page-number insertion method.',
+      'APA 7 student papers require page numbers in the top-right header, starting with 1 on the title page.',
       '',
-      'For now, use Insert > Page elements > Page numbers and choose the top-right page number option before submitting.',
+      'Open APA Desk does not fake static page numbers.',
       '',
-      'Open APA Desk keeps the rest of setup controlled so it does not fake static page numbers.'
+      'Use an Open APA Desk APA starter template or a document that already contains Google Docs dynamic page numbers before final submission.'
     ].join('\n'),
     DocumentApp.getUi().ButtonSet.OK
   );
+}
+
+export function createApaStarterDocumentFromMenu(): void {
+  try {
+    const result = createApaStarterDocument();
+    const html = HtmlService.createHtmlOutput(
+      [
+        '<div style="font:14px Arial,sans-serif;line-height:1.5;padding:12px;">',
+        '<h2 style="font-size:18px;margin:0 0 8px;">APA starter document created</h2>',
+        `<p>${escapeHtml(result.message)}</p>`,
+        `<p><a href="${escapeHtml(result.url)}" target="_blank" rel="noopener">${escapeHtml(result.linkLabel)}</a></p>`,
+        '<p>Confirm page number 1 appears in the title-page header before final submission.</p>',
+        '</div>'
+      ].join('')
+    )
+      .setWidth(420)
+      .setHeight(220);
+    DocumentApp.getUi().showModalDialog(html, 'Open APA Desk');
+  } catch (error) {
+    DocumentApp.getUi().alert(
+      'Open APA Desk starter document',
+      error instanceof Error ? error.message : String(error),
+      DocumentApp.getUi().ButtonSet.OK
+    );
+  }
 }
 
 export function showDoiSetupStatus(): void {
@@ -89,6 +116,10 @@ export function apiGetDoiSetupStatus() {
   return getDoiSetupStatus();
 }
 
+export function apiCreateApaStarterDocument() {
+  return createApaStarterDocument();
+}
+
 export function apiInsertCitation(
   referenceId: string,
   locator?: string,
@@ -107,4 +138,13 @@ export function apiRebuildReferences() {
 
 export function apiPrepareCurrentCopyForSubmission() {
   return prepareCurrentCopyForSubmission();
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }

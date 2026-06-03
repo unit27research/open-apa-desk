@@ -13,6 +13,7 @@ const EXPECTED_ISSUES_URL = 'https://github.com/unit27research/open-apa-desk/iss
 const EXPECTED_HOMEPAGE = 'https://unit27research.github.io/open-apa-desk/';
 
 const EXPECTED_SCOPES = [
+  'https://www.googleapis.com/auth/drive.file',
   'https://www.googleapis.com/auth/documents.currentonly',
   'https://www.googleapis.com/auth/script.container.ui',
   'https://www.googleapis.com/auth/script.external_request',
@@ -107,7 +108,6 @@ const REQUIRED_REPO_FILES = [
 const FORBIDDEN_SOURCE_TOKENS = [
   'DriveApp.',
   'SpreadsheetApp.',
-  'https://www.googleapis.com/auth/drive',
   'https://www.googleapis.com/auth/spreadsheets',
   'Prepare Clean Copy',
   'Import Library References'
@@ -192,7 +192,10 @@ if (JSON.stringify(sortedScopes) !== JSON.stringify(sortedExpectedScopes)) {
 }
 
 for (const scope of scopes) {
-  if (scope.includes('/auth/drive') || scope.includes('/auth/spreadsheets')) {
+  if (
+    scope === 'https://www.googleapis.com/auth/drive' ||
+    scope.includes('/auth/spreadsheets')
+  ) {
     failures.push(`Forbidden Marketplace V0 scope found: ${scope}`);
   }
 }

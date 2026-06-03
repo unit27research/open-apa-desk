@@ -32,7 +32,7 @@ describe('smoke evidence check script', () => {
         evidenceFile,
         (await completeEvidence())
           .replace(/^Build commit: [A-Fa-f0-9]{7,40}$/m, 'Build commit: <git SHA>')
-          .replace('| DOI lookup succeeds with real `CROSSREF_MAILTO` | PASS |', '| DOI lookup succeeds with real `CROSSREF_MAILTO` | TODO |')
+          .replace('| DOI lookup succeeds with project Crossref mailto | PASS |', '| DOI lookup succeeds with project Crossref mailto | TODO |')
           .replace('Marker text found in PDF: no', 'Marker text found in PDF: yes')
           .replace('Ready for Marketplace console submission: yes', 'Ready for Marketplace console submission: no')
           .concat(`\n${privateGoogleDocsUrlFixture()}\n`)
@@ -69,6 +69,28 @@ describe('smoke evidence check script', () => {
       await rm(root, { force: true, recursive: true });
     }
   });
+
+  it('fails when dynamic page-number template evidence is missing', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'open-apa-smoke-check-'));
+    try {
+      const evidenceFile = join(root, 'missing-page-number-proof.md');
+      await writeFile(
+        evidenceFile,
+        (await completeEvidence()).replace(
+          '| Later page number increments dynamically | PASS | observed |\n',
+          ''
+        )
+      );
+
+      await expect(
+        execFile('node', ['scripts/check-smoke-evidence.mjs', evidenceFile])
+      ).rejects.toMatchObject({
+        stderr: expect.stringContaining('Later page number increments dynamically')
+      });
+    } finally {
+      await rm(root, { force: true, recursive: true });
+    }
+  });
 });
 
 async function completeEvidence() {
@@ -86,7 +108,7 @@ Google Doc target: recorded in private operator notes
 Browser/profile: Chrome, authenticated publishing/test account
 Build commit: ${headCommit}
 Apps Script version: 2
-CROSSREF_MAILTO configured: yes
+Project Crossref mailto available: yes
 \`\`\`
 
 ## Preflight Commands
@@ -105,10 +127,13 @@ npm run clasp:push: pass
 | Google Docs \`Open APA Desk\` menu appears | PASS | observed |
 | Sidebar opens after OAuth authorization | PASS | observed |
 | \`Check DOI Setup\` reports DOI lookup is configured | PASS | observed |
+| Smoke target starts from prepared APA template with dynamic page numbers | PASS | observed |
 | \`Setup APA Paper\` creates one controlled title/body starter | PASS | observed |
 | Re-running \`Setup APA Paper\` replaces, not duplicates | PASS | observed |
 | Page number \`1\` is visible in the header/template | PASS | observed |
-| DOI lookup succeeds with real \`CROSSREF_MAILTO\` | PASS | observed |
+| Page number \`1\` remains visible after \`Setup APA Paper\` | PASS | observed |
+| Later page number increments dynamically | PASS | observed |
+| DOI lookup succeeds with project Crossref mailto | PASS | observed |
 | Manual book reference saves | PASS | observed |
 | Duplicate DOI updates existing reference | PASS | observed |
 | Reference edit works | PASS | observed |

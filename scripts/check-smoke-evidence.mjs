@@ -4,6 +4,31 @@ import { promisify } from 'node:util';
 
 const evidenceFile = process.argv[2];
 const execFile = promisify(execFileCallback);
+const REQUIRED_MANUAL_CHECKS = [
+  'Google Docs `Open APA Desk` menu appears',
+  'Sidebar opens after OAuth authorization',
+  '`Check DOI Setup` reports DOI lookup is configured',
+  'Smoke target starts from prepared APA template with dynamic page numbers',
+  '`Setup APA Paper` creates one controlled title/body starter',
+  'Re-running `Setup APA Paper` replaces, not duplicates',
+  'Page number `1` is visible in the header/template',
+  'Page number `1` remains visible after `Setup APA Paper`',
+  'Later page number increments dynamically',
+  'DOI lookup succeeds with project Crossref mailto',
+  'Manual book reference saves',
+  'Duplicate DOI updates existing reference',
+  'Reference edit works',
+  'Reference delete works without removing visible citation text',
+  'Parenthetical citation inserts readable APA text',
+  'Narrative citation inserts readable APA text',
+  'Grouped citation inserts readable APA text',
+  'Direct-quote locator inserts correctly',
+  '`Rebuild References` creates centered heading and entries',
+  'Re-running `Rebuild References` replaces only controlled section',
+  '`Prepare Current Copy` removes visible marker paragraphs',
+  'PDF export contains no `[[OPEN_APA_DESK` marker text',
+  'DOCX export contains no `[[OPEN_APA_DESK` marker text'
+];
 
 if (!evidenceFile || process.argv.includes('--help') || process.argv.includes('-h')) {
   printHelp();
@@ -75,7 +100,7 @@ function checkRequiredTextFields(value) {
     ['Date', /^Date:\s*\d{4}-\d{2}-\d{2}$/m],
     ['Build commit', /^Build commit:\s*[A-Fa-f0-9]{7,40}$/m],
     ['Apps Script version', /^Apps Script version:\s*(?!<version number>|TODO)\S+/m],
-    ['CROSSREF_MAILTO configured', /^CROSSREF_MAILTO configured:\s*yes$/im]
+    ['Project Crossref mailto available', /^Project Crossref mailto available:\s*yes$/im]
   ]) {
     if (!pattern.test(value)) {
       failures.push(`${label} is missing or incomplete.`);
@@ -129,8 +154,22 @@ function checkManualChecklist(value) {
     return cells.length >= 3 && cells[0] !== 'Check' && !/^---+$/.test(cells[0]);
   });
 
-  if (evidenceRows.length < 20) {
+  if (evidenceRows.length < REQUIRED_MANUAL_CHECKS.length) {
     failures.push('Manual smoke checklist is missing expected evidence rows.');
+  }
+
+  const evidenceByCheck = new Map(
+    evidenceRows.map((row) => {
+      const [check, status] = splitMarkdownRow(row);
+      return [check, status];
+    })
+  );
+
+  for (const check of REQUIRED_MANUAL_CHECKS) {
+    const status = evidenceByCheck.get(check);
+    if (!status) {
+      failures.push(`Manual smoke checklist missing required row: ${check}`);
+    }
   }
 
   for (const row of evidenceRows) {

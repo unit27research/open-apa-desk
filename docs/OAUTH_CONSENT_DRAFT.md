@@ -87,6 +87,7 @@ domain-only add-on.
 Current Apps Script manifest scopes:
 
 ```text
+https://www.googleapis.com/auth/drive.file
 https://www.googleapis.com/auth/documents.currentonly
 https://www.googleapis.com/auth/script.container.ui
 https://www.googleapis.com/auth/script.external_request
@@ -95,19 +96,22 @@ https://www.googleapis.com/auth/script.storage
 
 Scope justifications:
 
+- `drive.file`: create/copy an Open APA Desk APA starter document from the
+  prepared template so required dynamic Google Docs page numbers are present.
 - `documents.currentonly`: create and update controlled APA sections, citations,
   References, and marker removal inside the active copied Google Doc.
 - `script.container.ui`: show the Google Docs menu, sidebar, and page-number
   help dialog.
 - `script.external_request`: send DOI lookup requests to Crossref.
-- `script.storage`: store per-document state and read the project
-  `CROSSREF_MAILTO` script property.
+- `script.storage`: store per-document state and read an optional project
+  `CROSSREF_MAILTO` script-property override.
 
 ## Sensitive Scope Watch
 
-The current manifest avoids Google Drive and Google Sheets scopes. Reusable
-cross-document reference library sync is deferred from Marketplace V0 to reduce
-consent friction.
+The current manifest avoids full Google Drive and Google Sheets scopes. The
+limited `drive.file` scope is used only for the APA starter-template copy path.
+Reusable cross-document reference library sync is deferred from Marketplace V0
+to reduce consent friction.
 
 ## Verification Notes
 

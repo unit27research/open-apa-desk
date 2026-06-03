@@ -28,10 +28,12 @@ Expected visual result:
 
 Page number check:
 
-- Use the prepared template page number or Google Docs'
-  `Insert > Page numbers` UI.
-- Confirm page number `1` is visible in the header before marking that row
-  `PASS`.
+- Start from a prepared Open APA Desk APA template, not a blank Doc.
+- Confirm page number `1` is visible in the title-page header before setup.
+- Run `Setup APA Paper`.
+- Confirm page number `1` remains visible after setup.
+- Add enough body text or a page break to reach page 2.
+- Confirm the next page shows `2`, proving the number is dynamic.
 
 ## DOI Article
 

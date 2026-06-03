@@ -14,8 +14,12 @@ describe('Crossref normalization', () => {
     );
   });
 
-  it('requires a real project Crossref mailto before lookup', () => {
-    expect(() => requireCrossrefMailto(undefined)).toThrow(/CROSSREF_MAILTO/);
+  it('uses the public project Crossref mailto fallback when script properties are absent', () => {
+    expect(requireCrossrefMailto(undefined)).toBe('josh@unit27research.com');
+    expect(requireCrossrefMailto('')).toBe('josh@unit27research.com');
+  });
+
+  it('requires configured Crossref mailto values to be real project emails', () => {
     expect(() => requireCrossrefMailto('open-apa-desk@example.com')).toThrow(
       /placeholder/
     );
@@ -29,7 +33,7 @@ describe('Crossref normalization', () => {
   });
 
   it('reports Crossref mailto setup without exposing the email address', () => {
-    const status = getCrossrefMailtoStatus('josh@unit27research.com');
+    const status = getCrossrefMailtoStatus(undefined);
 
     expect(status).toEqual({
       configured: true,

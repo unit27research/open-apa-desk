@@ -26,7 +26,7 @@ Google Doc target: recorded in private operator notes
 Browser/profile: Chrome, authenticated publishing/test account
 Build commit: <git SHA>
 Apps Script version: <version number>
-CROSSREF_MAILTO configured: yes/no
+Project Crossref mailto available: yes/no
 ```
 
 `Build commit` must match the current local `git HEAD` when
@@ -60,10 +60,13 @@ npm run clasp:push: pass/fail
 | Google Docs `Open APA Desk` menu appears | TODO |  |
 | Sidebar opens after OAuth authorization | TODO |  |
 | `Check DOI Setup` reports DOI lookup is configured | TODO |  |
+| Smoke target starts from prepared APA template with dynamic page numbers | TODO |  |
 | `Setup APA Paper` creates one controlled title/body starter | TODO |  |
 | Re-running `Setup APA Paper` replaces, not duplicates | TODO |  |
 | Page number `1` is visible in the header/template | TODO |  |
-| DOI lookup succeeds with real `CROSSREF_MAILTO` | TODO |  |
+| Page number `1` remains visible after `Setup APA Paper` | TODO |  |
+| Later page number increments dynamically | TODO |  |
+| DOI lookup succeeds with project Crossref mailto | TODO |  |
 | Manual book reference saves | TODO |  |
 | Duplicate DOI updates existing reference | TODO |  |
 | Reference edit works | TODO |  |

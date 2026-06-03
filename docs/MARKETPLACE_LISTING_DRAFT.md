@@ -107,6 +107,9 @@ adjust the developer identity.
 
 Current manifest scopes:
 
+- `https://www.googleapis.com/auth/drive.file`
+  - Used only to create/copy an APA starter document from the prepared template
+    so required dynamic page numbers are present.
 - `https://www.googleapis.com/auth/documents.currentonly`
   - Used to read and write controlled sections, citations, References, and clean
     copy marker removal in the current document.
@@ -115,8 +118,8 @@ Current manifest scopes:
 - `https://www.googleapis.com/auth/script.external_request`
   - Used for DOI lookup through Crossref.
 - `https://www.googleapis.com/auth/script.storage`
-  - Used for document and script properties, including per-document state and
-    `CROSSREF_MAILTO`.
+  - Used for document properties and per-document Open APA Desk state; also
+    supports an optional `CROSSREF_MAILTO` override.
 
 ## Graphic Assets Needed
 
