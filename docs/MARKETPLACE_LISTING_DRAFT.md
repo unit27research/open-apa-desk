@@ -2,8 +2,8 @@
 
 Date: 2026-06-02
 
-This is draft copy for the Google Workspace Marketplace listing. Do not submit
-until the readiness gates in `docs/MARKETPLACE_READINESS.md` are closed.
+This is the submitted copy for the initial Google Workspace Marketplace listing.
+Review status is tracked in `docs/MARKETPLACE_READINESS.md`.
 
 ## App Details
 
@@ -121,7 +121,7 @@ Current manifest scopes:
   - Used for document properties and per-document Open APA Desk state; also
     supports an optional `CROSSREF_MAILTO` override.
 
-## Graphic Assets Needed
+## Graphic Assets
 
 - 32 x 32 app icon:
   `assets/branding/open-apa-desk-icon-32.png`
@@ -129,11 +129,9 @@ Current manifest scopes:
   `assets/branding/open-apa-desk-icon-128.png`
 - 220 x 140 app card banner:
   `assets/branding/open-apa-desk-card-banner-220x140.png`
-- Alpha screenshot assets:
+- Submitted Marketplace screenshot assets:
   - `assets/screenshots/01-google-docs-menu-open.jpg`
   - `assets/screenshots/02-sidebar-paper-setup.jpg`
   - `assets/screenshots/03-references-output.jpg`
-- Final Marketplace screenshots should replace or supplement these after the
-  human-assisted sidebar/export smoke pass.
 
 Do not use Google product icons as Open APA Desk branding.

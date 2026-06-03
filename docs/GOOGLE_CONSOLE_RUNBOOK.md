@@ -2,8 +2,8 @@
 
 Date: 2026-06-02
 
-Use this runbook when moving Open APA Desk from green local/public gates into
-Google Cloud, OAuth consent, and Google Workspace Marketplace SDK setup.
+Use this runbook when moving Open APA Desk through Google Cloud, OAuth consent,
+Google Workspace Marketplace SDK setup, or a future review resubmission.
 
 ## Source Check
 
@@ -28,9 +28,9 @@ Run from the repository root:
 npm run upload:preflight
 ```
 
-Do not enter final Google console fields unless this passes.
+Do not enter or update final Google console fields unless this passes.
 
-Before final submission, also complete:
+Before any new Marketplace submission or resubmission, also complete:
 
 - final no-Sheets sidebar/export smoke pass
 - DOI lookup with the project Crossref mailto

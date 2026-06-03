@@ -492,12 +492,14 @@ async function checkLaunchPacket() {
     EXPECTED_HOMEPAGE,
     EXPECTED_ISSUES_URL,
     EXPECTED_LOGO_URL,
-    'Do Not Submit Until',
+    'Submitted State',
+    'Review Follow-Up',
     'CROSSREF_MAILTO',
     'npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md',
     'Standard Google Cloud project',
-    'post-Pages Apps Script version',
-    'Human-assisted sidebar/export smoke pass'
+    'Apps Script version `1`',
+    'Human-assisted sidebar/export smoke pass',
+    'Initial Marketplace listing was submitted for Google review on 2026-06-02'
   ]) {
     if (!launchPacket.includes(required)) {
       failures.push(`Launch submission packet missing: ${required}`);

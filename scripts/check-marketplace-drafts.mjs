@@ -87,7 +87,7 @@ function checkPlaceholderFields() {
     blockers.push('OAuth consent draft still needs confirmed project contact email.');
   }
   if (sdkDraft.includes('TODO: create post-Pages version after public logoUrl is live')) {
-    blockers.push('Marketplace SDK draft still needs the post-Pages Apps Script version.');
+    blockers.push('Marketplace SDK draft still needs the final Apps Script version.');
   }
   if (sdkDraft.includes('TODO: 0.1.0-alpha.0 marketplace-url alpha')) {
     blockers.push('Marketplace SDK draft still needs the final Apps Script version description.');

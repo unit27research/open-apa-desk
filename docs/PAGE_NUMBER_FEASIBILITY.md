@@ -34,9 +34,8 @@ Live Google Docs proof on 2026-06-02 confirmed:
 - page `2` appears after a real page break, proving the field is dynamic
 - `Setup APA Paper` preserves page `1` on the generated title page
 - `Setup APA Paper` preserves page `2` on the next page
-
-PDF/DOCX export preservation still needs to be captured in final smoke evidence
-before Marketplace submission.
+- `Prepare Current Copy`, PDF export, and DOCX export preserve the dynamic page
+  numbers in the submitted Marketplace evidence
 
 ## Sources
 
@@ -56,9 +55,9 @@ before Marketplace submission.
 - Re-check the Docs API before Marketplace packaging in case Google adds an
   insert-auto-text request.
 - Keep an alpha template with top-right page numbers already configured and
-  treat it as the required starting surface for final smoke evidence.
-- If a template is used, verify clean-copy PDF/DOCX exports preserve the page
-  numbers before public alpha release.
+  treat it as the required starting surface for Marketplace V0.
+- Re-check clean-copy PDF/DOCX export preservation after any future template,
+  setup, or marker-removal change.
 
 ## Sprint 2 Check
 
@@ -74,5 +73,6 @@ Marketplace smoke evidence as failed until a prepared-template or equivalent
 dynamic page-number path is proven.
 
 Later on 2026-06-02, the prepared-template path was corrected and proven in
-Google Docs. The remaining page-number risk is export preservation, not the
-in-editor setup path.
+Google Docs. Later smoke evidence also confirmed PDF/DOCX export preservation.
+The remaining page-number risk is regression after future template, setup, or
+marker-removal changes.

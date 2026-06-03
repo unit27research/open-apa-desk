@@ -4,14 +4,14 @@ Date: 2026-06-02
 
 ## Status
 
-Open APA Desk is at a V0.1 alpha hardening checkpoint.
+Open APA Desk is at a V0.1 alpha review checkpoint.
 
-The current build has passed local verification and focused Google Docs smoke
-testing. The active Marketplace V0 path uses current-document Docs access,
-limited Drive file access to create APA starter documents from a prepared
-template, Apps Script UI/storage scopes, and external request access for
-Crossref DOI lookup. It does not request full Google Drive or Google Sheets
-scope.
+The current build has passed local verification, focused Google Docs smoke
+testing, and initial Google Workspace Marketplace submission. The active
+Marketplace V0 path uses current-document Docs access, limited Drive file
+access to create APA starter documents from a prepared template, Apps Script
+UI/storage scopes, and external request access for Crossref DOI lookup. It
+does not request full Google Drive or Google Sheets scope.
 
 Users start from the prepared APA starter template, using `Create APA Starter
 Doc` when the template ID is configured. For submission, they run `Prepare
@@ -36,22 +36,21 @@ Current Copy` on a copied document to remove hidden Open APA Desk markers.
 - Required APA page numbers now have a proven in-editor alpha path. The alpha
   path starts from a prepared Google Docs APA template with dynamic top-right
   page numbers; live proof confirmed page `1`, dynamic page `2`, and
-  preservation after `Setup APA Paper`. Final smoke/export evidence must still
-  prove page numbers survive current-copy prep, PDF export, and DOCX export.
-- Full body-text verification for newly inserted citations still needs a human
-  visual/export check in Google Docs.
+  preservation after `Setup APA Paper`, `Prepare Current Copy`, PDF export, and
+  DOCX export.
+- Full body-text verification for inserted citations remains a human-reviewed
+  smoke-test responsibility for future regressions because Google add-on iframe
+  automation is limited.
 - Reference rendering covers common student-paper cases, not the full APA
   manual.
-- The current early install path is still a bound/template Google Doc, not a
-  published Google Workspace Marketplace add-on.
+- The current early install path is still a bound/template Google Doc until
+  Google approves the submitted Marketplace listing.
 - DOI lookup uses the public Unit27 Research project contact email when copied
   template scripts do not carry script properties. A `CROSSREF_MAILTO` script
   property can still override the fallback for deployed/operator projects.
 - Chrome automation can open the sidebar and focus fields, but cannot type or
-  paste into Google's sandboxed add-on iframe. Full sidebar form-entry smoke
-  checks still need human input.
-- PDF/DOCX export after `Prepare Current Copy` still needs a human/manual check
-  in the current no-Drive-scope path.
+  paste into Google's sandboxed add-on iframe. Full sidebar form-entry checks
+  remain human-assisted.
 - Reusable cross-document reference library sync is deferred from Marketplace
   V0 to avoid Google Sheets OAuth scope.
 

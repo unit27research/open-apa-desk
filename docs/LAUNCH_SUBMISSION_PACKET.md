@@ -226,7 +226,7 @@ or supplement them with final human-reviewed Marketplace screenshots after the
 live deployment is refreshed. Final screenshots should be `1280 x 800`; `640 x
 400` and `2560 x 1600` are listed by Google as acceptable alternatives.
 
-Run this before Marketplace submission:
+Run this before Marketplace submission or resubmission:
 
 ```bash
 npm run marketplace:assets:final
@@ -252,10 +252,9 @@ Functional evidence:
 - Fresh checkout `npm ci` and `npm run verify` passed.
 - No-Sheets copied-template smoke pass confirmed copied Doc menu, sidebar load
   after authorization/reopen, and `Open APA Desk > Check DOI Setup`.
-- Required APA page numbers must be proven in final Marketplace evidence. Final
-  smoke must start from a prepared APA template, or another proven dynamic page
-  number path, and must show page number `1` on the title page plus an
-  incrementing later page number.
+- Required APA page numbers were proven in final Marketplace evidence. Final
+  smoke started from a prepared APA template and showed page number `1` on the
+  title page plus an incrementing later page number.
 - DOI lookup uses the public Unit27 Research project contact fallback when
   copied-template scripts do not carry script properties, and
   `Open APA Desk > Check DOI Setup` confirms DOI lookup is configured for
@@ -269,7 +268,7 @@ Functional evidence:
   after PDF/DOCX export. It helps catch marker leakage but does not replace
   human visual export review.
 
-Human/manual evidence still needed:
+Human/manual evidence recorded for the initial submission:
 
 - prepared-template dynamic page-number proof
 - full copied-template sidebar form entry
@@ -281,15 +280,10 @@ Human/manual evidence still needed:
 - `Prepare Current Copy` visual check
 - PDF export check
 - DOCX export check
-- `npm run smoke:exports` after exports are saved under `private/`
-- `npm run smoke:evidence:check` after the private final smoke evidence file
-  is filled
-- `npm run submission:preflight` after exports and private evidence are
-  complete
 - no visible `[[OPEN_APA_DESK` marker text in exports
 - final Marketplace screenshots
 
-## Do Not Submit Until
+## Submitted State
 
 - GitHub CLI authentication is valid.
 - Public repo exists and `main` is pushed.
@@ -299,7 +293,16 @@ Human/manual evidence still needed:
   `CROSSREF_MAILTO` override.
 - Standard Google Cloud project is linked to Apps Script.
 - OAuth consent screen is configured with matching scopes.
-- A post-Pages Apps Script version is created and recorded.
-- Marketplace SDK draft points to the post-Pages Apps Script version.
+- Apps Script version `1` was created and recorded for Marketplace submission.
+- Marketplace SDK draft points to Apps Script version `1`.
 - Human-assisted sidebar/export smoke pass is recorded.
-- Trader/non-trader status is copied from the launch packet into the SDK.
+- Trader/non-trader status was copied from the launch packet into the SDK.
+- Initial Marketplace listing was submitted for Google review on 2026-06-02.
+
+## Review Follow-Up
+
+- Monitor Google Auth Platform branding review and Marketplace review.
+- If Google requests reviewer/testing notes, use the prepared smoke fixture and
+  review evidence above.
+- If Google requests changes, update the manifest/docs, create a new immutable
+  Apps Script version, update the Marketplace SDK version, and resubmit.

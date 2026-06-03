@@ -85,4 +85,5 @@ and other ignored local files.
    `https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png`
 7. Re-run `npm run verify`.
 8. Push the updated manifest to the Apps Script alpha template.
-9. Create a post-Pages Apps Script version for Marketplace SDK use.
+9. For any future Marketplace resubmission, create a new immutable Apps Script
+   version and update the Marketplace SDK version field.
