@@ -1,6 +1,7 @@
 import {
   APA_DOCUMENT_STYLE,
   buildBodyStartEntries,
+  buildCitationTextStyle,
   buildTitlePageEntries,
   normalizePaperProfile
 } from '../src/core/documentFormat';
@@ -53,6 +54,16 @@ describe('APA document setup formatting helpers', () => {
     ).toEqual([
       { role: 'title', text: 'Trust Signals in Student Writing Tools' }
     ]);
+  });
+
+  it('builds visible APA styling for inserted citation text', () => {
+    expect(buildCitationTextStyle()).toEqual({
+      fontFamily: 'Times New Roman',
+      fontSize: 12,
+      foregroundColor: '#000000',
+      bold: false,
+      italic: false
+    });
   });
 
   it('omits blank optional title page entries', () => {

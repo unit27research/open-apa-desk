@@ -14,6 +14,7 @@ import {
 import {
   APA_DOCUMENT_STYLE,
   buildBodyStartEntries,
+  buildCitationTextStyle,
   buildTitlePageEntries,
   normalizePaperProfile,
   type BodyStartEntry,
@@ -145,6 +146,7 @@ function insertTextAtCursor(citationText: string): void {
   if (!inserted) {
     throw new Error('Unable to insert citation at the current cursor position.');
   }
+  inserted.setAttributes(buildCitationTextAttributes());
 }
 
 export function rebuildReferences(): DocumentState {
@@ -446,6 +448,17 @@ function buildTextAttributes(): Record<string, string | number | boolean> {
     [DocumentApp.Attribute.FOREGROUND_COLOR]: '#000000',
     [DocumentApp.Attribute.BOLD]: false,
     [DocumentApp.Attribute.ITALIC]: false
+  };
+}
+
+function buildCitationTextAttributes(): Record<string, string | number | boolean> {
+  const style = buildCitationTextStyle();
+  return {
+    [DocumentApp.Attribute.FONT_FAMILY]: style.fontFamily,
+    [DocumentApp.Attribute.FONT_SIZE]: style.fontSize,
+    [DocumentApp.Attribute.FOREGROUND_COLOR]: style.foregroundColor,
+    [DocumentApp.Attribute.BOLD]: style.bold,
+    [DocumentApp.Attribute.ITALIC]: style.italic
   };
 }
 

@@ -19,6 +19,14 @@ export interface BodyStartEntry {
   text: string;
 }
 
+export interface CitationTextStyle {
+  fontFamily: string;
+  fontSize: number;
+  foregroundColor: string;
+  bold: boolean;
+  italic: boolean;
+}
+
 export const APA_DOCUMENT_STYLE = {
   fontFamily: 'Times New Roman',
   fontSize: 12,
@@ -52,6 +60,16 @@ export function buildTitlePageEntries(profile: PaperProfile): TitlePageEntry[] {
 export function buildBodyStartEntries(profile: PaperProfile): BodyStartEntry[] {
   const title = profile.title.trim();
   return title ? [{ role: 'title', text: title }] : [];
+}
+
+export function buildCitationTextStyle(): CitationTextStyle {
+  return {
+    fontFamily: APA_DOCUMENT_STYLE.fontFamily,
+    fontSize: APA_DOCUMENT_STYLE.fontSize,
+    foregroundColor: '#000000',
+    bold: false,
+    italic: false
+  };
 }
 
 export function normalizePaperProfile(profile: PaperProfile): PaperProfile {
