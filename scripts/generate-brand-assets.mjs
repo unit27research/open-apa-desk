@@ -7,6 +7,9 @@ const COLORS = {
   ink: [23, 32, 38, 255],
   teal: [21, 94, 117, 255],
   tealLight: [14, 165, 166, 255],
+  blueGray: [226, 237, 241, 255],
+  gold: [217, 145, 35, 255],
+  muted: [73, 88, 101, 255],
   paper: [255, 255, 255, 255],
   rule: [177, 204, 211, 255],
   transparent: [0, 0, 0, 0]
@@ -54,15 +57,30 @@ function drawIcon(size) {
 
 function drawBanner() {
   const image = createImage(220, 140);
-  fillRect(image, 0, 0, 220, 140, COLORS.teal);
-  fillRect(image, 0, 102, 220, 38, COLORS.ink);
-  const icon = drawIcon(84);
-  blit(image, icon, 20, 20);
+  fillRect(image, 0, 0, 220, 140, COLORS.blueGray);
+  fillRect(image, 0, 0, 220, 10, COLORS.teal);
+  fillRect(image, 0, 126, 220, 14, COLORS.ink);
+  fillTriangle(image, 152, 10, 220, 10, 220, 84, [207, 226, 232, 255]);
 
-  drawWordmark(image, 108, 40, 1.45);
-  fillRect(image, 116, 82, 70, 4, COLORS.tealLight);
-  fillRect(image, 116, 94, 48, 4, COLORS.rule);
-  fillRect(image, 116, 106, 76, 4, COLORS.rule);
+  fillRoundRect(image, 16, 23, 76, 92, 9, [197, 215, 221, 255]);
+  const icon = drawIcon(74);
+  blit(image, icon, 18, 18);
+
+  fillRoundRect(image, 103, 24, 78, 39, 7, COLORS.paper);
+  fillRect(image, 116, 34, 52, 4, COLORS.teal);
+  fillRect(image, 124, 44, 36, 3, COLORS.rule);
+  fillRect(image, 132, 53, 20, 3, COLORS.rule);
+
+  fillRoundRect(image, 98, 72, 94, 25, 7, COLORS.teal);
+  fillRect(image, 113, 82, 45, 4, COLORS.paper);
+  fillRect(image, 164, 82, 16, 4, COLORS.tealLight);
+  fillRect(image, 106, 78, 4, 15, COLORS.paper);
+  fillRect(image, 184, 78, 4, 15, COLORS.paper);
+
+  fillRoundRect(image, 108, 105, 76, 17, 4, COLORS.paper);
+  fillRect(image, 118, 110, 52, 3, COLORS.muted);
+  fillRect(image, 118, 116, 36, 3, COLORS.rule);
+  fillRect(image, 188, 108, 6, 6, COLORS.gold);
   return image;
 }
 

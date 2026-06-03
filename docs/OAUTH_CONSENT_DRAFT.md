@@ -13,13 +13,17 @@ Sources checked on 2026-06-02:
 
 ## Current Status
 
-OAuth consent is not configured for public release yet.
+OAuth consent is configured in the standard Google Cloud project and branding
+has been submitted for review. Google required `unit27research.com` ownership
+verification before accepting the Unit27 public URLs; the domain was verified
+through Google Search Console during the Marketplace submission pass.
 
 The OAuth consent screen, Google Workspace Marketplace SDK, and Apps Script
 manifest scopes must match before submission.
 
-Google lists billing and a standard Cloud project as publishing prerequisites.
-Neither has been confirmed yet for Open APA Desk.
+The standard Cloud project is linked to the standalone Marketplace Apps Script
+project. Billing was attached because Google required it during project setup;
+Open APA Desk does not use billable backend services.
 
 ## App Information
 
@@ -32,37 +36,41 @@ Open APA Desk
 User support email:
 
 ```text
-josh@unit27research.com
+publishing Google account email (operator-private)
 ```
+
+Google Auth Platform forced the support-email dropdown to the publishing Google
+account during setup. Marketplace developer/contact fields remain Unit27
+Research.
 
 App logo:
 
 ```text
-https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
+https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 ```
 
 Application home page:
 
 ```text
-https://unit27research.github.io/open-apa-desk/
+https://unit27research.com/open-apa-desk/
 ```
 
 Application privacy policy:
 
 ```text
-https://unit27research.github.io/open-apa-desk/PRIVACY.html
+https://unit27research.com/open-apa-desk/privacy.html
 ```
 
 Application terms of service:
 
 ```text
-https://unit27research.github.io/open-apa-desk/TERMS.html
+https://unit27research.com/open-apa-desk/terms.html
 ```
 
 Authorized domains:
 
 ```text
-github.io
+unit27research.com
 ```
 
 Developer contact email:

@@ -15,10 +15,11 @@ Sources checked on 2026-06-02:
 
 ## Current Status
 
-The Marketplace SDK configuration has not been created yet.
+The Marketplace SDK configuration has been created and submitted for Google
+review.
 
-Apps Script version `2` exists in the operator environment after the final
-smoke-ready alpha build was pushed.
+Standalone Apps Script version `1` was created for the Marketplace-bound script
+after the verified build was pushed.
 
 Use [LAUNCH_SUBMISSION_PACKET.md](LAUNCH_SUBMISSION_PACKET.md) as the
 copy/paste handoff packet when entering the SDK, OAuth, and listing fields.
@@ -59,13 +60,13 @@ Record in private operator notes only. Do not commit the script ID publicly.
 Apps Script version:
 
 ```text
-2
+1
 ```
 
 Version description:
 
 ```text
-0.1.0-alpha.0 final-smoke-ready alpha
+0.1.0-alpha.0 marketplace-bound initial
 ```
 
 ## OAuth Scopes
@@ -84,8 +85,7 @@ https://www.googleapis.com/auth/script.storage
 
 Use the copy in `docs/MARKETPLACE_LISTING_DRAFT.md`.
 
-Required screenshot files still need final selection after the human-assisted
-smoke pass. Alpha files currently available:
+Submitted Marketplace screenshot files:
 
 - `assets/screenshots/01-google-docs-menu-open.jpg`
 - `assets/screenshots/02-sidebar-paper-setup.jpg`
@@ -94,13 +94,13 @@ smoke pass. Alpha files currently available:
 Verified public URLs:
 
 - Privacy policy URL:
-  https://unit27research.github.io/open-apa-desk/PRIVACY.html
+  https://unit27research.com/open-apa-desk/privacy.html
 - Terms of service URL:
-  https://unit27research.github.io/open-apa-desk/TERMS.html
+  https://unit27research.com/open-apa-desk/terms.html
 - Support URL:
   https://github.com/unit27research/open-apa-desk/issues
 - App icon public URL:
-  https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
+  https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 
 ## Save Strategy
 

@@ -8,11 +8,11 @@ const requiredFiles = [
 ];
 
 const requiredUrls = [
-  'https://unit27research.github.io/open-apa-desk/',
-  'https://unit27research.github.io/open-apa-desk/PRIVACY.html',
-  'https://unit27research.github.io/open-apa-desk/TERMS.html',
+  'https://unit27research.com/open-apa-desk/',
+  'https://unit27research.com/open-apa-desk/privacy.html',
+  'https://unit27research.com/open-apa-desk/terms.html',
   'https://github.com/unit27research/open-apa-desk/issues',
-  'https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png'
+  'https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png'
 ];
 
 const requiredClaims = [

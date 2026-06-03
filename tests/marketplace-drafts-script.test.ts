@@ -40,6 +40,7 @@ async function createDraftRoot(options: { sdkSuffix?: string } = {}) {
   await mkdir(join(root, 'src'), { recursive: true });
 
   const scopes = [
+    'https://www.googleapis.com/auth/drive.file',
     'https://www.googleapis.com/auth/documents.currentonly',
     'https://www.googleapis.com/auth/script.container.ui',
     'https://www.googleapis.com/auth/script.external_request',
@@ -51,11 +52,11 @@ async function createDraftRoot(options: { sdkSuffix?: string } = {}) {
   );
 
   const shared = [
-    'https://unit27research.github.io/open-apa-desk/',
-    'https://unit27research.github.io/open-apa-desk/PRIVACY.html',
-    'https://unit27research.github.io/open-apa-desk/TERMS.html',
+    'https://unit27research.com/open-apa-desk/',
+    'https://unit27research.com/open-apa-desk/privacy.html',
+    'https://unit27research.com/open-apa-desk/terms.html',
     'https://github.com/unit27research/open-apa-desk/issues',
-    'https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png',
+    'https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png',
     'Open APA Desk is not an official APA product',
     'no backend server',
     'no Open APA Desk account',

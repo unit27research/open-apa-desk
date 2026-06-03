@@ -76,14 +76,18 @@ Field map:
 ```text
 App name: Open APA Desk
 Audience/user type: External
-Support email: josh@unit27research.com
+Support email: publishing Google account email (operator-private)
 Developer contact email: josh@unit27research.com
-App logo: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
-Application home page: https://unit27research.github.io/open-apa-desk/
-Privacy policy: https://unit27research.github.io/open-apa-desk/PRIVACY.html
-Terms of service: https://unit27research.github.io/open-apa-desk/TERMS.html
-Authorized domain: github.io
+App logo: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
+Application home page: https://unit27research.com/open-apa-desk/
+Privacy policy: https://unit27research.com/open-apa-desk/privacy.html
+Terms of service: https://unit27research.com/open-apa-desk/terms.html
+Authorized domain: unit27research.com
 ```
+
+Google Auth Platform forced the support-email dropdown to the publishing Google
+account during setup. Marketplace developer/contact fields remain Unit27
+Research.
 
 Scopes must match `src/appsscript.json`, the OAuth consent screen, and the
 Marketplace SDK:
@@ -150,7 +154,7 @@ App visibility: Public
 Install setting: Individual + Admin Install
 Integration: Google Docs Editor Add-on
 Apps Script project ID: from Apps Script project settings
-Apps Script version: post-console Apps Script version
+Apps Script version: 1
 Developer name: Unit27 Research
 Developer website URL: https://unit27research.com
 Developer email: josh@unit27research.com
@@ -165,8 +169,8 @@ Important:
   version.
 - Revisit non-trader only if Google review questions the Unit27 Research
   publisher identity for this free/open-source project.
-
-Save as draft first. Do not publish until the final smoke pass is recorded.
+- The initial Marketplace listing was submitted for Google review after OAuth
+  branding/domain verification and Marketplace SDK setup were completed.
 
 ## 6. Store Listing And Assets
 
@@ -175,11 +179,11 @@ Use [MARKETPLACE_LISTING_DRAFT.md](MARKETPLACE_LISTING_DRAFT.md).
 Required public URLs:
 
 ```text
-Home: https://unit27research.github.io/open-apa-desk/
-Privacy: https://unit27research.github.io/open-apa-desk/PRIVACY.html
-Terms: https://unit27research.github.io/open-apa-desk/TERMS.html
+Home: https://unit27research.com/open-apa-desk/
+Privacy: https://unit27research.com/open-apa-desk/privacy.html
+Terms: https://unit27research.com/open-apa-desk/terms.html
 Support: https://github.com/unit27research/open-apa-desk/issues
-Icon: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
+Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 ```
 
 Graphics:

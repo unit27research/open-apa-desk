@@ -101,7 +101,7 @@ Post-push proof required:
   refs exist on a newly created repo, delete and recreate the repo from the
   sanitized local tree before making it public.
 
-Expected public URLs:
+Expected GitHub Pages source URLs:
 
 ```text
 Project home: https://unit27research.github.io/open-apa-desk/
@@ -109,6 +109,16 @@ Privacy: https://unit27research.github.io/open-apa-desk/PRIVACY.html
 Terms: https://unit27research.github.io/open-apa-desk/TERMS.html
 Support: https://github.com/unit27research/open-apa-desk/issues
 Icon: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
+```
+
+Expected Unit27 Marketplace URLs:
+
+```text
+Project home: https://unit27research.com/open-apa-desk/
+Privacy: https://unit27research.com/open-apa-desk/privacy.html
+Terms: https://unit27research.com/open-apa-desk/terms.html
+Support: https://github.com/unit27research/open-apa-desk/issues
+Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 ```
 
 Manual upload fallback:
@@ -134,9 +144,9 @@ Apps Script:
 
 ```text
 Template script ID: keep in local/operator notes only
-Current alpha version: 2
-Submission version: 2
-Version description: 0.1.0-alpha.0 final-smoke-ready alpha
+Current standalone Marketplace version: 1
+Submission version: 1
+Version description: 0.1.0-alpha.0 marketplace-bound initial
 ```
 
 Marketplace SDK app configuration:
@@ -145,7 +155,7 @@ Marketplace SDK app configuration:
 App visibility: Public
 Install setting: Individual + Admin Install
 Integration: Google Docs Editor Add-on
-Apps Script version: 2
+Apps Script version: 1
 Developer name: Unit27 Research
 Developer website URL: https://unit27research.com
 Developer email: josh@unit27research.com
@@ -161,10 +171,14 @@ OAuth consent:
 ```text
 App name: Open APA Desk
 Audience: External
-Support email: josh@unit27research.com
+Support email: publishing Google account email (operator-private)
 Developer contact email: josh@unit27research.com
-Authorized domain: github.io
+Authorized domain: unit27research.com
 ```
+
+Google Auth Platform forced the support-email dropdown to the publishing Google
+account during setup. Marketplace developer/contact fields remain Unit27
+Research.
 
 Scope justifications are drafted in
 [OAUTH_CONSENT_DRAFT.md](OAUTH_CONSENT_DRAFT.md).
@@ -178,6 +192,7 @@ Store listing:
   pass.
 - Revisit trader/non-trader status if Google review treats the Unit27 Research
   publisher identity as business/professional activity.
+- Initial Marketplace listing was submitted for Google review on 2026-06-02.
 
 Run the strict draft check before entering final Google Cloud or Marketplace
 console fields:

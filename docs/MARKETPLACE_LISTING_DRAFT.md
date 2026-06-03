@@ -44,7 +44,7 @@ APA requirements before submission.
 Category:
 
 ```text
-Productivity
+Academic Resources
 ```
 
 Pricing:
@@ -55,10 +55,10 @@ Free of charge
 
 ## Support Links
 
-These public URLs are verified through `npm run upload:preflight`:
+These public URLs were used for the submitted Marketplace listing:
 
-- Privacy policy: https://unit27research.github.io/open-apa-desk/PRIVACY.html
-- Terms of service: https://unit27research.github.io/open-apa-desk/TERMS.html
+- Privacy policy: https://unit27research.com/open-apa-desk/privacy.html
+- Terms of service: https://unit27research.com/open-apa-desk/terms.html
 - Support URL: https://github.com/unit27research/open-apa-desk/issues
 - Report issue URL: https://github.com/unit27research/open-apa-desk/issues
 

@@ -2,7 +2,13 @@
 
 Date: 2026-06-02
 
-Open APA Desk needs stable public URLs before Marketplace submission.
+Open APA Desk uses two public URL lanes:
+
+- GitHub Pages for the open-source repository, package homepage, and Apps
+  Script manifest logo URL.
+- `unit27research.com/open-apa-desk/` for Google Auth Platform and Marketplace
+  listing URLs, because Google required ownership verification for the
+  OAuth/Marketplace homepage domain.
 
 ## Current Status
 
@@ -10,7 +16,7 @@ GitHub authentication is working for the publishing account, the public
 repository is live, and the included GitHub Pages workflow is publishing the
 static public site from `site/`.
 
-Verified public URLs:
+Verified GitHub Pages URLs:
 
 ```text
 Project home: https://unit27research.github.io/open-apa-desk/
@@ -19,6 +25,17 @@ Terms: https://unit27research.github.io/open-apa-desk/TERMS.html
 Support: https://github.com/unit27research/open-apa-desk/issues
 Icon: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 Banner: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-card-banner-220x140.png
+```
+
+Verified Unit27 Marketplace URLs:
+
+```text
+Project home: https://unit27research.com/open-apa-desk/
+Privacy: https://unit27research.com/open-apa-desk/privacy.html
+Terms: https://unit27research.com/open-apa-desk/terms.html
+Support: https://github.com/unit27research/open-apa-desk/issues
+Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
+Banner: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-card-banner-220x140.png
 ```
 
 The static site is generated into `site/` with:
@@ -37,7 +54,7 @@ npm run upload:preflight
 
 ## Manifest Status
 
-`src/appsscript.json` is already wired to the expected public icon URL:
+`src/appsscript.json` is already wired to the expected GitHub Pages icon URL:
 
 ```json
 {
@@ -56,20 +73,22 @@ npm run verify
 npm run upload:preflight
 ```
 
-Push the verified build to the alpha Apps Script project after public-site or
-manifest changes. Apps Script version `2` exists in the operator environment
-with description `0.1.0-alpha.0 final-smoke-ready alpha` and is the current
-final-smoke-ready alpha reference.
+Push the verified build to the standalone Marketplace Apps Script project after
+public-site or manifest changes. Apps Script version `1` exists in the
+Marketplace-bound operator environment with description
+`0.1.0-alpha.0 marketplace-bound initial` and was used for the initial Google
+Workspace Marketplace review submission.
 
 ## Public URL Consumers
 
-`src/appsscript.json`, Marketplace drafts, OAuth consent draft, and public-site
-files already use the public GitHub Pages URLs. Copy the same URLs into the
-OAuth consent screen and Marketplace SDK app configuration during console
-setup.
+`src/appsscript.json`, `package.json`, upload preflight, and public-source
+checks use the public GitHub Pages URLs.
+
+OAuth consent, Google Auth Platform branding, and Marketplace SDK/listing fields
+use the Unit27 URLs.
 
 ## Remaining Marketplace Blocker
 
-The public URL lane is no longer blocked. Marketplace submission still needs
-standard Google Cloud project setup and final human-assisted sidebar/export
-evidence.
+The public URL lane is no longer blocked. `unit27research.com` ownership was
+verified through Google Search Console during the Marketplace submission pass,
+and the initial Marketplace listing was submitted for review.
