@@ -23,6 +23,7 @@ Project home: https://unit27research.github.io/open-apa-desk/
 Privacy: https://unit27research.github.io/open-apa-desk/PRIVACY.html
 Terms: https://unit27research.github.io/open-apa-desk/TERMS.html
 Support: https://github.com/unit27research/open-apa-desk/issues
+Support page: https://unit27research.github.io/open-apa-desk/support.html
 Icon: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 Banner: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-card-banner-220x140.png
 ```
@@ -33,7 +34,7 @@ Verified Unit27 Marketplace URLs:
 Project home: https://unit27research.com/open-apa-desk/
 Privacy: https://unit27research.com/open-apa-desk/privacy.html
 Terms: https://unit27research.com/open-apa-desk/terms.html
-Support: https://github.com/unit27research/open-apa-desk/issues
+Support: https://unit27research.com/open-apa-desk/support.html
 Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 Banner: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-card-banner-220x140.png
 ```
@@ -46,7 +47,7 @@ npm run site:build
 
 The GitHub Pages workflow is `.github/workflows/pages.yml`. It publishes the
 `site/` directory after `main` is pushed. The upload preflight now checks the
-home, privacy, terms, and icon URLs directly:
+home, privacy, terms, support, and icon URLs directly:
 
 ```bash
 npm run upload:preflight
@@ -89,6 +90,8 @@ use the Unit27 URLs.
 
 ## Remaining Marketplace Blocker
 
-The public URL lane is no longer blocked. `unit27research.com` ownership was
-verified through Google Search Console during the Marketplace submission pass,
-and the initial Marketplace listing was submitted for review.
+The public URL lane needs the refreshed support page uploaded to Hostinger.
+`unit27research.com` ownership was verified through Google Search Console
+during the Marketplace submission pass. The initial Marketplace listing was
+rejected on 2026-06-03; the remaining external blocker is OAuth verification
+plus Marketplace resubmission with the corrected support and trademark fields.

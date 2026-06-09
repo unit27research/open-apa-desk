@@ -13,10 +13,14 @@ Sources checked on 2026-06-02:
 
 ## Current Status
 
-OAuth consent is configured in the standard Google Cloud project and branding
-has been submitted for review. Google required `unit27research.com` ownership
-verification before accepting the Unit27 public URLs; the domain was verified
-through Google Search Console during the Marketplace submission pass.
+OAuth consent is configured in the standard Google Cloud project. Google
+required `unit27research.com` ownership verification before accepting the Unit27
+public URLs; the domain was verified through Google Search Console during the
+Marketplace submission pass.
+
+Google rejected the initial Marketplace submission because OAuth verification
+was not complete. Submit OAuth verification in Google Cloud before resubmitting
+the Marketplace listing.
 
 The OAuth consent screen, Google Workspace Marketplace SDK, and Apps Script
 manifest scopes must match before submission.
@@ -123,15 +127,19 @@ to reduce consent friction.
 
 ## Verification Notes
 
-Google might require OAuth verification for public apps with sensitive scopes.
-If requested, prepare:
+OAuth verification is required before Marketplace resubmission. Prepare:
 
 - a demo video showing the exact OAuth flow and feature use
 - public privacy policy URL
 - explanation of every scope
 - confirmation that Open APA Desk has no backend server, account system,
   analytics service, AI calls, or hosted database
+- confirmation that the app website does not claim the app is available in
+  Marketplace before approval
 
-Before Marketplace review, confirm the OAuth audience/user type is `External`
-and the publishing status is not `Testing` if Google requires production status
-for review.
+Before Marketplace resubmission, confirm the OAuth audience/user type is
+`External`, the scopes match Apps Script and Marketplace SDK exactly, and OAuth
+verification has been submitted or approved.
+
+Also confirm the OAuth publishing status is not `Testing` before resubmitting
+the Marketplace listing.

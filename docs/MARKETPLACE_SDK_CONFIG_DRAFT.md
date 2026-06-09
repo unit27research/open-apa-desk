@@ -15,8 +15,11 @@ Sources checked on 2026-06-02:
 
 ## Current Status
 
-The Marketplace SDK configuration has been created and submitted for Google
-review.
+The Marketplace SDK configuration was created and submitted for Google review.
+Google rejected the initial submission on 2026-06-03 for correctable listing,
+support URL, and OAuth verification issues. Use
+[MARKETPLACE_REJECTION_REMEDIATION.md](MARKETPLACE_REJECTION_REMEDIATION.md)
+before resubmitting.
 
 Standalone Apps Script version `1` was created for the Marketplace-bound script
 after the verified build was pushed.
@@ -98,7 +101,7 @@ Verified public URLs:
 - Terms of service URL:
   https://unit27research.com/open-apa-desk/terms.html
 - Support URL:
-  https://github.com/unit27research/open-apa-desk/issues
+  https://unit27research.com/open-apa-desk/support.html
 - App icon public URL:
   https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 

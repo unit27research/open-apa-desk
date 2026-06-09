@@ -5,8 +5,9 @@ Open APA Desk is a free, open-source, privacy-first APA 7 helper for Google Docs
 Current package version: `0.1.0-alpha.0`.
 
 Marketplace status: submitted to Google Workspace Marketplace review on
-2026-06-02. It is not Marketplace-approved or publicly installable from the
-Marketplace yet.
+2026-06-02 and rejected on 2026-06-03 for correctable listing/support/OAuth
+verification issues. It is not Marketplace-approved or publicly installable
+from the Marketplace yet.
 
 Project page: https://unit27research.com/open-apa-desk/
 
@@ -51,7 +52,7 @@ Deferred:
 
 The V0.1 alpha build has passed local verification, live Google Docs smoke
 testing, and Google Workspace Marketplace submission preflight. The current
-external gate is Google review.
+external gate is OAuth verification and Marketplace resubmission.
 
 The active build now uses current-document Docs access plus narrow
 `drive.file` access for APA starter documents. Users start from an APA starter
@@ -139,8 +140,9 @@ npm run submission:preflight -- private/smoke-evidence/YYYY-MM-DD-final-smoke.md
 
 ## Release Readiness
 
-Open APA Desk has been submitted to Google Workspace Marketplace review.
-Marketplace readiness and review state are tracked in
+Open APA Desk was submitted to Google Workspace Marketplace review and rejected
+for correctable listing/support/OAuth verification issues. Marketplace
+readiness and review state are tracked in
 [docs/MARKETPLACE_READINESS.md](docs/MARKETPLACE_READINESS.md), with draft
 listing copy in
 [docs/MARKETPLACE_LISTING_DRAFT.md](docs/MARKETPLACE_LISTING_DRAFT.md).
@@ -159,10 +161,10 @@ The public Pages site is generated into `site/` with `npm run site:build`.
 The submitted build uses a standard Google Cloud project, External OAuth
 configuration, Marketplace SDK entry, Apps Script version `1`, final
 starter-template/sidebar/export smoke evidence, and submitted Marketplace
-screenshots. Remaining external gates are Google Auth Platform branding review
-and Marketplace review. If Google requests changes, update the docs and
-manifest as needed, create a new immutable Apps Script version, update the
-Marketplace SDK version, and resubmit.
+screenshots. Remaining external gates are OAuth verification, corrected
+Marketplace SDK fields, and Marketplace resubmission. If Google requests code
+or scope changes, update the docs and manifest as needed, create a new
+immutable Apps Script version, update the Marketplace SDK version, and resubmit.
 
 ## Apps Script Deployment
 

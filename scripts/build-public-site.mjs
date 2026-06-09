@@ -44,8 +44,9 @@ await writePage(
     '</div>',
     '</section>',
     '<nav class="links">',
-    '<a href="PRIVACY.html">Privacy Policy</a>',
-    '<a href="TERMS.html">Terms of Service</a>',
+    '<a href="privacy.html">Privacy Policy</a>',
+    '<a href="terms.html">Terms of Service</a>',
+    '<a href="support.html">Support</a>',
     '<a href="https://github.com/unit27research/open-apa-desk">GitHub Repository</a>',
     '</nav>',
     '<section>',
@@ -66,7 +67,10 @@ await writePage(
 );
 
 await writeMarkdownPage('PRIVACY.html', 'Privacy Policy', 'PRIVACY.md');
+await writeMarkdownPage('privacy.html', 'Privacy Policy', 'PRIVACY.md');
 await writeMarkdownPage('TERMS.html', 'Terms of Service', 'TERMS.md');
+await writeMarkdownPage('terms.html', 'Terms of Service', 'TERMS.md');
+await writeMarkdownPage('support.html', 'Support', 'SUPPORT.md');
 
 async function writeMarkdownPage(outputFile, title, markdownFile) {
   const markdown = await readFile(markdownFile, 'utf8');

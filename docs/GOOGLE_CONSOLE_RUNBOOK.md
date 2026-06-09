@@ -5,6 +5,10 @@ Date: 2026-06-02
 Use this runbook when moving Open APA Desk through Google Cloud, OAuth consent,
 Google Workspace Marketplace SDK setup, or a future review resubmission.
 
+The initial Marketplace submission was rejected on 2026-06-03. Before
+resubmission, complete the fixes in
+[MARKETPLACE_REJECTION_REMEDIATION.md](MARKETPLACE_REJECTION_REMEDIATION.md).
+
 ## Source Check
 
 Official Google sources checked on 2026-06-02:
@@ -100,9 +104,9 @@ https://www.googleapis.com/auth/script.external_request
 https://www.googleapis.com/auth/script.storage
 ```
 
-If Google requires OAuth verification, prepare a demo video showing the exact
-install/authorization flow and the APA Paper + Refs features. Do not add new
-scopes to work around verification.
+OAuth verification is required before Marketplace resubmission. Prepare a demo
+video showing the exact install/authorization flow and the APA Paper + Refs
+features. Do not add new scopes to work around verification.
 
 If the Google Auth platform prompts for OAuth credentials during setup, create
 them inside the standard Cloud project and keep any generated client IDs or
@@ -169,8 +173,8 @@ Important:
   version.
 - Revisit non-trader only if Google review questions the Unit27 Research
   publisher identity for this free/open-source project.
-- The initial Marketplace listing was submitted for Google review after OAuth
-  branding/domain verification and Marketplace SDK setup were completed.
+- The initial Marketplace listing was rejected because Google trademark
+  attribution, support contact, and OAuth verification were not complete.
 
 ## 6. Store Listing And Assets
 
@@ -182,9 +186,13 @@ Required public URLs:
 Home: https://unit27research.com/open-apa-desk/
 Privacy: https://unit27research.com/open-apa-desk/privacy.html
 Terms: https://unit27research.com/open-apa-desk/terms.html
-Support: https://github.com/unit27research/open-apa-desk/issues
+Support: https://unit27research.com/open-apa-desk/support.html
 Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 ```
+
+Google trademark note: use `Google Docs™` in the short and detailed
+descriptions and include `Google Docs™ is a trademark of Google LLC.` in the
+detailed description.
 
 Graphics:
 

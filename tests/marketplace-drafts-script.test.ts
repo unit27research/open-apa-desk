@@ -55,7 +55,7 @@ async function createDraftRoot(options: { sdkSuffix?: string } = {}) {
     'https://unit27research.com/open-apa-desk/',
     'https://unit27research.com/open-apa-desk/privacy.html',
     'https://unit27research.com/open-apa-desk/terms.html',
-    'https://github.com/unit27research/open-apa-desk/issues',
+    'https://unit27research.com/open-apa-desk/support.html',
     'https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png',
     'Open APA Desk is not an official APA product',
     'no backend server',
@@ -63,6 +63,8 @@ async function createDraftRoot(options: { sdkSuffix?: string } = {}) {
     'no AI calls',
     'DOI lookup sends',
     'publishing status is not `Testing`',
+    'Google Docs™',
+    'Google Docs™ is a trademark of Google LLC',
     ...scopes
   ].join('\n');
 

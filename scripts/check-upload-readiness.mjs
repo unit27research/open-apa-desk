@@ -30,6 +30,11 @@ const PUBLIC_URLS = [
     contentType: 'text/html'
   },
   {
+    label: 'Support',
+    url: 'https://unit27research.github.io/open-apa-desk/support.html',
+    contentType: 'text/html'
+  },
+  {
     label: 'Project icon',
     url: 'https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png',
     contentType: 'image/png'

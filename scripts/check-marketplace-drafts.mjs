@@ -11,7 +11,7 @@ const requiredUrls = [
   'https://unit27research.com/open-apa-desk/',
   'https://unit27research.com/open-apa-desk/privacy.html',
   'https://unit27research.com/open-apa-desk/terms.html',
-  'https://github.com/unit27research/open-apa-desk/issues',
+  'https://unit27research.com/open-apa-desk/support.html',
   'https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png'
 ];
 
@@ -21,7 +21,9 @@ const requiredClaims = [
   'no Open APA Desk account',
   'no AI calls',
   'DOI lookup sends',
-  'publishing status is not `Testing`'
+  'publishing status is not `Testing`',
+  'Google Docs™',
+  'Google Docs™ is a trademark of Google LLC'
 ];
 
 const blockers = [];

@@ -20,11 +20,23 @@ Sources checked on 2026-06-02:
 
 ## Current Position
 
-Open APA Desk has been submitted to Google Workspace Marketplace review.
+Open APA Desk was submitted to Google Workspace Marketplace review and rejected
+on 2026-06-03. The rejection is addressable and requires Marketplace SDK/OAuth
+changes before resubmission.
 
 The submitted build uses a standalone Apps Script project linked to a standard
-Google Cloud project. Google Auth Platform branding is under review after
-`unit27research.com` ownership verification through Google Search Console.
+Google Cloud project. Google Auth Platform branding passed the domain ownership
+gate for `unit27research.com`, but Google rejected the add-on because OAuth
+verification was not complete.
+
+Google's rejection listed three blockers:
+
+1. Add proper Google trademark attribution in the short and detailed
+   Marketplace descriptions, including `Google Docs™`.
+2. Replace the support link with a page that gives users a point of contact,
+   such as an email address or form.
+3. Complete OAuth verification for the script project's OAuth client before
+   resubmitting the Marketplace listing.
 
 Page-number handling has an in-editor alpha path now. APA 7 student papers
 require page numbers, and the blank/current-document setup flow cannot be called
@@ -52,16 +64,16 @@ The Google console execution path is
 | APA page numbers | Marketplace V0 uses the prepared-template path. Live Google Docs proof shows page `1`, dynamic page `2`, preservation after `Setup APA Paper`, and PDF/DOCX export preservation. | Submitted |
 | Standard Google Cloud project | Standard Google Cloud project is created and linked to the standalone Apps Script project. | Complete |
 | Cloud billing | Billing was attached because Google required it during Cloud project setup; Open APA Desk does not use billable backend services. | Complete |
-| Marketplace SDK config | Marketplace SDK App Configuration and Store Listing were filled and submitted for review. | Submitted |
-| OAuth consent screen | OAuth consent is configured as External and Google Auth Platform branding is under review. | Under review |
+| Marketplace SDK config | Marketplace SDK App Configuration and Store Listing were submitted, then rejected for correctable listing/support/OAuth issues. | Needs resubmission |
+| OAuth consent screen | OAuth consent is configured as External, but OAuth verification must be submitted and approved before Marketplace resubmission. | Blocked on verification |
 | Marketplace draft preflight | `npm run marketplace:drafts:check` passes and rejects public `TODO:` placeholders in Marketplace draft files. | Passing locally |
 | OAuth scopes | Manifest uses current-document Docs scope, `drive.file` for APA starter-template copy creation, UI/storage scopes, and external request access for Crossref. It does not request full Drive or Sheets scope. | Submitted |
 | Sidebar review UX | Sidebar has explicit button types, disables actions while Apps Script calls are pending, exposes status through an ARIA live region, and is guarded by `npm run release:check`. | Passing locally |
-| OAuth verification | Google Auth Platform branding is under review after successful `unit27research.com` ownership verification. | Under review |
-| Store listing | Store listing was submitted for review. Category: Academic Resources. Regions: All regions. | Submitted |
+| OAuth verification | Google rejected the listing because OAuth verification is missing. Submit OAuth verification from Google Cloud before Marketplace resubmission. | Required |
+| Store listing | Store listing was rejected. Corrected listing copy now uses `Google Docs™`, includes Google trademark attribution, and points Support to `https://unit27research.com/open-apa-desk/support.html`. | Needs resubmission |
 | Terms of service | `TERMS.md` exists locally, generated `site/TERMS.html` is checked in, and `https://unit27research.com/open-apa-desk/terms.html` resolves. | Submitted |
 | Privacy policy | `PRIVACY.md` exists locally, generated `site/PRIVACY.html` is checked in, and `https://unit27research.com/open-apa-desk/privacy.html` resolves. | Submitted |
-| Support/contact | Google Auth support email is the publishing account `publishing Google account email (operator-private)`; Marketplace developer/contact fields use `josh@unit27research.com`. | Submitted |
+| Support/contact | Marketplace Support should use `https://unit27research.com/open-apa-desk/support.html`, which includes `josh@unit27research.com` and GitHub issues. Google Auth support email is the publishing account `publishing Google account email (operator-private)`. | Corrected |
 | Trader status | Non-trader was selected because Open APA Desk is free, open-source, and not monetized. If Google treats the Unit27 Research identity as business/professional activity, revisit this choice. | Submitted |
 | Branding assets | Project-owned PNG assets exist under `assets/branding/` and `site/assets/branding/`. Source manifest uses the public Pages icon URL, and the public icon URL resolves. | Passing public URL gate |
 | Screenshots | Three 1280 x 800 Marketplace screenshots were submitted. | Submitted |
@@ -70,11 +82,17 @@ The Google console execution path is
 
 ## High-Risk Marketplace Items
 
-1. Monitor Google Auth Platform branding and Marketplace review status.
-2. Be ready to provide reviewer/test notes if Google asks for them.
-3. Revisit non-trader status only if Google review questions the Unit27 Research
+1. Upload the refreshed `open-apa-desk` public site folder to Hostinger so
+   `https://unit27research.com/open-apa-desk/support.html` resolves.
+2. Update the Marketplace SDK short and detailed descriptions with the
+   corrected `Google Docs™` wording and trademark attribution.
+3. Update the Marketplace SDK Support URL to
+   `https://unit27research.com/open-apa-desk/support.html`.
+4. Submit OAuth verification in Google Cloud for the exact Apps Script/OAuth
+   scopes before Marketplace resubmission.
+5. Revisit non-trader status only if Google review questions the Unit27 Research
    publisher identity for this free/open-source project.
-4. Keep `npm run upload:preflight` passing after each push so the public URLs,
+6. Keep `npm run upload:preflight` passing after each push so the public URLs,
    GitHub Actions, and remote ref hygiene stay verified.
 
 ## Sprint 4 Scope Decision
@@ -122,9 +140,10 @@ along after the template bound script was updated, and page numbers survived
 
 ## Recommended Next Review Pass
 
-- Watch Google Auth Platform branding and Marketplace SDK review status.
-- If Google asks for reviewer/test notes, use the prepared notes from the launch
-  packet and smoke fixtures.
+- Complete OAuth verification first. Google's rejection says to do this before
+  resubmitting the add-on.
+- If Google asks for reviewer/test notes or a demo video, use the prepared notes
+  from the launch packet and smoke fixtures.
 - If Google requests listing or scope changes, update the docs, Apps Script
   manifest if needed, create a new immutable Apps Script version, and update the
   Marketplace SDK version before resubmitting.

@@ -107,7 +107,7 @@ Expected GitHub Pages source URLs:
 Project home: https://unit27research.github.io/open-apa-desk/
 Privacy: https://unit27research.github.io/open-apa-desk/PRIVACY.html
 Terms: https://unit27research.github.io/open-apa-desk/TERMS.html
-Support: https://github.com/unit27research/open-apa-desk/issues
+Support: https://unit27research.github.io/open-apa-desk/support.html
 Icon: https://unit27research.github.io/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 ```
 
@@ -117,7 +117,8 @@ Expected Unit27 Marketplace URLs:
 Project home: https://unit27research.com/open-apa-desk/
 Privacy: https://unit27research.com/open-apa-desk/privacy.html
 Terms: https://unit27research.com/open-apa-desk/terms.html
-Support: https://github.com/unit27research/open-apa-desk/issues
+Support: https://unit27research.com/open-apa-desk/support.html
+Report issue: https://github.com/unit27research/open-apa-desk/issues
 Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 ```
 
@@ -187,12 +188,16 @@ Store listing:
 
 - Copy fields from
   [MARKETPLACE_LISTING_DRAFT.md](MARKETPLACE_LISTING_DRAFT.md).
-- Use support URLs from the public GitHub/Pages deployment.
+- Use the Unit27 support page as the Marketplace Support URL:
+  `https://unit27research.com/open-apa-desk/support.html`.
+- Use `Google Docs™` in the short and detailed descriptions and include the
+  Google trademark attribution from the listing draft.
 - Use final screenshots only after the human-assisted sidebar/export smoke
   pass.
 - Revisit trader/non-trader status if Google review treats the Unit27 Research
   publisher identity as business/professional activity.
-- Initial Marketplace listing was submitted for Google review on 2026-06-02.
+- Initial Marketplace listing was submitted for Google review on 2026-06-02 and
+  rejected on 2026-06-03 for correctable listing/support/OAuth issues.
 
 Run the strict draft check before entering final Google Cloud or Marketplace
 console fields:

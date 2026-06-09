@@ -2,7 +2,7 @@
 
 Date: 2026-06-02
 
-This is the submitted copy for the initial Google Workspace Marketplace listing.
+This is the corrected copy for the Google Workspace Marketplace resubmission.
 Review status is tracked in `docs/MARKETPLACE_READINESS.md`.
 
 ## App Details
@@ -16,13 +16,13 @@ Open APA Desk
 Short description:
 
 ```text
-A free APA 7 helper for Google Docs student papers, citations, and references.
+A free APA 7 helper for Google Docs™ student papers, citations, and references.
 ```
 
 Detailed description:
 
 ```text
-Open APA Desk is a free, privacy-first APA 7 helper for Google Docs.
+Open APA Desk is a free, privacy-first APA 7 helper for Google Docs™.
 
 It helps students set up controlled APA student-paper sections, save common
 reference types, look up journal article metadata by DOI through Crossref,
@@ -39,6 +39,8 @@ Open APA Desk is not an official APA product and is not affiliated with,
 endorsed by, sponsored by, or certified by the American Psychological
 Association. Users remain responsible for checking instructor, institution, and
 APA requirements before submission.
+
+Google Docs™ is a trademark of Google LLC.
 ```
 
 Category:
@@ -55,11 +57,11 @@ Free of charge
 
 ## Support Links
 
-These public URLs were used for the submitted Marketplace listing:
+Use these public URLs for the Marketplace resubmission:
 
 - Privacy policy: https://unit27research.com/open-apa-desk/privacy.html
 - Terms of service: https://unit27research.com/open-apa-desk/terms.html
-- Support URL: https://github.com/unit27research/open-apa-desk/issues
+- Support URL: https://unit27research.com/open-apa-desk/support.html
 - Report issue URL: https://github.com/unit27research/open-apa-desk/issues
 
 ## Developer Information
