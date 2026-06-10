@@ -62,13 +62,13 @@ https://unit27research.com/open-apa-desk/
 Application privacy policy:
 
 ```text
-https://unit27research.com/open-apa-desk/privacy.html
+https://unit27research.com/open-apa-desk/PRIVACY.html
 ```
 
 Application terms of service:
 
 ```text
-https://unit27research.com/open-apa-desk/terms.html
+https://unit27research.com/open-apa-desk/TERMS.html
 ```
 
 Authorized domains:

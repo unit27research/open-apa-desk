@@ -59,8 +59,8 @@ Free of charge
 
 Use these public URLs for the Marketplace resubmission:
 
-- Privacy policy: https://unit27research.com/open-apa-desk/privacy.html
-- Terms of service: https://unit27research.com/open-apa-desk/terms.html
+- Privacy policy: https://unit27research.com/open-apa-desk/PRIVACY.html
+- Terms of service: https://unit27research.com/open-apa-desk/TERMS.html
 - Support URL: https://unit27research.com/open-apa-desk/support.html
 - Report issue URL: https://github.com/unit27research/open-apa-desk/issues
 

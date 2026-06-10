@@ -32,8 +32,8 @@ Verified Unit27 Marketplace URLs:
 
 ```text
 Project home: https://unit27research.com/open-apa-desk/
-Privacy: https://unit27research.com/open-apa-desk/privacy.html
-Terms: https://unit27research.com/open-apa-desk/terms.html
+Privacy: https://unit27research.com/open-apa-desk/PRIVACY.html
+Terms: https://unit27research.com/open-apa-desk/TERMS.html
 Support: https://unit27research.com/open-apa-desk/support.html
 Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 Banner: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-card-banner-220x140.png

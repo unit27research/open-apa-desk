@@ -53,8 +53,8 @@ async function createDraftRoot(options: { sdkSuffix?: string } = {}) {
 
   const shared = [
     'https://unit27research.com/open-apa-desk/',
-    'https://unit27research.com/open-apa-desk/privacy.html',
-    'https://unit27research.com/open-apa-desk/terms.html',
+    'https://unit27research.com/open-apa-desk/PRIVACY.html',
+    'https://unit27research.com/open-apa-desk/TERMS.html',
     'https://unit27research.com/open-apa-desk/support.html',
     'https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png',
     'Open APA Desk is not an official APA product',

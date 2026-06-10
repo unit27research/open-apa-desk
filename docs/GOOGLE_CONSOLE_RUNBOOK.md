@@ -84,8 +84,8 @@ Support email: publishing Google account email (operator-private)
 Developer contact email: josh@unit27research.com
 App logo: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 Application home page: https://unit27research.com/open-apa-desk/
-Privacy policy: https://unit27research.com/open-apa-desk/privacy.html
-Terms of service: https://unit27research.com/open-apa-desk/terms.html
+Privacy policy: https://unit27research.com/open-apa-desk/PRIVACY.html
+Terms of service: https://unit27research.com/open-apa-desk/TERMS.html
 Authorized domain: unit27research.com
 ```
 
@@ -184,8 +184,8 @@ Required public URLs:
 
 ```text
 Home: https://unit27research.com/open-apa-desk/
-Privacy: https://unit27research.com/open-apa-desk/privacy.html
-Terms: https://unit27research.com/open-apa-desk/terms.html
+Privacy: https://unit27research.com/open-apa-desk/PRIVACY.html
+Terms: https://unit27research.com/open-apa-desk/TERMS.html
 Support: https://unit27research.com/open-apa-desk/support.html
 Icon: https://unit27research.com/open-apa-desk/assets/branding/open-apa-desk-icon-128.png
 ```

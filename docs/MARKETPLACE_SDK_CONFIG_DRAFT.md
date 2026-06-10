@@ -97,9 +97,9 @@ Submitted Marketplace screenshot files:
 Verified public URLs:
 
 - Privacy policy URL:
-  https://unit27research.com/open-apa-desk/privacy.html
+  https://unit27research.com/open-apa-desk/PRIVACY.html
 - Terms of service URL:
-  https://unit27research.com/open-apa-desk/terms.html
+  https://unit27research.com/open-apa-desk/TERMS.html
 - Support URL:
   https://unit27research.com/open-apa-desk/support.html
 - App icon public URL:
