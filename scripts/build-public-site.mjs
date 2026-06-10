@@ -30,6 +30,14 @@ for (const screenshot of await readdir(SCREENSHOTS_DIR)) {
   }
 }
 await copyFile('LICENSE', join(OUT_DIR, 'LICENSE'));
+await writeFile(
+  join(OUT_DIR, '.htaccess'),
+  [
+    'Redirect 301 /open-apa-desk/privacy.html /open-apa-desk/PRIVACY.html',
+    'Redirect 301 /open-apa-desk/terms.html /open-apa-desk/TERMS.html',
+    ''
+  ].join('\n')
+);
 
 await writePage(
   'index.html',
